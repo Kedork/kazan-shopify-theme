@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
@@ -15,10 +24,11 @@
       "settings": {
         "eyebrow": "Selected Work",
         "heading": "Featured",
+        "collection": "decorative-objects",
         "products_to_show": 6,
         "columns": "3",
         "show_view_all": true,
-        "bg_color": "#F5F0E8"
+        "bg_color": "#f5f0e8"
       }
     },
     "about": {
@@ -30,23 +40,42 @@
         "text": "<p>Kazan Studio is the ceramic practice of Kevork Kazanjian, based in Los Angeles. The work is geometric, sculptural, and handmade — bold objects that occupy space with intention.</p>",
         "button_label": "Learn More",
         "button_link": "/pages/about",
-        "bg_color": "#E8DFD0"
+        "bg_color": "#e8dfd0"
       }
     },
     "collections": {
       "type": "collection-list",
+      "blocks": {
+        "col1": {
+          "type": "collection",
+          "settings": {
+            "collection": "decorative-objects"
+          }
+        },
+        "col2": {
+          "type": "collection",
+          "settings": {
+            "collection": "pottery"
+          }
+        },
+        "col3": {
+          "type": "collection",
+          "settings": {
+            "collection": "sculptural-totems"
+          }
+        }
+      },
+      "block_order": [
+        "col1",
+        "col2",
+        "col3"
+      ],
       "settings": {
         "eyebrow": "Explore",
         "heading": "Collections",
         "columns": "3",
-        "bg_color": "#E8DFD0"
-      },
-      "blocks": {
-        "col1": { "type": "collection" },
-        "col2": { "type": "collection" },
-        "col3": { "type": "collection" }
-      },
-      "block_order": ["col1", "col2", "col3"]
+        "bg_color": "#e8dfd0"
+      }
     },
     "newsletter": {
       "type": "newsletter",
@@ -54,8 +83,9 @@
         "eyebrow": "Mailing List",
         "heading": "Stay Connected",
         "text": "New work, studio updates, and exhibition announcements.",
+        "placeholder": "Your email address",
         "button_label": "Subscribe",
-        "bg_color": "#1A1A1A"
+        "bg_color": "#1a1a1a"
       }
     },
     "contact": {
@@ -65,9 +95,17 @@
         "heading": "Get in Touch",
         "text": "<p>For inquiries about available work, commissions, or collaborations.</p>",
         "address": "Los Angeles, CA",
-        "bg_color": "#F5F0E8"
+        "email": "",
+        "bg_color": "#f5f0e8"
       }
     }
   },
-  "order": ["hero", "featured", "about", "collections", "newsletter", "contact"]
+  "order": [
+    "hero",
+    "featured",
+    "about",
+    "collections",
+    "newsletter",
+    "contact"
+  ]
 }
