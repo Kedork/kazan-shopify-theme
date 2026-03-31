@@ -1,0 +1,118 @@
+{%- comment -%}
+  Kazan Studio — Contact Form Section
+{%- endcomment -%}
+
+<section class="section-padding" style="background-color: {{ section.settings.bg_color }};">
+  <div class="page-width">
+    <div class="contact-section">
+      <div class="contact-section__info">
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+        {%- endif -%}
+        <h2>{{ section.settings.heading | default: 'Get in Touch' }}</h2>
+        {%- if section.settings.text != blank -%}
+          <div>{{ section.settings.text }}</div>
+        {%- endif -%}
+
+        {%- if section.settings.address != blank -%}
+          <div class="contact-detail">
+            <p class="contact-detail__label">Studio</p>
+            <p>{{ section.settings.address }}</p>
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.email != blank -%}
+          <div class="contact-detail">
+            <p class="contact-detail__label">Email</p>
+            <p><a href="mailto:{{ section.settings.email }}">{{ section.settings.email }}</a></p>
+          </div>
+        {%- endif -%}
+
+        {%- if settings.social_instagram != blank -%}
+          <div class="contact-detail">
+            <p class="contact-detail__label">Instagram</p>
+            <p><a href="{{ settings.social_instagram }}" target="_blank" rel="noopener">@kazan.studio</a></p>
+          </div>
+        {%- endif -%}
+      </div>
+
+      <div class="contact-section__form">
+        {%- form 'contact', id: 'contact-form' -%}
+          {%- if form.posted_successfully? -%}
+            <p style="color: var(--accent); margin-bottom: 1.5rem;">Thank you for your message. We will be in touch.</p>
+          {%- endif -%}
+          {%- if form.errors -%}
+            <p style="color: #c44; margin-bottom: 1.5rem;">Please check the form and try again.</p>
+          {%- endif -%}
+
+          <div class="form-field">
+            <label for="contact-name" class="form-label">Name</label>
+            <input type="text" id="contact-name" name="contact[name]" class="form-input" required>
+          </div>
+          <div class="form-field">
+            <label for="contact-email" class="form-label">Email</label>
+            <input type="email" id="contact-email" name="contact[email]" class="form-input" required>
+          </div>
+          <div class="form-field">
+            <label for="contact-subject" class="form-label">Subject</label>
+            <input type="text" id="contact-subject" name="contact[subject]" class="form-input">
+          </div>
+          <div class="form-field">
+            <label for="contact-message" class="form-label">Message</label>
+            <textarea id="contact-message" name="contact[body]" class="form-textarea" required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn--primary btn--full">Send Message</button>
+        {%- endform -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Contact form",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow text",
+      "default": "Contact"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Get in Touch"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Description",
+      "default": "<p>For inquiries about available work, commissions, or collaborations.</p>"
+    },
+    {
+      "type": "text",
+      "id": "address",
+      "label": "Studio location",
+      "default": "Los Angeles, CA"
+    },
+    {
+      "type": "text",
+      "id": "email",
+      "label": "Contact email"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#F5F0E8"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Contact form"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,70 @@
+{%- comment -%}
+  Kazan Studio — Main Cart Section
+{%- endcomment -%}
+
+<section class="cart-page section-padding">
+  <div class="page-width">
+    <div class="cart-page__header">
+      <p class="eyebrow">Shopping</p>
+      <h1>Your Cart</h1>
+    </div>
+
+    {%- if cart.item_count > 0 -%}
+      <form action="{{ routes.cart_url }}" method="post">
+        {%- for item in cart.items -%}
+          <div class="cart-item">
+            <a href="{{ item.url }}" class="cart-item__image">
+              {%- if item.image != blank -%}
+                <img
+                  src="{{ item.image | image_url: width: 200 }}"
+                  alt="{{ item.title | escape }}"
+                  loading="lazy"
+                >
+              {%- endif -%}
+            </a>
+            <div>
+              <a href="{{ item.url }}" class="cart-item__title">{{ item.product.title }}</a>
+              {%- if item.variant.title != 'Default Title' -%}
+                <p class="caption mt-1">{{ item.variant.title }}</p>
+              {%- endif -%}
+            </div>
+            <span class="cart-item__price">{{ item.final_line_price | money }}</span>
+            <a href="{{ routes.cart_change_url }}?id={{ item.key }}&quantity=0" class="cart-item__remove" aria-label="Remove {{ item.title }}">
+              Remove
+            </a>
+          </div>
+        {%- endfor -%}
+
+        <div class="cart-totals">
+          <div class="cart-totals__row">
+            <span class="cart-totals__label">Subtotal</span>
+            <span class="cart-totals__value">{{ cart.total_price | money }}</span>
+          </div>
+          <div class="cart-totals__row">
+            <span class="cart-totals__label">Shipping</span>
+            <span class="cart-totals__value caption">Calculated at checkout</span>
+          </div>
+          <div class="cart-totals__row cart-totals__row--total">
+            <span class="cart-totals__label">Total</span>
+            <span class="cart-totals__value" style="font-weight: 400;">{{ cart.total_price | money }}</span>
+          </div>
+          <button type="submit" name="checkout" class="btn btn--primary btn--full">Checkout</button>
+          <div class="text-center mt-1">
+            <a href="/collections/all" style="font-size: 0.8125rem;">Continue Shopping</a>
+          </div>
+        </div>
+      </form>
+    {%- else -%}
+      <div class="cart-empty">
+        <p class="body-large">Your cart is empty.</p>
+        <a href="/collections/all" class="btn btn--secondary">Browse Work</a>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Cart"
+}
+{% endschema %}

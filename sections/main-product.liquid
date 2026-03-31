@@ -1,0 +1,152 @@
+{%- comment -%}
+  Kazan Studio — Main Product Section
+  Gallery + details with metafields, add to cart / inquire
+{%- endcomment -%}
+
+<section class="product-page section-padding">
+  <div class="page-width">
+    {%- comment -%} Breadcrumb {%- endcomment -%}
+    <div class="product-page__breadcrumb">
+      <a href="/collections/all">Work</a>
+      {%- for col in product.collections -%}
+        {%- unless col.handle == 'all' or col.handle == 'frontpage' -%}
+          <span>/</span>
+          <a href="{{ col.url }}">{{ col.title }}</a>
+          {%- break -%}
+        {%- endunless -%}
+      {%- endfor -%}
+      <span>/</span>
+      <span style="color: var(--charcoal);">{{ product.title }}</span>
+    </div>
+
+    <div class="product-page__grid">
+      {%- comment -%} Gallery {%- endcomment -%}
+      <div class="product-page__gallery">
+        <div class="product-page__main-image" data-main-image>
+          {%- if product.featured_image != blank -%}
+            <img
+              src="{{ product.featured_image | image_url: width: 1200 }}"
+              alt="{{ product.featured_image.alt | escape | default: product.title }}"
+              id="main-product-image"
+              loading="eager"
+            >
+          {%- endif -%}
+        </div>
+
+        {%- if product.images.size > 1 -%}
+          <div class="product-page__thumbnails">
+            {%- for image in product.images -%}
+              <button
+                class="product-page__thumbnail{% if forloop.first %} is-active{% endif %}"
+                data-thumbnail
+                data-image-url="{{ image | image_url: width: 1200 }}"
+                data-image-alt="{{ image.alt | escape }}"
+                aria-label="View image {{ forloop.index }}"
+              >
+                <img
+                  src="{{ image | image_url: width: 200 }}"
+                  alt="{{ image.alt | escape | default: product.title }}"
+                  loading="lazy"
+                >
+              </button>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      </div>
+
+      {%- comment -%} Product Info {%- endcomment -%}
+      <div class="product-page__info">
+        <h1 class="product-page__title">{{ product.title }}</h1>
+
+        {%- if product.available -%}
+          <p class="product-page__price">{{ product.price | money }}</p>
+        {%- else -%}
+          <p class="product-page__price" style="color: var(--clay);">Sold</p>
+        {%- endif -%}
+
+        {%- if product.description != blank -%}
+          <div class="product-page__description">{{ product.description }}</div>
+        {%- endif -%}
+
+        {%- comment -%} Metafields {%- endcomment -%}
+        <div class="product-page__meta">
+          {%- assign meta_keys = 'material,glaze,technique,edition,dimensions,year' | split: ',' -%}
+          {%- assign meta_labels = 'Material,Glaze,Technique,Edition,Dimensions,Year' | split: ',' -%}
+          {%- for key in meta_keys -%}
+            {%- assign meta_value = product.metafields.custom[key] -%}
+            {%- if meta_value != blank -%}
+              <div class="product-page__meta-row">
+                <span class="product-page__meta-label">{{ meta_labels[forloop.index0] }}</span>
+                <span class="product-page__meta-value">{{ meta_value }}</span>
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+
+          {%- assign variant = product.selected_or_first_available_variant -%}
+          {%- if variant.weight > 0 -%}
+            <div class="product-page__meta-row">
+              <span class="product-page__meta-label">Weight</span>
+              <span class="product-page__meta-value">{{ variant.weight }} {{ variant.weight_unit }}</span>
+            </div>
+          {%- endif -%}
+        </div>
+
+        {%- comment -%} Add to Cart / Inquire {%- endcomment -%}
+        {%- if product.available -%}
+          {%- form 'product', product -%}
+            <input type="hidden" name="id" value="{{ variant.id }}">
+            <div class="product-page__add-to-cart">
+              <button type="submit" class="btn btn--primary btn--full">Add to Cart</button>
+            </div>
+          {%- endform -%}
+        {%- else -%}
+          <div class="product-page__add-to-cart">
+            <a href="/pages/contact?piece={{ product.handle }}" class="btn btn--secondary btn--full">Inquire About This Piece</a>
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{%- comment -%} Related Products {%- endcomment -%}
+{%- assign first_collection = product.collections | where: 'handle', 'all' | first -%}
+{%- unless first_collection -%}
+  {%- assign first_collection = product.collections.first -%}
+{%- endunless -%}
+
+{%- if first_collection and first_collection.products.size > 1 -%}
+  <section class="related-products section-padding">
+    <div class="page-width">
+      <div class="related-products__header">
+        <p class="eyebrow">More Work</p>
+        <h2>Related Pieces</h2>
+      </div>
+      <div class="grid grid--{{ section.settings.related_columns }}">
+        {%- for related in first_collection.products limit: 4 -%}
+          {%- unless related.handle == product.handle -%}
+            {% render 'product-card', product: related %}
+          {%- endunless -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Product page",
+  "settings": [
+    {
+      "type": "select",
+      "id": "related_columns",
+      "label": "Related products columns",
+      "options": [
+        { "value": "3", "label": "3" },
+        { "value": "4", "label": "4" }
+      ],
+      "default": "3"
+    }
+  ]
+}
+{% endschema %}

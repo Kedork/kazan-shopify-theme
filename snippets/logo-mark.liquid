@@ -1,0 +1,25 @@
+{%- comment -%}
+  Kazan Studio — Logo Mark Snippet
+  Usage: {% render 'logo-mark', variant: 'light' %}
+  Variants: 'light' (for dark backgrounds), 'dark' (for light backgrounds)
+{%- endcomment -%}
+
+{%- if variant == 'light' -%}
+  {%- comment -%} Light mark — sand bars on dark backgrounds {%- endcomment -%}
+  <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect x="4" y="72" width="92" height="12" fill="#E8DFD0"/>
+    <rect x="16" y="56" width="68" height="12" fill="#E8DFD0"/>
+    <rect x="28" y="40" width="44" height="12" fill="#E8DFD0"/>
+    <rect x="40" y="24" width="20" height="12" fill="#C4A882"/>
+    <rect x="4" y="4" width="92" height="92" stroke="#E8DFD0" stroke-width="2.5" fill="none"/>
+  </svg>
+{%- else -%}
+  {%- comment -%} Dark mark — charcoal bars on light backgrounds {%- endcomment -%}
+  <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect x="4" y="72" width="92" height="12" fill="#1A1A1A"/>
+    <rect x="16" y="56" width="68" height="12" fill="#1A1A1A"/>
+    <rect x="28" y="40" width="44" height="12" fill="#1A1A1A"/>
+    <rect x="40" y="24" width="20" height="12" fill="#8B6F4E"/>
+    <rect x="4" y="4" width="92" height="92" stroke="#1A1A1A" stroke-width="2.5" fill="none"/>
+  </svg>
+{%- endif -%}

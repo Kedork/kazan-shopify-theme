@@ -1,0 +1,17 @@
+{
+  "current": {
+    "color_warm_white": "#F5F0E8",
+    "color_sand": "#E8DFD0",
+    "color_clay": "#C4A882",
+    "color_accent": "#8B6F4E",
+    "color_charcoal": "#1A1A1A",
+    "color_mid": "#2C2420",
+    "heading_font_family": "Syncopate",
+    "body_font_family": "Jost",
+    "social_instagram": "https://www.instagram.com/kazan.studio",
+    "social_email": "",
+    "logo_max_width": 140,
+    "sections": {},
+    "content_for_index": []
+  }
+}

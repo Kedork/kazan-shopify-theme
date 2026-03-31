@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "settings": {
+        "related_columns": "3"
+      }
+    }
+  },
+  "order": ["main"]
+}

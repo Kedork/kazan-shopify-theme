@@ -1,0 +1,19 @@
+{%- comment -%}
+  Kazan Studio — Main Page Section
+  Generic page template (About, etc.)
+{%- endcomment -%}
+
+<section class="section-padding" style="padding-top: 160px;">
+  <div class="page-width">
+    <div style="max-width: 800px; margin: 0 auto;">
+      <h1 style="margin-bottom: 2rem;">{{ page.title }}</h1>
+      <div class="body-large">{{ page.content }}</div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Page content"
+}
+{% endschema %}

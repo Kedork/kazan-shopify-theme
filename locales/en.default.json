@@ -1,0 +1,45 @@
+{
+  "general": {
+    "accessibility": {
+      "skip_to_content": "Skip to content"
+    }
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Add to Cart",
+      "sold_out": "Sold",
+      "inquire": "Inquire"
+    }
+  },
+  "collections": {
+    "general": {
+      "no_matches": "No pieces found in this collection."
+    }
+  },
+  "cart": {
+    "general": {
+      "title": "Your Cart",
+      "empty": "Your cart is empty.",
+      "subtotal": "Subtotal",
+      "checkout": "Checkout",
+      "continue_shopping": "Continue Shopping",
+      "remove": "Remove"
+    }
+  },
+  "contact": {
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "subject": "Subject",
+      "message": "Message",
+      "send": "Send Message",
+      "success": "Thank you for your message. We will be in touch.",
+      "error": "Please check the form and try again."
+    }
+  },
+  "newsletter": {
+    "label": "Email address",
+    "success": "Thank you for subscribing.",
+    "button_label": "Subscribe"
+  }
+}

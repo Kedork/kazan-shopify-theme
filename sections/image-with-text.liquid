@@ -1,0 +1,94 @@
+{%- comment -%}
+  Kazan Studio — Image with Text
+{%- endcomment -%}
+
+<section class="image-with-text{% if section.settings.layout == 'image_right' %} image-with-text--reverse{% endif %}">
+  <div class="image-with-text__image">
+    {%- if section.settings.image != blank -%}
+      <img
+        src="{{ section.settings.image | image_url: width: 1200 }}"
+        alt="{{ section.settings.image.alt | escape }}"
+        loading="lazy"
+      >
+    {%- else -%}
+      <div style="width: 100%; height: 100%; background-color: var(--sand);"></div>
+    {%- endif -%}
+  </div>
+
+  <div class="image-with-text__content" style="background-color: {{ section.settings.bg_color }};">
+    {%- if section.settings.eyebrow != blank -%}
+      <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+    {%- endif -%}
+    <h2>{{ section.settings.heading | default: 'About the Studio' }}</h2>
+    {%- if section.settings.text != blank -%}
+      <div>{{ section.settings.text }}</div>
+    {%- endif -%}
+    {%- if section.settings.button_label != blank -%}
+      <div>
+        <a href="{{ section.settings.button_link }}" class="btn btn--secondary">{{ section.settings.button_label }}</a>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Image with text",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Image position",
+      "options": [
+        { "value": "image_left", "label": "Image left" },
+        { "value": "image_right", "label": "Image right" }
+      ],
+      "default": "image_left"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow text",
+      "default": "The Studio"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "About Kazan Studio"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text",
+      "default": "<p>Kazan Studio is the ceramic practice of Kevork Kazanjian, based in Los Angeles. The work is geometric, sculptural, and handmade — bold objects that occupy space with intention.</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Content background color",
+      "default": "#E8DFD0"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image with text"
+    }
+  ]
+}
+{% endschema %}

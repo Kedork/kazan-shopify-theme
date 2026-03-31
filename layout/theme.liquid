@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html class="no-js" lang="{{ request.locale.iso_code }}">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    {%- if page_title -%}
+      {{ page_title }}
+      {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
+      {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
+      {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+    {%- else -%}
+      {{ shop.name }}
+    {%- endif -%}
+  </title>
+
+  {%- if page_description -%}
+    <meta name="description" content="{{ page_description | escape }}">
+  {%- endif -%}
+
+  <link rel="canonical" href="{{ canonical_url }}">
+
+  {%- if settings.favicon != blank -%}
+    <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+  {%- endif -%}
+
+  {%- comment -%} Google Fonts: Syncopate + Jost {%- endcomment -%}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family={{ settings.heading_font_family | default: 'Syncopate' | url_encode }}:wght@400;700&family={{ settings.body_font_family | default: 'Jost' | url_encode }}:wght@200;300;400&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --warm-white: {{ settings.color_warm_white }};
+      --sand: {{ settings.color_sand }};
+      --clay: {{ settings.color_clay }};
+      --accent: {{ settings.color_accent }};
+      --charcoal: {{ settings.color_charcoal }};
+      --mid: {{ settings.color_mid }};
+      --font-heading: '{{ settings.heading_font_family | default: "Syncopate" }}', sans-serif;
+      --font-body: '{{ settings.body_font_family | default: "Jost" }}', sans-serif;
+      --logo-max-width: {{ settings.logo_max_width | default: 140 }}px;
+    }
+  </style>
+
+  {{ 'base.css' | asset_url | stylesheet_tag }}
+
+  {{ content_for_header }}
+
+  {%- comment -%} Prevent FOUC {%- endcomment -%}
+  <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
+</head>
+
+<body class="template-{{ template.name }}{% if template.suffix %} template-{{ template.name }}-{{ template.suffix }}{% endif %}">
+  <a class="skip-to-content" href="#main">Skip to content</a>
+
+  {% sections 'header-group' %}
+
+  <main id="main" role="main">
+    {{ content_for_layout }}
+  </main>
+
+  {% sections 'footer-group' %}
+
+  <script src="{{ 'theme.js' | asset_url }}" defer></script>
+</body>
+</html>

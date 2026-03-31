@@ -1,0 +1,68 @@
+{%- comment -%}
+  Kazan Studio — Rich Text Section
+{%- endcomment -%}
+
+<section class="section-padding" style="background-color: {{ section.settings.bg_color }};">
+  <div class="page-width">
+    <div class="rich-text">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <h2>{{ section.settings.heading }}</h2>
+      {%- endif -%}
+      {%- if section.settings.text != blank -%}
+        <div class="body-large">{{ section.settings.text }}</div>
+      {%- endif -%}
+      {%- if section.settings.button_label != blank -%}
+        <div class="mt-2">
+          <a href="{{ section.settings.button_link }}" class="btn btn--secondary">{{ section.settings.button_label }}</a>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Rich text",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow text"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#F5F0E8"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Rich text"
+    }
+  ]
+}
+{% endschema %}

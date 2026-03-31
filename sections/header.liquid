@@ -1,0 +1,74 @@
+{%- comment -%}
+  Kazan Studio — Header Section
+  Supports: logo, navigation, cart icon, mobile menu
+{%- endcomment -%}
+
+<header class="site-header site-header--{{ section.settings.color_scheme }}" data-header>
+  <div class="site-header__inner">
+    <a href="/" class="site-header__logo" aria-label="{{ shop.name }}">
+      {%- if section.settings.color_scheme == 'dark' or section.settings.color_scheme == 'transparent' -%}
+        {%- render 'logo-mark', variant: 'light' -%}
+        <span class="site-header__wordmark" style="color: var(--sand);">KAZAN STUDIO</span>
+      {%- else -%}
+        {%- render 'logo-mark', variant: 'dark' -%}
+        <span class="site-header__wordmark">KAZAN STUDIO</span>
+      {%- endif -%}
+    </a>
+
+    <nav class="site-header__nav" aria-label="Main navigation">
+      {%- for link in section.settings.menu.links -%}
+        <a href="{{ link.url }}">{{ link.title }}</a>
+      {%- endfor -%}
+      <a href="{{ routes.cart_url }}" class="site-header__cart" aria-label="Cart">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M5 5H19L17 13H7L5 5Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+          <path d="M5 5L4 1H1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="8" cy="17" r="1.5" stroke="currentColor" stroke-width="1.5"/>
+          <circle cx="16" cy="17" r="1.5" stroke="currentColor" stroke-width="1.5"/>
+        </svg>
+        {%- if cart.item_count > 0 -%}
+          <span class="site-header__cart-count">{{ cart.item_count }}</span>
+        {%- endif -%}
+      </a>
+    </nav>
+
+    <button class="mobile-menu-toggle" data-mobile-toggle aria-label="Open menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</header>
+
+<nav class="mobile-nav" data-mobile-nav aria-label="Mobile navigation">
+  {%- for link in section.settings.menu.links -%}
+    <a href="{{ link.url }}">{{ link.title }}</a>
+  {%- endfor -%}
+  <a href="{{ routes.cart_url }}">Cart ({{ cart.item_count }})</a>
+</nav>
+
+{% schema %}
+{
+  "name": "Header",
+  "class": "section-header",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Navigation menu",
+      "default": "main-menu"
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "options": [
+        { "value": "light", "label": "Light" },
+        { "value": "dark", "label": "Dark" },
+        { "value": "transparent", "label": "Transparent" }
+      ],
+      "default": "light"
+    }
+  ]
+}
+{% endschema %}
