@@ -9,7 +9,7 @@
         {%- if section.settings.eyebrow != blank -%}
           <p class="eyebrow">{{ section.settings.eyebrow }}</p>
         {%- endif -%}
-        <h2>{{ section.settings.heading | default: 'Get in Touch' }}</h2>
+        <h2>{{ section.settings.heading | default: 'Contact' }}</h2>
         {%- if section.settings.text != blank -%}
           <div>{{ section.settings.text }}</div>
         {%- endif -%}
@@ -54,10 +54,6 @@
             <input type="email" id="contact-email" name="contact[email]" class="form-input" required>
           </div>
           <div class="form-field">
-            <label for="contact-subject" class="form-label">Subject</label>
-            <input type="text" id="contact-subject" name="contact[subject]" class="form-input">
-          </div>
-          <div class="form-field">
             <label for="contact-message" class="form-label">Message</label>
             <textarea id="contact-message" name="contact[body]" class="form-textarea" required></textarea>
           </div>
@@ -83,7 +79,7 @@
       "type": "text",
       "id": "heading",
       "label": "Heading",
-      "default": "Get in Touch"
+      "default": "Contact"
     },
     {
       "type": "richtext",
