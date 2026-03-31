@@ -24,7 +24,7 @@
       "settings": {
         "eyebrow": "Selected Work",
         "heading": "Featured",
-        "collection": "decorative-objects",
+        "collection": "featured",
         "products_to_show": 6,
         "columns": "3",
         "show_view_all": true,
@@ -103,8 +103,8 @@
   "order": [
     "hero",
     "featured",
-    "about",
     "collections",
+    "about",
     "newsletter",
     "contact"
   ]
