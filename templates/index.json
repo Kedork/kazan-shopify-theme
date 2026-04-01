@@ -12,6 +12,7 @@
     "hero": {
       "type": "hero-banner",
       "settings": {
+        "image": "shopify://shop_images/Hero.jpg",
         "eyebrow": "Los Angeles",
         "heading": "Kazan Studio",
         "subheading": "Precision meets unpredictability in clay.",
