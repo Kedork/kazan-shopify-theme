@@ -81,17 +81,6 @@
         "button_label": "Subscribe",
         "bg_color": "#1a1a1a"
       }
-    },
-    "contact": {
-      "type": "contact-form",
-      "settings": {
-        "eyebrow": "Contact",
-        "heading": "Get in Touch",
-        "text": "<p>For inquiries about available work, commissions, or collaborations.</p>",
-        "address": "Los Angeles, CA",
-        "email": "info@kazan.studio",
-        "bg_color": "#f5f0e8"
-      }
     }
   },
   "order": [
@@ -99,7 +88,6 @@
     "featured",
     "collections",
     "about",
-    "newsletter",
-    "contact"
+    "newsletter"
   ]
 }
