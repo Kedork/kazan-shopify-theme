@@ -45,18 +45,11 @@
           "settings": {
             "collection": "pottery"
           }
-        },
-        "col3": {
-          "type": "collection",
-          "settings": {
-            "collection": "sculptural-totems"
-          }
         }
       },
       "block_order": [
         "col1",
-        "col2",
-        "col3"
+        "col2"
       ],
       "settings": {
         "eyebrow": "Explore",
