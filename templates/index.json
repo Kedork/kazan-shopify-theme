@@ -22,8 +22,8 @@
     "featured": {
       "type": "featured-collection",
       "settings": {
-        "eyebrow": "Selected Work",
-        "heading": "",
+        "eyebrow": "",
+        "heading": "Featured Work",
         "collection": "featured",
         "products_to_show": 6,
         "columns": "3",
@@ -52,8 +52,8 @@
         "col2"
       ],
       "settings": {
-        "eyebrow": "Explore",
-        "heading": "",
+        "eyebrow": "",
+        "heading": "Collections",
         "columns": "3",
         "bg_color": "#e8dfd0"
       }
