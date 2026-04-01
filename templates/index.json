@@ -23,7 +23,7 @@
       "type": "featured-collection",
       "settings": {
         "eyebrow": "Selected Work",
-        "heading": "Featured",
+        "heading": "",
         "collection": "featured",
         "products_to_show": 6,
         "columns": "3",
@@ -53,7 +53,7 @@
       ],
       "settings": {
         "eyebrow": "Explore",
-        "heading": "Collections",
+        "heading": "",
         "columns": "3",
         "bg_color": "#e8dfd0"
       }
