@@ -77,7 +77,7 @@
             {%- if meta_value != blank -%}
               <div class="product-page__meta-row">
                 <span class="product-page__meta-label">{{ meta_labels[forloop.index0] }}</span>
-                <span class="product-page__meta-value">{{ meta_value }}</span>
+                <span class="product-page__meta-value">{% if key == 'dimensions' %}{{ meta_value }} in{% else %}{{ meta_value }}{% endif %}</span>
               </div>
             {%- endif -%}
           {%- endfor -%}
@@ -86,7 +86,7 @@
           {%- if variant.weight > 0 -%}
             <div class="product-page__meta-row">
               <span class="product-page__meta-label">Weight</span>
-              <span class="product-page__meta-value">{{ variant.weight }} {{ variant.weight_unit }}</span>
+              <span class="product-page__meta-value">{{ variant.weight | weight_with_unit: variant.weight_unit }}</span>
             </div>
           {%- endif -%}
         </div>
