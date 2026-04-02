@@ -87,6 +87,13 @@
         commissionPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       }
     });
+
+    // Auto-open panel after successful form submission
+    if (commissionPanel.querySelector('.commission-success')) {
+      commissionPanel.classList.add('is-open');
+      commissionToggle.setAttribute('aria-expanded', 'true');
+      commissionPanel.setAttribute('aria-hidden', 'false');
+    }
   }
 
   /* --- Smooth scroll for anchor links --- */

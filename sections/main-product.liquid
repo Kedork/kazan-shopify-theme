@@ -122,20 +122,24 @@
                 </div>
                 <p class="commission-panel__note">Once your request is received, you'll be sent a secure payment invoice for the deposit. Work begins when payment clears.</p>
                 {%- form 'contact', id: 'commission-form' -%}
-                  <input type="hidden" name="contact[subject]" value="Commission Request: {{ product.title | escape }}">
-                  <div class="form-field">
-                    <label for="commission-name" class="form-label">Name</label>
-                    <input type="text" id="commission-name" name="contact[name]" class="form-input" required>
-                  </div>
-                  <div class="form-field">
-                    <label for="commission-email" class="form-label">Email</label>
-                    <input type="email" id="commission-email" name="contact[email]" class="form-input" required>
-                  </div>
-                  <div class="form-field">
-                    <label for="commission-message" class="form-label">Message</label>
-                    <textarea id="commission-message" name="contact[body]" class="form-textarea">I'd like to commission a piece similar to {{ product.title | escape }}. I understand a deposit of {{ deposit | money }} is required to begin, with the remaining {{ deposit | money }} due before shipping.</textarea>
-                  </div>
-                  <button type="submit" class="btn btn--primary btn--full">Send Commission Request</button>
+                  {%- if form.posted_successfully? -%}
+                    <p class="commission-success">Your commission request has been received. You'll get a payment invoice by email within 24 hours — work begins once the deposit clears.</p>
+                  {%- else -%}
+                    <input type="hidden" name="contact[subject]" value="Commission Request: {{ product.title | escape }}">
+                    <div class="form-field">
+                      <label for="commission-name" class="form-label">Name</label>
+                      <input type="text" id="commission-name" name="contact[name]" class="form-input" required>
+                    </div>
+                    <div class="form-field">
+                      <label for="commission-email" class="form-label">Email</label>
+                      <input type="email" id="commission-email" name="contact[email]" class="form-input" required>
+                    </div>
+                    <div class="form-field">
+                      <label for="commission-message" class="form-label">Message</label>
+                      <textarea id="commission-message" name="contact[body]" class="form-textarea">I'd like to commission a piece similar to {{ product.title | escape }}. I understand a deposit of {{ deposit | money }} is required to begin, with the remaining {{ deposit | money }} due before shipping.</textarea>
+                    </div>
+                    <button type="submit" class="btn btn--primary btn--full">Send Commission Request</button>
+                  {%- endif -%}
                 {%- endform -%}
               </div>
             </div>
