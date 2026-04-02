@@ -61,7 +61,7 @@
         {%- if product.available -%}
           <p class="product-page__price">{{ product.price | money }}</p>
         {%- else -%}
-          <p class="product-page__price" style="color: var(--clay);">Sold</p>
+          <p class="product-page__price product-page__price--sold">{{ product.price | money }} — Sold</p>
         {%- endif -%}
 
         {%- if product.description != blank -%}
@@ -91,7 +91,7 @@
           {%- endif -%}
         </div>
 
-        {%- comment -%} Add to Cart / Inquire {%- endcomment -%}
+        {%- comment -%} Add to Cart / Commission {%- endcomment -%}
         {%- if product.available -%}
           {%- form 'product', product -%}
             <input type="hidden" name="id" value="{{ variant.id }}">
@@ -100,8 +100,44 @@
             </div>
           {%- endform -%}
         {%- else -%}
+          {%- assign deposit = product.price | times: 0.5 -%}
           <div class="product-page__add-to-cart">
-            <a href="/pages/contact?piece={{ product.handle }}" class="btn btn--secondary btn--full">Inquire About This Piece</a>
+            <button class="btn btn--secondary btn--full commission-toggle" aria-expanded="false" aria-controls="commission-panel">Commission This Piece</button>
+            <div class="commission-panel" id="commission-panel" aria-hidden="true">
+              <div class="commission-panel__inner">
+                <p class="commission-panel__intro">A commissioned piece will share the same form, technique, and glaze as <em>{{ product.title }}</em> — but clay and fire make each piece its own. Exact replication isn't possible, and that's part of the work.</p>
+                <div class="commission-panel__details">
+                  <div class="commission-detail">
+                    <span class="commission-detail__label">Deposit</span>
+                    <span class="commission-detail__value">{{ deposit | money }} (50% upfront)</span>
+                  </div>
+                  <div class="commission-detail">
+                    <span class="commission-detail__label">Timeline</span>
+                    <span class="commission-detail__value">2–4 weeks</span>
+                  </div>
+                  <div class="commission-detail">
+                    <span class="commission-detail__label">Balance</span>
+                    <span class="commission-detail__value">{{ deposit | money }} due before shipping</span>
+                  </div>
+                </div>
+                {%- form 'contact', id: 'commission-form' -%}
+                  <input type="hidden" name="contact[subject]" value="Commission Request: {{ product.title | escape }}">
+                  <div class="form-field">
+                    <label for="commission-name" class="form-label">Name</label>
+                    <input type="text" id="commission-name" name="contact[name]" class="form-input" required>
+                  </div>
+                  <div class="form-field">
+                    <label for="commission-email" class="form-label">Email</label>
+                    <input type="email" id="commission-email" name="contact[email]" class="form-input" required>
+                  </div>
+                  <div class="form-field">
+                    <label for="commission-message" class="form-label">Message</label>
+                    <textarea id="commission-message" name="contact[body]" class="form-textarea">I'd like to commission a piece similar to {{ product.title | escape }}. I understand a deposit of {{ deposit | money }} is required to begin, with the remaining {{ deposit | money }} due before shipping.</textarea>
+                  </div>
+                  <button type="submit" class="btn btn--primary btn--full">Send Commission Request</button>
+                {%- endform -%}
+              </div>
+            </div>
           </div>
         {%- endif -%}
       </div>

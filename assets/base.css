@@ -888,6 +888,10 @@ p:last-child {
   margin-bottom: 2rem;
 }
 
+.product-page__price--sold {
+  color: var(--accent);
+}
+
 .product-page__description {
   margin-bottom: 2.5rem;
   line-height: 2;
@@ -924,6 +928,55 @@ p:last-child {
 
 .product-page__add-to-cart {
   margin-bottom: 1.5rem;
+}
+
+/* --- Commission Panel --- */
+.commission-panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+}
+
+.commission-panel.is-open {
+  max-height: 1200px;
+}
+
+.commission-panel__inner {
+  padding-top: 2rem;
+  border-top: 1px solid var(--sand);
+  margin-top: 1.5rem;
+}
+
+.commission-panel__intro {
+  font-size: 0.9375rem;
+  color: var(--charcoal);
+  margin-bottom: 1.5rem;
+  line-height: 1.8;
+}
+
+.commission-panel__details {
+  margin-bottom: 2rem;
+}
+
+.commission-detail {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 0.625rem 0;
+  border-bottom: 1px solid var(--sand);
+}
+
+.commission-detail__label {
+  font-family: var(--font-heading);
+  font-size: 0.5625rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--clay);
+}
+
+.commission-detail__value {
+  font-size: 0.875rem;
+  color: var(--charcoal);
 }
 
 /* --- Collection Page --- */

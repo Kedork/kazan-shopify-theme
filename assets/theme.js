@@ -74,6 +74,21 @@
     });
   }
 
+  /* --- Commission Panel Toggle --- */
+  const commissionToggle = document.querySelector('.commission-toggle');
+  const commissionPanel = document.getElementById('commission-panel');
+
+  if (commissionToggle && commissionPanel) {
+    commissionToggle.addEventListener('click', function() {
+      const isOpen = commissionPanel.classList.toggle('is-open');
+      commissionToggle.setAttribute('aria-expanded', isOpen);
+      commissionPanel.setAttribute('aria-hidden', !isOpen);
+      if (isOpen) {
+        commissionPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    });
+  }
+
   /* --- Smooth scroll for anchor links --- */
   document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
     anchor.addEventListener('click', function(e) {
