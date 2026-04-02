@@ -120,6 +120,7 @@
                     <span class="commission-detail__value">{{ deposit | money }} due before shipping</span>
                   </div>
                 </div>
+                <p class="commission-panel__note">Once your request is received, you'll be sent a secure payment invoice for the deposit. Work begins when payment clears.</p>
                 {%- form 'contact', id: 'commission-form' -%}
                   <input type="hidden" name="contact[subject]" value="Commission Request: {{ product.title | escape }}">
                   <div class="form-field">

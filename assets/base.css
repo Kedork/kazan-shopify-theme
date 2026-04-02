@@ -979,6 +979,13 @@ p:last-child {
   color: var(--charcoal);
 }
 
+.commission-panel__note {
+  font-size: 0.875rem;
+  color: var(--accent);
+  margin-bottom: 2rem;
+  font-style: italic;
+}
+
 /* --- Collection Page --- */
 .collection-page {
   padding-top: 120px;
