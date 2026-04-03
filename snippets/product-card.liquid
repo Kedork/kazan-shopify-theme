@@ -15,7 +15,9 @@
       >
     {%- endif -%}
     {%- unless product.available -%}
-      <span class="product-card__badge">Inquire</span>
+      {%- unless product.tags contains 'no-commission' -%}
+        <span class="product-card__badge">Commission</span>
+      {%- endunless -%}
     {%- endunless -%}
   </div>
   <h3 class="product-card__title">{{ product.title }}</h3>

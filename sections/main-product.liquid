@@ -102,6 +102,9 @@
         {%- else -%}
           {%- assign deposit = product.price | times: 0.5 -%}
           <div class="product-page__add-to-cart">
+          {%- if product.tags contains 'no-commission' -%}
+            <button class="btn btn--secondary btn--full" disabled style="opacity:0.4;cursor:default">Not Available for Commission</button>
+          {%- else -%}
             <button class="btn btn--secondary btn--full commission-toggle" aria-expanded="false" aria-controls="commission-panel">Commission This Piece</button>
             <div class="commission-panel" id="commission-panel" aria-hidden="true">
               <div class="commission-panel__inner">
@@ -143,6 +146,7 @@
                 {%- endform -%}
               </div>
             </div>
+          {%- endif -%}
           </div>
         {%- endif -%}
       </div>
