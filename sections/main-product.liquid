@@ -68,30 +68,8 @@
           <div class="product-page__description">{{ product.description }}</div>
         {%- endif -%}
 
-        {%- comment -%} Metafields {%- endcomment -%}
-        <div class="product-page__meta">
-          {%- assign meta_keys = 'material,glaze,technique,edition,dimensions,year' | split: ',' -%}
-          {%- assign meta_labels = 'Material,Glaze,Technique,Edition,Dimensions,Year' | split: ',' -%}
-          {%- for key in meta_keys -%}
-            {%- assign meta_value = product.metafields.custom[key] -%}
-            {%- if meta_value != blank -%}
-              <div class="product-page__meta-row">
-                <span class="product-page__meta-label">{{ meta_labels[forloop.index0] }}</span>
-                <span class="product-page__meta-value">{% if key == 'dimensions' %}{{ meta_value }} in{% else %}{{ meta_value }}{% endif %}</span>
-              </div>
-            {%- endif -%}
-          {%- endfor -%}
-
-          {%- assign variant = product.selected_or_first_available_variant -%}
-          {%- if variant.weight > 0 -%}
-            <div class="product-page__meta-row">
-              <span class="product-page__meta-label">Weight</span>
-              <span class="product-page__meta-value">{{ variant.weight | weight_with_unit: variant.weight_unit }}</span>
-            </div>
-          {%- endif -%}
-        </div>
-
         {%- comment -%} Add to Cart / Commission {%- endcomment -%}
+        {%- assign variant = product.selected_or_first_available_variant -%}
         {%- if product.available -%}
           {%- form 'product', product -%}
             <input type="hidden" name="id" value="{{ variant.id }}">
@@ -149,6 +127,28 @@
           {%- endif -%}
           </div>
         {%- endif -%}
+
+        {%- comment -%} Metafields {%- endcomment -%}
+        <div class="product-page__meta">
+          {%- assign meta_keys = 'material,glaze,technique,edition,dimensions,year' | split: ',' -%}
+          {%- assign meta_labels = 'Material,Glaze,Technique,Edition,Dimensions,Year' | split: ',' -%}
+          {%- for key in meta_keys -%}
+            {%- assign meta_value = product.metafields.custom[key] -%}
+            {%- if meta_value != blank -%}
+              <div class="product-page__meta-row">
+                <span class="product-page__meta-label">{{ meta_labels[forloop.index0] }}</span>
+                <span class="product-page__meta-value">{% if key == 'dimensions' %}{{ meta_value }} in{% else %}{{ meta_value }}{% endif %}</span>
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+
+          {%- if variant.weight > 0 -%}
+            <div class="product-page__meta-row">
+              <span class="product-page__meta-label">Weight</span>
+              <span class="product-page__meta-value">{{ variant.weight | weight_with_unit: variant.weight_unit }}</span>
+            </div>
+          {%- endif -%}
+        </div>
       </div>
     </div>
   </div>
