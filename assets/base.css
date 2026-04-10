@@ -177,25 +177,22 @@ p:last-child {
 }
 
 /* --- Editorial Featured Grid ---
-   First product spans 2 columns and is taller,
+   First product spans 2 columns wide,
    creating an asymmetric editorial layout */
 .featured-collection .grid--3 {
-  grid-template-columns: 1.4fr 1fr 1fr;
-  grid-template-rows: auto;
+  grid-template-columns: repeat(3, 1fr);
   gap: 16px;
 }
 
 .featured-collection .grid--3 .product-card:first-child {
-  grid-row: 1 / 3;
+  grid-column: 1 / 3;
 }
 
 .featured-collection .grid--3 .product-card:first-child .product-card__image {
-  aspect-ratio: 3 / 5;
-  height: 100%;
+  aspect-ratio: 3 / 2;
 }
 
 .featured-collection .grid--2 {
-  grid-template-columns: 1.4fr 1fr;
   gap: 16px;
 }
 
@@ -707,10 +704,6 @@ p:last-child {
   justify-content: center;
   padding: 60px 80px;
   background-color: var(--sand);
-}
-
-.collection-card:nth-child(even) .collection-card__overlay {
-  background-color: var(--warm-white);
 }
 
 .collection-card__count {
@@ -1444,19 +1437,17 @@ p:last-child {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  /* Featured grid: drop editorial layout on tablet */
+  /* Featured grid: first card spans full width on tablet */
   .featured-collection .grid--3 {
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: auto;
   }
 
   .featured-collection .grid--3 .product-card:first-child {
-    grid-row: auto;
+    grid-column: 1 / -1;
   }
 
   .featured-collection .grid--3 .product-card:first-child .product-card__image {
-    aspect-ratio: 3 / 4;
-    height: auto;
+    aspect-ratio: 16 / 9;
   }
 
   /* Collection bands: stack on tablet */
@@ -1546,6 +1537,14 @@ p:last-child {
   .featured-collection .grid--3,
   .featured-collection .grid--2 {
     grid-template-columns: 1fr;
+  }
+
+  .featured-collection .grid--3 .product-card:first-child {
+    grid-column: auto;
+  }
+
+  .featured-collection .grid--3 .product-card:first-child .product-card__image {
+    aspect-ratio: 3 / 4;
   }
 
   .collection-card__overlay {
