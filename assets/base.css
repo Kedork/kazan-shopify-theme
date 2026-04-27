@@ -645,6 +645,34 @@ p:last-child {
   color: var(--accent);
 }
 
+/* --- Collections Index Page --- */
+.collections-index {
+  padding-top: 120px;
+}
+
+.collections-index__header {
+  padding-bottom: 80px;
+}
+
+.collections-index__bands {
+  display: flex;
+  flex-direction: column;
+}
+
+.collection-card__description {
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  font-weight: 300;
+  color: var(--charcoal);
+  line-height: 1.9;
+  opacity: 0.75;
+  margin-bottom: 2rem;
+}
+
+.collection-card__description p {
+  margin-bottom: 0;
+}
+
 /* --- Collection List --- */
 .collection-list {
   background-color: var(--warm-white);
@@ -1451,6 +1479,10 @@ p:last-child {
     aspect-ratio: 16 / 9;
   }
 
+  .collections-index__header {
+    padding-bottom: 60px;
+  }
+
   /* Collection bands: stack on tablet */
   .collection-card {
     grid-template-columns: 1fr;
@@ -1546,6 +1578,10 @@ p:last-child {
 
   .featured-collection .grid--3 .product-card:first-child .product-card__image {
     aspect-ratio: 3 / 4;
+  }
+
+  .collections-index__header {
+    padding-bottom: 40px;
   }
 
   .collection-card__overlay {
