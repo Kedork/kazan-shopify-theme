@@ -12,7 +12,8 @@
 
   <div class="collections-index__bands">
     {%- for link in linklists['collections-menu'].links -%}
-      {%- assign collection = link.object -%}
+      {%- assign collection_handle = link.url | split: '/collections/' | last -%}
+      {%- assign collection = collections[collection_handle] -%}
       <a href="{{ collection.url }}" class="collection-card">
         <div class="collection-card__image">
           {%- if collection.image != blank -%}
