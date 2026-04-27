@@ -694,7 +694,7 @@ p:last-child {
   position: relative;
   overflow: hidden;
   display: grid;
-  grid-template-columns: 3fr 2fr;
+  grid-template-columns: 1fr 1fr;
   text-decoration: none;
   color: inherit;
   min-height: 420px;
@@ -702,7 +702,6 @@ p:last-child {
 
 /* Alternate: even cards flip image to the right */
 .collection-card:nth-child(even) {
-  grid-template-columns: 2fr 3fr;
   direction: rtl;
 }
 
