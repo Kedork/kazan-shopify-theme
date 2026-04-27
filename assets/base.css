@@ -697,7 +697,7 @@ p:last-child {
   grid-template-columns: 3fr 2fr;
   text-decoration: none;
   color: inherit;
-  min-height: 420px;
+  height: 380px;
 }
 
 /* Alternate: even cards flip image to the right */
@@ -1486,7 +1486,7 @@ p:last-child {
   /* Collection bands: stack on tablet */
   .collection-card {
     grid-template-columns: 1fr;
-    min-height: auto;
+    height: auto;
   }
 
   .collection-card:nth-child(even) {
