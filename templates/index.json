@@ -35,6 +35,12 @@
     "collections": {
       "type": "collection-list",
       "blocks": {
+        "collection_zUpyCW": {
+          "type": "collection",
+          "settings": {
+            "collection": "quest-to-purple"
+          }
+        },
         "col1": {
           "type": "collection",
           "settings": {
@@ -49,6 +55,7 @@
         }
       },
       "block_order": [
+        "collection_zUpyCW",
         "col1",
         "col2"
       ],
