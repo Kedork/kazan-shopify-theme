@@ -1,9 +1,29 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
       "type": "desert-totem",
-      "settings": {}
+      "settings": {
+        "img_hero": "https://cdn.shopify.com/s/files/1/0987/9473/3940/files/IMG_1319.jpg",
+        "img_1": "https://cdn.shopify.com/s/files/1/0987/9473/3940/files/IMG_1314.jpg",
+        "img_2": "https://cdn.shopify.com/s/files/1/0987/9473/3940/files/IMG_1329.jpg?v=1777666068",
+        "img_3": "https://cdn.shopify.com/s/files/1/0987/9473/3940/files/IMG_1311.jpg",
+        "img_4": "https://cdn.shopify.com/s/files/1/0987/9473/3940/files/IMG_1292.jpg",
+        "video_process": "https://cdn.shopify.com/videos/c/o/v/a3e4c1174af14d22a52fc88f62bc084f.mov",
+        "video_glaze": "https://cdn.shopify.com/videos/c/o/v/8bac06a5543b4651b9ad55bd918e7a9e.mov",
+        "video_installation": "https://cdn.shopify.com/videos/c/o/v/03bb56b162b7440482ef7a9ca364279e.mov"
+      }
     }
   },
-  "order": ["main"]
+  "order": [
+    "main"
+  ]
 }
