@@ -12,14 +12,14 @@
     "main": {
       "type": "desert-totem",
       "settings": {
-        "img_hero": "IMG_1319.jpg",
-        "img_1": "IMG_1314",
-        "img_2": "IMG_1329",
-        "img_3": "IMG_1311",
-        "img_4": "IMG_1292",
-        "video_process": "IMG_0810",
-        "video_glaze": "Spray_Video",
-        "video_installation": "IMG_0859"
+        "img_hero": "https://cdn.shopify.com/s/files/1/0987/9473/3940/files/IMG_1319.jpg",
+        "img_1": "https://cdn.shopify.com/s/files/1/0987/9473/3940/files/IMG_1314.jpg",
+        "img_2": "https://cdn.shopify.com/s/files/1/0987/9473/3940/files/IMG_1329.jpg?v=1777666068",
+        "img_3": "https://cdn.shopify.com/s/files/1/0987/9473/3940/files/IMG_1311.jpg",
+        "img_4": "https://cdn.shopify.com/s/files/1/0987/9473/3940/files/IMG_1292.jpg",
+        "video_process": "https://cdn.shopify.com/s/files/1/0987/9473/3940/files/IMG_0810.mov",
+        "video_glaze": "https://cdn.shopify.com/s/files/1/0987/9473/3940/files/Spray_Video.mov",
+        "video_installation": "https://cdn.shopify.com/s/files/1/0987/9473/3940/files/IMG_0859.mov"
       }
     }
   },
