@@ -1,9 +1,29 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
       "type": "desert-totem",
-      "settings": {}
+      "settings": {
+        "img_hero": "IMG_1319.jpg",
+        "img_1": "IMG_1314",
+        "img_2": "IMG_1329",
+        "img_3": "IMG_1311",
+        "img_4": "IMG_1292",
+        "video_process": "IMG_0810",
+        "video_glaze": "Spray_Video",
+        "video_installation": "IMG_0859"
+      }
     }
   },
-  "order": ["main"]
+  "order": [
+    "main"
+  ]
 }
