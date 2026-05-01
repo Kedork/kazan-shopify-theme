@@ -25,9 +25,9 @@
       "settings": {
         "eyebrow": "",
         "heading": "Featured Work",
-        "collection": "featured",
+        "collection": "frontpage",
         "products_to_show": 6,
-        "columns": "3",
+        "columns": "4",
         "show_view_all": true,
         "bg_color": "#f5f0e8"
       }
