@@ -1,0 +1,9 @@
+{
+  "sections": {
+    "main": {
+      "type": "desert-totem",
+      "settings": {}
+    }
+  },
+  "order": ["main"]
+}
