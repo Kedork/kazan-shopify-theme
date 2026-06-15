@@ -1,0 +1,16 @@
+{%- comment -%}
+  Maps a brand ground hex to a scheme class so type/eyebrows interchange.
+  Usage: <section class="... {% render 'ground', color: section.settings.bg_color %}">
+{%- endcomment -%}
+{%- liquid
+  assign g = color | default: '' | downcase | strip
+  assign cls = 'scheme-chalk'
+  if g == '#1e3cae'
+    assign cls = 'scheme-cobalt'
+  elsif g == '#16297a'
+    assign cls = 'scheme-ink'
+  elsif g == '#ece4d0'
+    assign cls = 'scheme-bone'
+  endif
+  echo cls
+-%}

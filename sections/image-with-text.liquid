@@ -15,7 +15,7 @@
     {%- endif -%}
   </div>
 
-  <div class="image-with-text__content" style="background-color: {{ section.settings.bg_color }};">
+  <div class="image-with-text__content {% render 'ground', color: section.settings.bg_color %}" style="background-color: {{ section.settings.bg_color }};">
     {%- if section.settings.eyebrow != blank -%}
       <p class="eyebrow">{{ section.settings.eyebrow }}</p>
     {%- endif -%}
@@ -66,7 +66,7 @@
       "type": "richtext",
       "id": "text",
       "label": "Text",
-      "default": "<p>Kazan Studio is the ceramic practice of Kevork Kazanjian, based in Los Angeles. The work is geometric, sculptural, and handmade — bold objects that occupy space with intention.</p>"
+      "default": "<p>Kazan Studio is the ceramic practice of Kevork Kazanjian, working in Los Angeles. The work is built, not thrown — modular components assembled into faces, totems, and vessels that hold genuine presence in a room.</p>"
     },
     {
       "type": "text",
@@ -82,7 +82,7 @@
       "type": "color",
       "id": "bg_color",
       "label": "Content background color",
-      "default": "#E8DFD0"
+      "default": "#ECE4D0"
     }
   ],
   "presets": [

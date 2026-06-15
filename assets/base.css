@@ -19,7 +19,7 @@ html {
 
 body {
   font-family: var(--font-body);
-  font-weight: 300;
+  font-weight: 400;
   color: var(--charcoal);
   background-color: var(--warm-white);
   line-height: 1.8;
@@ -80,22 +80,29 @@ h1, h2, h3, h4, h5, h6,
   text-transform: uppercase;
   letter-spacing: 0.12em;
   line-height: 1.2;
-  color: var(--charcoal);
+  color: inherit;
+}
+
+/* Display headings — Instrument Serif, title case (Brand Vol. 01) */
+h1, h2, h3,
+.h1, .h2, .h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: -0.01em;
+  line-height: 1.05;
 }
 
 h1, .h1 {
-  font-size: clamp(1.75rem, 4vw, 3rem);
-  letter-spacing: 0.15em;
+  font-size: clamp(2.5rem, 6vw, 5rem);
 }
 
 h2, .h2 {
-  font-size: clamp(1.25rem, 3vw, 2rem);
-  letter-spacing: 0.12em;
+  font-size: clamp(1.75rem, 4vw, 3rem);
 }
 
 h3, .h3 {
-  font-size: clamp(1rem, 2vw, 1.25rem);
-  letter-spacing: 0.1em;
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
 }
 
 h4, .h4 {
@@ -106,7 +113,7 @@ h4, .h4 {
 
 p {
   margin-bottom: 1em;
-  font-weight: 300;
+  font-weight: 400;
 }
 
 p:last-child {
@@ -125,8 +132,8 @@ p:last-child {
 
 .body-large {
   font-size: 1.125rem;
-  font-weight: 200;
-  line-height: 2;
+  font-weight: 400;
+  line-height: 1.8;
 }
 
 .caption {
@@ -135,6 +142,28 @@ p:last-child {
   color: var(--accent);
   letter-spacing: 0.02em;
 }
+
+/* --- Section color schemes — Brand Vol.01 ground/type interchange --- */
+.scheme-chalk  { background-color: var(--warm-white); color: var(--charcoal); }
+.scheme-bone   { background-color: var(--sand);       color: var(--charcoal); }
+.scheme-cobalt { background-color: var(--cobalt);     color: var(--sand); }
+.scheme-ink    { background-color: var(--charcoal);   color: var(--sand); }
+
+/* Eyebrows: Coral on light grounds, Butter on dark grounds */
+.scheme-chalk .eyebrow,
+.scheme-bone .eyebrow { color: var(--accent); }
+.scheme-cobalt .eyebrow,
+.scheme-ink .eyebrow { color: var(--clay); }
+
+/* Links + buttons adapt on dark grounds */
+.scheme-cobalt a:not(.btn),
+.scheme-ink a:not(.btn) { color: var(--clay); }
+.scheme-cobalt .btn--primary,
+.scheme-ink .btn--primary { background-color: var(--clay); color: var(--charcoal); }
+.scheme-cobalt .btn--secondary,
+.scheme-ink .btn--secondary { color: var(--sand); border-color: var(--sand); }
+.scheme-cobalt .btn--secondary:hover,
+.scheme-ink .btn--secondary:hover { background-color: var(--sand); color: var(--charcoal); }
 
 /* --- Layout --- */
 .page-width {
@@ -503,12 +532,12 @@ p:last-child {
 /* --- Hero Section --- */
 .hero {
   position: relative;
-  min-height: 85vh;
+  min-height: 60vh;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background-color: var(--charcoal);
+  background-color: var(--cobalt);
 }
 
 .hero__media {
@@ -534,7 +563,11 @@ p:last-child {
   color: var(--warm-white);
   max-width: 800px;
   padding: 0 40px;
-  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.5);
+  text-shadow: none;
+}
+
+.hero__content .eyebrow {
+  color: var(--clay);
 }
 
 .hero__content h1 {
@@ -551,7 +584,7 @@ p:last-child {
 }
 
 .hero__content .btn--primary {
-  background-color: var(--warm-white);
+  background-color: var(--clay);
   color: var(--charcoal);
 }
 
@@ -775,6 +808,20 @@ p:last-child {
   border-color: var(--charcoal);
 }
 
+/* On cobalt/ink grounds, drop the card panel so text sits on the ground (gallery wall) */
+.scheme-cobalt .collection-card__overlay,
+.scheme-ink .collection-card__overlay { background-color: transparent; }
+.scheme-cobalt .collection-card__title,
+.scheme-ink .collection-card__title { color: var(--sand); }
+.scheme-cobalt .collection-card__count,
+.scheme-ink .collection-card__count { color: var(--clay); }
+.scheme-cobalt .collection-card__description,
+.scheme-ink .collection-card__description { color: var(--sand); }
+.scheme-cobalt .collection-card__cta,
+.scheme-ink .collection-card__cta { color: var(--clay); border-color: var(--clay); }
+.scheme-cobalt .collection-card:hover .collection-card__cta,
+.scheme-ink .collection-card:hover .collection-card__cta { color: var(--sand); border-color: var(--sand); }
+
 /* --- Image with Text --- */
 .image-with-text {
   display: grid;
@@ -837,7 +884,7 @@ p:last-child {
 
 /* --- Newsletter --- */
 .newsletter {
-  background-color: var(--charcoal);
+  background-color: var(--cobalt);
   text-align: center;
 }
 
@@ -862,8 +909,8 @@ p:last-child {
 
 .newsletter__form .form-input {
   flex: 1;
-  background-color: var(--mid);
-  border: 1px solid var(--mid);
+  background-color: var(--charcoal);
+  border: 1px solid var(--charcoal);
   color: var(--warm-white);
 }
 
@@ -1630,6 +1677,6 @@ p:last-child {
   }
 
   .hero {
-    min-height: 75vh;
+    min-height: 55vh;
   }
 }
