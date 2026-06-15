@@ -19,7 +19,7 @@ html {
 
 body {
   font-family: var(--font-body);
-  font-weight: 300;
+  font-weight: 400;
   color: var(--charcoal);
   background-color: var(--warm-white);
   line-height: 1.8;
@@ -83,19 +83,26 @@ h1, h2, h3, h4, h5, h6,
   color: var(--charcoal);
 }
 
+/* Display headings — Instrument Serif, title case (Brand Vol. 01) */
+h1, h2, h3,
+.h1, .h2, .h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: -0.01em;
+  line-height: 1.05;
+}
+
 h1, .h1 {
-  font-size: clamp(1.75rem, 4vw, 3rem);
-  letter-spacing: 0.15em;
+  font-size: clamp(2.5rem, 6vw, 5rem);
 }
 
 h2, .h2 {
-  font-size: clamp(1.25rem, 3vw, 2rem);
-  letter-spacing: 0.12em;
+  font-size: clamp(1.75rem, 4vw, 3rem);
 }
 
 h3, .h3 {
-  font-size: clamp(1rem, 2vw, 1.25rem);
-  letter-spacing: 0.1em;
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
 }
 
 h4, .h4 {
@@ -106,7 +113,7 @@ h4, .h4 {
 
 p {
   margin-bottom: 1em;
-  font-weight: 300;
+  font-weight: 400;
 }
 
 p:last-child {
@@ -125,8 +132,8 @@ p:last-child {
 
 .body-large {
   font-size: 1.125rem;
-  font-weight: 200;
-  line-height: 2;
+  font-weight: 400;
+  line-height: 1.8;
 }
 
 .caption {
@@ -443,7 +450,7 @@ p:last-child {
 
 /* --- Footer --- */
 .site-footer {
-  background-color: var(--charcoal);
+  background-color: var(--cobalt);
   color: var(--sand);
   padding: 80px 0 40px;
 }
@@ -837,7 +844,7 @@ p:last-child {
 
 /* --- Newsletter --- */
 .newsletter {
-  background-color: var(--charcoal);
+  background-color: var(--cobalt);
   text-align: center;
 }
 
@@ -862,8 +869,8 @@ p:last-child {
 
 .newsletter__form .form-input {
   flex: 1;
-  background-color: var(--mid);
-  border: 1px solid var(--mid);
+  background-color: var(--charcoal);
+  border: 1px solid var(--charcoal);
   color: var(--warm-white);
 }
 

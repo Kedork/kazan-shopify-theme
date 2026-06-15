@@ -29,7 +29,7 @@
         "products_to_show": 6,
         "columns": "4",
         "show_view_all": true,
-        "bg_color": "#f5f0e8"
+        "bg_color": "#F5F1E9"
       }
     },
     "collections": {
@@ -63,7 +63,7 @@
         "eyebrow": "",
         "heading": "Collections",
         "columns": "3",
-        "bg_color": "#e8dfd0"
+        "bg_color": "#ECE4D0"
       }
     },
     "about": {
@@ -76,7 +76,7 @@
         "text": "<p>Kazan Studio is the ceramic practice of Kevork Kazanjian, based in Los Angeles. The work is geometric, sculptural, and handmade — bold objects that occupy space with intention.</p>",
         "button_label": "Learn More",
         "button_link": "/pages/about",
-        "bg_color": "#e8dfd0"
+        "bg_color": "#ECE4D0"
       }
     },
     "newsletter": {
@@ -87,7 +87,7 @@
         "text": "New work, studio updates, and exhibition announcements.",
         "placeholder": "Your email address",
         "button_label": "Subscribe",
-        "bg_color": "#1a1a1a"
+        "bg_color": "#1E3CAE"
       }
     }
   },

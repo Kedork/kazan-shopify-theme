@@ -26,21 +26,24 @@
     <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
   {%- endif -%}
 
-  {%- comment -%} Google Fonts: Syncopate + Jost {%- endcomment -%}
+  {%- comment -%} Google Fonts: Instrument Serif (display) + Bricolage Grotesque (UI / body) {%- endcomment -%}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family={{ settings.heading_font_family | default: 'Syncopate' | url_encode }}:wght@400;700&family={{ settings.body_font_family | default: 'Jost' | url_encode }}:wght@200;300;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Bricolage+Grotesque:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --warm-white: {{ settings.color_warm_white }};
-      --sand: {{ settings.color_sand }};
-      --clay: {{ settings.color_clay }};
-      --accent: {{ settings.color_accent }};
-      --charcoal: {{ settings.color_charcoal }};
-      --mid: {{ settings.color_mid }};
-      --font-heading: '{{ settings.heading_font_family | default: "Syncopate" }}', sans-serif;
-      --font-body: '{{ settings.body_font_family | default: "Jost" }}', sans-serif;
+      /* Brand Vol. 01 (2026) — cobalt/editorial. Chalk/Bone light, Ink text, Cobalt ground, Butter/Coral accents */
+      --warm-white: {{ settings.color_warm_white }};   /* Chalk — light page bg */
+      --sand: {{ settings.color_sand }};               /* Bone — secondary light / text on dark */
+      --clay: {{ settings.color_clay }};               /* Butter — pop accent */
+      --accent: {{ settings.color_accent }};           /* Coral — links, eyebrows, details */
+      --charcoal: {{ settings.color_charcoal }};       /* Ink — primary text + deep grounds */
+      --mid: {{ settings.color_mid }};                 /* Cobalt — signature ground */
+      --cobalt: {{ settings.color_mid }};              /* alias for signature ground */
+      --font-heading: '{{ settings.heading_font_family | default: "Bricolage Grotesque" }}', sans-serif;
+      --font-body: '{{ settings.body_font_family | default: "Bricolage Grotesque" }}', sans-serif;
+      --font-display: 'Instrument Serif', Georgia, serif;
       --logo-max-width: {{ settings.logo_max_width | default: 140 }}px;
     }
   </style>
