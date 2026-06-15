@@ -532,7 +532,7 @@ p:last-child {
 /* --- Hero Section --- */
 .hero {
   position: relative;
-  min-height: 85vh;
+  min-height: 60vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -807,6 +807,18 @@ p:last-child {
   color: var(--charcoal);
   border-color: var(--charcoal);
 }
+
+/* On cobalt/ink grounds, drop the card panel so text sits on the ground (gallery wall) */
+.scheme-cobalt .collection-card__overlay,
+.scheme-ink .collection-card__overlay { background-color: transparent; }
+.scheme-cobalt .collection-card__title,
+.scheme-ink .collection-card__title { color: var(--sand); }
+.scheme-cobalt .collection-card__count,
+.scheme-ink .collection-card__count { color: var(--clay); }
+.scheme-cobalt .collection-card__cta,
+.scheme-ink .collection-card__cta { color: var(--clay); border-color: var(--clay); }
+.scheme-cobalt .collection-card:hover .collection-card__cta,
+.scheme-ink .collection-card:hover .collection-card__cta { color: var(--sand); border-color: var(--sand); }
 
 /* --- Image with Text --- */
 .image-with-text {
@@ -1663,6 +1675,6 @@ p:last-child {
   }
 
   .hero {
-    min-height: 75vh;
+    min-height: 55vh;
   }
 }
