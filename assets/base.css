@@ -815,6 +815,8 @@ p:last-child {
 .scheme-ink .collection-card__title { color: var(--sand); }
 .scheme-cobalt .collection-card__count,
 .scheme-ink .collection-card__count { color: var(--clay); }
+.scheme-cobalt .collection-card__description,
+.scheme-ink .collection-card__description { color: var(--sand); }
 .scheme-cobalt .collection-card__cta,
 .scheme-ink .collection-card__cta { color: var(--clay); border-color: var(--clay); }
 .scheme-cobalt .collection-card:hover .collection-card__cta,
