@@ -107,4 +107,94 @@
     });
   });
 
+  /* --- Load / scroll reveal ---
+     Adds .is-visible as elements enter the viewport. Grids stagger their
+     children. Skipped entirely when motion is reduced or IO is unsupported
+     (the CSS hidden state is gated the same way, so content stays visible). */
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if ('IntersectionObserver' in window && !reduceMotion) {
+    var SINGLES = [
+      '.hero__content', '.featured-collection__header', '.collection-list__header',
+      '.collections-index__header', '.collection-card', '.image-with-text__content',
+      '.rich-text', '.newsletter .page-width', '.collection-page__header',
+      '.related-products__header', '.faq-page__header', '.faq-section',
+      '.contact-section__info'
+    ];
+    var GROUPS = [
+      '.featured-collection .grid', '.collection-page .grid', '.related-products .grid'
+    ];
+
+    var io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (!entry.isIntersecting) return;
+        var el = entry.target;
+        if (el.hasAttribute('data-reveal-group')) {
+          Array.prototype.forEach.call(el.children, function(child, i) {
+            child.style.transitionDelay = (i * 70) + 'ms';
+            child.classList.add('is-visible');
+          });
+        } else {
+          el.classList.add('is-visible');
+        }
+        io.unobserve(el);
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+
+    SINGLES.forEach(function(sel) {
+      document.querySelectorAll(sel).forEach(function(el) { io.observe(el); });
+    });
+    GROUPS.forEach(function(sel) {
+      document.querySelectorAll(sel).forEach(function(el) {
+        el.setAttribute('data-reveal-group', '');
+        io.observe(el);
+      });
+    });
+  }
+
+  /* --- Product image lightbox --- */
+  var lightboxTrigger = document.querySelector('[data-main-image]');
+  var lightboxMainImg = document.getElementById('main-product-image');
+
+  if (lightboxTrigger && lightboxMainImg) {
+    var lightbox;
+
+    function lightboxHiRes(src) {
+      if (!src) return src;
+      return src.replace(/([?&]width=)\d+/, function(match, prefix) {
+        return prefix + '1600';
+      });
+    }
+
+    function closeLightbox() {
+      if (lightbox) {
+        lightbox.classList.remove('is-open');
+        document.body.style.overflow = '';
+      }
+    }
+
+    function openLightbox() {
+      if (!lightbox) {
+        lightbox = document.createElement('div');
+        lightbox.className = 'lightbox';
+        lightbox.setAttribute('role', 'dialog');
+        lightbox.setAttribute('aria-modal', 'true');
+        lightbox.innerHTML =
+          '<button class="lightbox__close" type="button" aria-label="Close">Close ✕</button>' +
+          '<img alt="">';
+        lightbox.addEventListener('click', closeLightbox);
+        document.body.appendChild(lightbox);
+      }
+      var img = lightbox.querySelector('img');
+      img.src = lightboxHiRes(lightboxMainImg.currentSrc || lightboxMainImg.src);
+      img.alt = lightboxMainImg.alt || '';
+      document.body.style.overflow = 'hidden';
+      requestAnimationFrame(function() { lightbox.classList.add('is-open'); });
+    }
+
+    lightboxTrigger.addEventListener('click', openLightbox);
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  }
+
 })();
