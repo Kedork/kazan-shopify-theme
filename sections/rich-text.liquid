@@ -2,7 +2,7 @@
   Kazan Studio — Rich Text Section
 {%- endcomment -%}
 
-<section class="section-padding" style="background-color: {{ section.settings.bg_color }};">
+<section class="section-padding {% render 'ground', color: section.settings.bg_color %}" style="background-color: {{ section.settings.bg_color }};">
   <div class="page-width">
     <div class="rich-text">
       {%- if section.settings.eyebrow != blank -%}

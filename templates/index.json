@@ -12,7 +12,7 @@
     "hero": {
       "type": "hero-banner",
       "settings": {
-        "image": "shopify://shop_images/Hero.jpg",
+        "image": "",
         "eyebrow": "Los Angeles",
         "heading": "Kazan Studio",
         "subheading": "Precision meets unpredictability in clay.",
@@ -63,7 +63,7 @@
         "eyebrow": "",
         "heading": "Collections",
         "columns": "3",
-        "bg_color": "#ECE4D0"
+        "bg_color": "#1E3CAE"
       }
     },
     "about": {
@@ -73,10 +73,10 @@
         "layout": "image_left",
         "eyebrow": "The Studio",
         "heading": "About Kazan Studio",
-        "text": "<p>Kazan Studio is the ceramic practice of Kevork Kazanjian, based in Los Angeles. The work is geometric, sculptural, and handmade — bold objects that occupy space with intention.</p>",
+        "text": "<p>Kazan Studio is the ceramic practice of Kevork Kazanjian, working in Los Angeles. The work is built, not thrown — modular components assembled into faces, totems, and vessels that hold genuine presence in a room.</p>",
         "button_label": "Learn More",
         "button_link": "/pages/about",
-        "bg_color": "#ECE4D0"
+        "bg_color": "#F5F1E9"
       }
     },
     "newsletter": {

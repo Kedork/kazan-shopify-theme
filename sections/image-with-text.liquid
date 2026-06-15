@@ -15,7 +15,7 @@
     {%- endif -%}
   </div>
 
-  <div class="image-with-text__content" style="background-color: {{ section.settings.bg_color }};">
+  <div class="image-with-text__content {% render 'ground', color: section.settings.bg_color %}" style="background-color: {{ section.settings.bg_color }};">
     {%- if section.settings.eyebrow != blank -%}
       <p class="eyebrow">{{ section.settings.eyebrow }}</p>
     {%- endif -%}

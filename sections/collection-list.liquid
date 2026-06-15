@@ -3,7 +3,7 @@
   Grid of collection cards with overlay titles
 {%- endcomment -%}
 
-<section class="collection-list section-padding" style="background-color: {{ section.settings.bg_color }};">
+<section class="collection-list section-padding {% render 'ground', color: section.settings.bg_color %}" style="background-color: {{ section.settings.bg_color }};">
   <div class="page-width">
     <div class="collection-list__header">
       {%- if section.settings.eyebrow != blank -%}

@@ -80,7 +80,7 @@ h1, h2, h3, h4, h5, h6,
   text-transform: uppercase;
   letter-spacing: 0.12em;
   line-height: 1.2;
-  color: var(--charcoal);
+  color: inherit;
 }
 
 /* Display headings — Instrument Serif, title case (Brand Vol. 01) */
@@ -142,6 +142,28 @@ p:last-child {
   color: var(--accent);
   letter-spacing: 0.02em;
 }
+
+/* --- Section color schemes — Brand Vol.01 ground/type interchange --- */
+.scheme-chalk  { background-color: var(--warm-white); color: var(--charcoal); }
+.scheme-bone   { background-color: var(--sand);       color: var(--charcoal); }
+.scheme-cobalt { background-color: var(--cobalt);     color: var(--sand); }
+.scheme-ink    { background-color: var(--charcoal);   color: var(--sand); }
+
+/* Eyebrows: Coral on light grounds, Butter on dark grounds */
+.scheme-chalk .eyebrow,
+.scheme-bone .eyebrow { color: var(--accent); }
+.scheme-cobalt .eyebrow,
+.scheme-ink .eyebrow { color: var(--clay); }
+
+/* Links + buttons adapt on dark grounds */
+.scheme-cobalt a:not(.btn),
+.scheme-ink a:not(.btn) { color: var(--clay); }
+.scheme-cobalt .btn--primary,
+.scheme-ink .btn--primary { background-color: var(--clay); color: var(--charcoal); }
+.scheme-cobalt .btn--secondary,
+.scheme-ink .btn--secondary { color: var(--sand); border-color: var(--sand); }
+.scheme-cobalt .btn--secondary:hover,
+.scheme-ink .btn--secondary:hover { background-color: var(--sand); color: var(--charcoal); }
 
 /* --- Layout --- */
 .page-width {
@@ -450,7 +472,7 @@ p:last-child {
 
 /* --- Footer --- */
 .site-footer {
-  background-color: var(--cobalt);
+  background-color: var(--charcoal);
   color: var(--sand);
   padding: 80px 0 40px;
 }
@@ -515,7 +537,7 @@ p:last-child {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background-color: var(--charcoal);
+  background-color: var(--cobalt);
 }
 
 .hero__media {
@@ -541,7 +563,11 @@ p:last-child {
   color: var(--warm-white);
   max-width: 800px;
   padding: 0 40px;
-  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.5);
+  text-shadow: none;
+}
+
+.hero__content .eyebrow {
+  color: var(--clay);
 }
 
 .hero__content h1 {
@@ -558,7 +584,7 @@ p:last-child {
 }
 
 .hero__content .btn--primary {
-  background-color: var(--warm-white);
+  background-color: var(--clay);
   color: var(--charcoal);
 }
 
