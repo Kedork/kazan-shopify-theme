@@ -3,6 +3,12 @@
    Custom Shopify 2.0 Theme
    ============================================ */
 
+/* "The Speckle" — fine ceramic grain laid over saturated grounds.
+   Self-contained SVG (feTurbulence) so it needs no image asset. */
+:root {
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='kzn-grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.12 0.12 0.12 0 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23kzn-grain)'/%3E%3C/svg%3E");
+}
+
 /* --- Reset & Base --- */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -138,7 +144,7 @@ p:last-child {
 
 .caption {
   font-size: 0.8125rem;
-  font-weight: 300;
+  font-weight: 400;
   color: var(--accent);
   letter-spacing: 0.02em;
 }
@@ -301,7 +307,7 @@ p:last-child {
   padding: 14px 16px;
   font-family: var(--font-body);
   font-size: 0.9375rem;
-  font-weight: 300;
+  font-weight: 400;
   color: var(--charcoal);
   background-color: var(--warm-white);
   border: 1px solid var(--sand);
@@ -442,23 +448,30 @@ p:last-child {
 }
 
 .mobile-nav {
-  display: none;
+  display: flex;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   background-color: var(--warm-white);
+  background-image: var(--grain);
   z-index: 999;
   padding: 100px 60px 60px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 40px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: opacity 0.35s ease, visibility 0.35s ease, transform 0.35s ease;
 }
 
 .mobile-nav.is-open {
-  display: flex;
+  opacity: 1;
+  visibility: visible;
+  transform: none;
 }
 
 .mobile-nav a {
@@ -485,7 +498,7 @@ p:last-child {
 
 .site-footer__brand p {
   font-size: 0.875rem;
-  font-weight: 300;
+  font-weight: 400;
   color: var(--sand);
   opacity: 0.7;
   line-height: 1.8;
@@ -504,7 +517,7 @@ p:last-child {
 .site-footer__links a {
   display: block;
   font-size: 0.875rem;
-  font-weight: 300;
+  font-weight: 400;
   color: var(--sand);
   margin-bottom: 0.75rem;
   opacity: 0.7;
@@ -525,7 +538,7 @@ p:last-child {
 
 .site-footer__copyright {
   font-size: 0.75rem;
-  font-weight: 300;
+  font-weight: 400;
   opacity: 0.5;
 }
 
@@ -577,7 +590,7 @@ p:last-child {
 
 .hero__content p {
   font-size: 1.125rem;
-  font-weight: 200;
+  font-weight: 400;
   color: var(--sand);
   margin-bottom: 2.5rem;
   line-height: 2;
@@ -665,7 +678,7 @@ p:last-child {
 .product-card__price {
   font-family: var(--font-body);
   font-size: 0.875rem;
-  font-weight: 300;
+  font-weight: 400;
   color: var(--accent);
 }
 
@@ -695,7 +708,7 @@ p:last-child {
 .collection-card__description {
   font-family: var(--font-body);
   font-size: 0.9375rem;
-  font-weight: 300;
+  font-weight: 400;
   color: var(--charcoal);
   line-height: 1.9;
   opacity: 0.75;
@@ -862,7 +875,7 @@ p:last-child {
 
 .image-with-text__content p {
   margin-bottom: 2rem;
-  font-weight: 300;
+  font-weight: 400;
   line-height: 2;
 }
 
@@ -878,7 +891,7 @@ p:last-child {
 }
 
 .rich-text p {
-  font-weight: 200;
+  font-weight: 400;
   line-height: 2;
 }
 
@@ -895,7 +908,7 @@ p:last-child {
 
 .newsletter p {
   color: var(--sand);
-  font-weight: 200;
+  font-weight: 400;
   margin-bottom: 2rem;
   opacity: 0.7;
 }
@@ -1018,7 +1031,7 @@ p:last-child {
 .product-page__price {
   font-family: var(--font-body);
   font-size: 1.25rem;
-  font-weight: 300;
+  font-weight: 400;
   color: var(--accent);
   margin-bottom: 2rem;
 }
@@ -1058,7 +1071,7 @@ p:last-child {
 .product-page__meta-value {
   font-family: var(--font-body);
   font-size: 0.9375rem;
-  font-weight: 300;
+  font-weight: 400;
   color: var(--charcoal);
 }
 
@@ -1174,7 +1187,7 @@ p:last-child {
 .faq-item__answer {
   font-family: var(--font-body);
   font-size: 0.9375rem;
-  font-weight: 300;
+  font-weight: 400;
   color: var(--charcoal);
   line-height: 1.9;
   max-width: 640px;
@@ -1191,7 +1204,7 @@ p:last-child {
   padding-top: 3rem;
   font-family: var(--font-body);
   font-size: 1rem;
-  font-weight: 300;
+  font-weight: 400;
   color: var(--charcoal);
 }
 
@@ -1216,7 +1229,7 @@ p:last-child {
 .collection-page__header p {
   max-width: 600px;
   margin: 0 auto;
-  font-weight: 200;
+  font-weight: 400;
 }
 
 .collection-page__filter {
@@ -1230,7 +1243,7 @@ p:last-child {
 
 .collection-page__count {
   font-size: 0.8125rem;
-  font-weight: 300;
+  font-weight: 400;
   color: var(--accent);
 }
 
@@ -1287,7 +1300,7 @@ p:last-child {
 .cart-item__price {
   font-family: var(--font-body);
   font-size: 0.9375rem;
-  font-weight: 300;
+  font-weight: 400;
   color: var(--accent);
 }
 
@@ -1337,7 +1350,7 @@ p:last-child {
 
 .cart-totals__value {
   font-size: 1rem;
-  font-weight: 300;
+  font-weight: 400;
 }
 
 .cart-totals .btn {
@@ -1356,7 +1369,7 @@ p:last-child {
 }
 
 .contact-section__info p {
-  font-weight: 200;
+  font-weight: 400;
   line-height: 2;
   margin-bottom: 2rem;
 }
@@ -1392,7 +1405,7 @@ p:last-child {
 
 .page-404 p {
   margin-bottom: 2rem;
-  font-weight: 200;
+  font-weight: 400;
 }
 
 /* --- Related Products --- */
@@ -1433,7 +1446,7 @@ p:last-child {
   text-align: center;
   font-family: var(--font-body);
   font-size: 0.9375rem;
-  font-weight: 300;
+  font-weight: 400;
   color: var(--charcoal);
   border: none;
   border-left: 1px solid var(--sand);
@@ -1488,7 +1501,7 @@ p:last-child {
 
 .cart-empty p {
   margin-bottom: 2rem;
-  font-weight: 200;
+  font-weight: 400;
 }
 
 /* --- Responsive --- */
@@ -1672,11 +1685,125 @@ p:last-child {
     grid-column: 2;
   }
 
-  .hero__content h1 {
-    font-size: 1.5rem;
-  }
-
   .hero {
     min-height: 55vh;
+  }
+}
+
+/* ============================================
+   Atmosphere, Motion & Detail — Vol.01 craft pass
+   ============================================ */
+
+/* --- Speckle grain on the saturated grounds (the brand texture, in the UI) --- */
+.hero,
+.newsletter,
+.site-footer,
+.scheme-cobalt,
+.scheme-ink {
+  background-image: var(--grain);
+}
+
+/* --- Visible keyboard focus (was missing on links/buttons/cards) --- */
+a:focus-visible,
+button:focus-visible,
+.btn:focus-visible,
+.product-card:focus-visible,
+.collection-card:focus-visible,
+.product-page__thumbnail:focus-visible,
+.form-input:focus-visible,
+.form-textarea:focus-visible,
+.form-select:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* --- Product image lightbox (delivers the zoom the cursor promises) --- */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6vh 6vw;
+  background-color: var(--charcoal);
+  background-image: var(--grain);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s ease, visibility 0.35s ease;
+  cursor: zoom-out;
+}
+
+.lightbox.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.lightbox img {
+  max-width: 100%;
+  max-height: 88vh;
+  width: auto;
+  object-fit: contain;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.4);
+}
+
+.lightbox__close {
+  position: absolute;
+  top: 24px;
+  right: 28px;
+  font-family: var(--font-heading);
+  font-size: 0.625rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--sand);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  transition: opacity 0.3s ease;
+}
+
+.lightbox__close:hover {
+  opacity: 0.6;
+}
+
+/* --- Load / scroll reveal ---
+   Hidden state is gated on html.js (set synchronously in <head>) so it
+   applies pre-paint with no flicker, and only when motion is welcome. */
+@media (prefers-reduced-motion: no-preference) {
+  html.js .hero__content,
+  html.js .featured-collection__header,
+  html.js .collection-list__header,
+  html.js .collections-index__header,
+  html.js .collection-card,
+  html.js .image-with-text__content,
+  html.js .rich-text,
+  html.js .newsletter .page-width,
+  html.js .collection-page__header,
+  html.js .related-products__header,
+  html.js .faq-page__header,
+  html.js .faq-section,
+  html.js .contact-section__info,
+  html.js .featured-collection .grid > *,
+  html.js .collection-page .grid > *,
+  html.js .related-products .grid > * {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.7s cubic-bezier(0.2, 0.6, 0.2, 1),
+                transform 0.7s cubic-bezier(0.2, 0.6, 0.2, 1);
+  }
+
+  html.js .is-visible {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mobile-nav,
+  .lightbox {
+    transition: none;
   }
 }
