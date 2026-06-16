@@ -9,10 +9,6 @@
  */
 {
   "sections": {
-    "main": {
-      "type": "list-collections",
-      "settings": {}
-    },
     "collection_list_tJCrNG": {
       "type": "collection-list",
       "blocks": {
@@ -50,7 +46,6 @@
     }
   },
   "order": [
-    "main",
     "collection_list_tJCrNG"
   ]
 }
