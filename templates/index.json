@@ -16,8 +16,7 @@
         "heading": "Precision meets unpredictability in clay.",
         "subheading": "",
         "button_label": "View Work",
-        "button_link": "/collections/",
-        "ground": "cobalt"
+        "button_link": "/collections/"
       }
     },
     "featured": {
@@ -28,8 +27,7 @@
         "collection": "frontpage",
         "products_to_show": 6,
         "columns": "3",
-        "show_view_all": true,
-        "ground": "chalk"
+        "show_view_all": true
       }
     },
     "collections": {
@@ -44,13 +42,13 @@
         "col1": {
           "type": "collection",
           "settings": {
-            "collection": "decorative-objects"
+            "collection": "objects"
           }
         },
         "col2": {
           "type": "collection",
           "settings": {
-            "collection": "pottery"
+            "collection": "vessels"
           }
         }
       },
@@ -62,8 +60,7 @@
       "settings": {
         "eyebrow": "Collections",
         "heading": "",
-        "columns": "2",
-        "ground": "cobalt"
+        "columns": "2"
       }
     },
     "about": {
@@ -75,8 +72,7 @@
         "heading": "About Kazan Studio",
         "text": "<p>Kazan Studio is the ceramic practice of Kevork Kazanjian, working in Los Angeles. Modular components assembled into faces, totems, and vessels that hold genuine presence in a room.</p><p>“Kazan” is drawn from Kazanjian — and from the kazan, the great cauldron of Armenian tradition.</p>",
         "button_label": "Learn More",
-        "button_link": "/pages/about",
-        "ground": "chalk"
+        "button_link": "/pages/about"
       }
     },
     "newsletter": {
@@ -86,8 +82,7 @@
         "heading": "Stay Connected",
         "text": "New work, studio updates, and exhibition announcements.",
         "placeholder": "Your email address",
-        "button_label": "Subscribe",
-        "ground": "cobalt"
+        "button_label": "Subscribe"
       }
     }
   },
