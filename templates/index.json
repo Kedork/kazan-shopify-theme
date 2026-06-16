@@ -23,10 +23,10 @@
       "type": "featured-collection",
       "settings": {
         "eyebrow": "Featured Work",
-        "heading": "",
+        "heading": "New Arrivals",
         "collection": "frontpage",
         "products_to_show": 6,
-        "columns": "4",
+        "columns": "3",
         "show_view_all": true,
         "bg_color": "#f5f1e9"
       }
