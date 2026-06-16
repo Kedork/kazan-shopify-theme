@@ -27,7 +27,7 @@
         "heading": "Featured Pieces",
         "collection": "featured",
         "products_to_show": 6,
-        "columns": "2",
+        "columns": "3",
         "show_view_all": true,
         "ground": "chalk"
       }
