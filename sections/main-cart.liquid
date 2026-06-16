@@ -50,7 +50,7 @@
           </div>
           <div class="cart-totals__row cart-totals__row--total">
             <span class="cart-totals__label">Total</span>
-            <span class="cart-totals__value" style="font-weight: 400;">{{ cart.total_price | money_without_trailing_zeros }}</span>
+            <span class="cart-totals__value">{{ cart.total_price | money_without_trailing_zeros }}</span>
           </div>
           <button type="submit" name="checkout" class="btn btn--primary btn--full">Checkout</button>
           <div class="text-center mt-1">

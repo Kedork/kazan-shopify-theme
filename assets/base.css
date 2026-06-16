@@ -1287,7 +1287,7 @@ p:last-child {
 }
 
 .cart-page__header {
-  text-align: center;
+  text-align: left;
   margin-bottom: 60px;
 }
 
@@ -1323,7 +1323,7 @@ p:last-child {
 .cart-item__price {
   font-family: var(--font-body);
   font-size: 0.9375rem;
-  font-weight: 400;
+  font-weight: 600;
   color: var(--accent);
 }
 
@@ -1332,16 +1332,17 @@ p:last-child {
   font-size: 0.5625rem;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  color: var(--clay);
+  color: var(--charcoal);
+  opacity: 0.5;
   background: none;
   border: none;
   cursor: pointer;
   padding: 8px;
-  transition: color 0.3s ease;
+  transition: opacity 0.3s ease;
 }
 
 .cart-item__remove:hover {
-  color: var(--charcoal);
+  opacity: 1;
 }
 
 .cart-totals {
@@ -1374,6 +1375,11 @@ p:last-child {
 .cart-totals__value {
   font-size: 1rem;
   font-weight: 400;
+}
+
+.cart-totals__row--total .cart-totals__value {
+  font-size: 1.125rem;
+  font-weight: 600;
 }
 
 .cart-totals .btn {
