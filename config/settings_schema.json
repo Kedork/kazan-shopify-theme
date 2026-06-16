@@ -1,1 +1,128 @@
-[]
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Kazan Studio",
+    "theme_version": "1.0.0",
+    "theme_author": "Kazan Studio",
+    "theme_documentation_url": "https://kazan.studio",
+    "theme_support_url": "https://kazan.studio"
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Core palette — Brand Vol. 01 (2026)"
+      },
+      {
+        "type": "paragraph",
+        "content": "Cobalt is the signature ground (heroes, feature bands, footer). Ink is the deepest ground and primary text on light. Butter and Coral are punctuation only — never large fills. Chalk and Bone carry type; never pure white or pure black."
+      },
+      {
+        "type": "color",
+        "id": "color_mid",
+        "label": "Cobalt — signature ground",
+        "info": "Heroes, feature bands, gallery walls, footer.",
+        "default": "#1E3CAE"
+      },
+      {
+        "type": "color",
+        "id": "color_charcoal",
+        "label": "Ink — deep ground + primary text",
+        "info": "Primary text on light backgrounds; deepest dark ground.",
+        "default": "#16297A"
+      },
+      {
+        "type": "color",
+        "id": "color_warm_white",
+        "label": "Chalk — light page background",
+        "default": "#F5F1E9"
+      },
+      {
+        "type": "color",
+        "id": "color_sand",
+        "label": "Bone — secondary light / text on dark",
+        "default": "#ECE4D0"
+      },
+      {
+        "type": "color",
+        "id": "color_clay",
+        "label": "Butter — pop accent",
+        "info": "Small highlights only — never a section-sized fill.",
+        "default": "#E6CF45"
+      },
+      {
+        "type": "color",
+        "id": "color_accent",
+        "label": "Coral — accent / detail",
+        "info": "Eyebrows, labels, links, small details.",
+        "default": "#E8736A"
+      }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Instrument Serif and Bricolage Grotesque are both loaded site-wide. Reserve Instrument Serif for display moments (large titles, the positioning line) — never running body. Everything else is Bricolage Grotesque."
+      },
+      {
+        "type": "select",
+        "id": "heading_font_family",
+        "label": "Heading font",
+        "options": [
+          { "value": "Bricolage Grotesque", "label": "Bricolage Grotesque" },
+          { "value": "Instrument Serif", "label": "Instrument Serif" }
+        ],
+        "default": "Bricolage Grotesque"
+      },
+      {
+        "type": "select",
+        "id": "body_font_family",
+        "label": "Body font",
+        "options": [
+          { "value": "Bricolage Grotesque", "label": "Bricolage Grotesque" },
+          { "value": "Instrument Serif", "label": "Instrument Serif" }
+        ],
+        "default": "Bricolage Grotesque"
+      }
+    ]
+  },
+  {
+    "name": "Logo & favicon",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "The header mark is a built-in SVG (light/dark variants) — set its scheme per section in the Header. Use the favicon for the browser-tab icon."
+      },
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon",
+        "info": "Square PNG, at least 32 × 32px."
+      },
+      {
+        "type": "range",
+        "id": "logo_max_width",
+        "label": "Logo max width",
+        "min": 80,
+        "max": 240,
+        "step": 10,
+        "unit": "px",
+        "default": 140
+      }
+    ]
+  },
+  {
+    "name": "Social",
+    "settings": [
+      {
+        "type": "url",
+        "id": "social_instagram",
+        "label": "Instagram URL",
+        "info": "Linked from the footer and contact section."
+      }
+    ]
+  }
+]
