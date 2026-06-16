@@ -26,7 +26,7 @@
         "eyebrow": "Selected Work",
         "heading": "Featured Pieces",
         "collection": "featured",
-        "products_to_show": 6,
+        "products_to_show": 12,
         "columns": "3",
         "show_view_all": true,
         "ground": "chalk"
