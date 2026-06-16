@@ -16,7 +16,8 @@
         "heading": "Precision meets unpredictability in clay.",
         "subheading": "",
         "button_label": "View Work",
-        "button_link": "/collections/"
+        "button_link": "/collections/",
+        "ground": "cobalt"
       }
     },
     "featured": {
@@ -28,7 +29,7 @@
         "products_to_show": 6,
         "columns": "3",
         "show_view_all": true,
-        "bg_color": "#f5f1e9"
+        "ground": "chalk"
       }
     },
     "collections": {
@@ -62,7 +63,7 @@
         "eyebrow": "Collections",
         "heading": "",
         "columns": "2",
-        "bg_color": "#1e3cae"
+        "ground": "cobalt"
       }
     },
     "about": {
@@ -75,7 +76,7 @@
         "text": "<p>Kazan Studio is the ceramic practice of Kevork Kazanjian, working in Los Angeles. Modular components assembled into faces, totems, and vessels that hold genuine presence in a room.</p><p>“Kazan” is drawn from Kazanjian — and from the kazan, the great cauldron of Armenian tradition.</p>",
         "button_label": "Learn More",
         "button_link": "/pages/about",
-        "bg_color": "#f5f1e9"
+        "ground": "chalk"
       }
     },
     "newsletter": {
@@ -86,7 +87,7 @@
         "text": "New work, studio updates, and exhibition announcements.",
         "placeholder": "Your email address",
         "button_label": "Subscribe",
-        "bg_color": "#1e3cae"
+        "ground": "cobalt"
       }
     }
   },

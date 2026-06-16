@@ -7,7 +7,7 @@
         "heading": "Get in Touch",
         "text": "<p>For inquiries about available work, commissions, or collaborations.</p>",
         "address": "Los Angeles, CA",
-        "bg_color": "#F5F1E9"
+        "ground": "chalk"
       }
     }
   },

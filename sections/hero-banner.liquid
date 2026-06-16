@@ -3,7 +3,7 @@
   Full-viewport hero with image/video background
 {%- endcomment -%}
 
-<section class="hero" data-hero>
+<section class="hero scheme-{{ section.settings.ground | default: 'cobalt' }}" data-hero>
   <div class="hero__media">
     {%- if section.settings.video != blank -%}
       {{ section.settings.video | video_tag: autoplay: true, loop: true, muted: true, playsinline: true }}
@@ -74,6 +74,17 @@
       "type": "url",
       "id": "button_link",
       "label": "Button link"
+    },
+    {
+      "type": "select",
+      "id": "ground",
+      "label": "Background ground",
+      "info": "Shown behind the image (and fully when no image is set). Dark grounds keep the hero text legible.",
+      "options": [
+        { "value": "cobalt", "label": "Cobalt" },
+        { "value": "ink", "label": "Ink (deep)" }
+      ],
+      "default": "cobalt"
     }
   ],
   "presets": [

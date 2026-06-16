@@ -2,7 +2,7 @@
   Kazan Studio — Newsletter Section
 {%- endcomment -%}
 
-<section class="newsletter section-padding" style="background-color: {{ section.settings.bg_color }};">
+<section class="newsletter section-padding scheme-{{ section.settings.ground }}">
   <div class="page-width">
     {%- if section.settings.eyebrow != blank -%}
       <p class="eyebrow" style="color: var(--clay);">{{ section.settings.eyebrow }}</p>
@@ -74,10 +74,15 @@
       "default": "Subscribe"
     },
     {
-      "type": "color",
-      "id": "bg_color",
-      "label": "Background color",
-      "default": "#1E3CAE"
+      "type": "select",
+      "id": "ground",
+      "label": "Background",
+      "info": "A dark feature band — pulls from the brand palette.",
+      "options": [
+        { "value": "cobalt", "label": "Cobalt" },
+        { "value": "ink", "label": "Ink (deep)" }
+      ],
+      "default": "cobalt"
     }
   ],
   "presets": [

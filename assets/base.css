@@ -550,7 +550,6 @@ p:last-child {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background-color: var(--cobalt);
 }
 
 .hero__media {
@@ -606,10 +605,6 @@ p:last-child {
 }
 
 /* --- Featured Collection --- */
-.featured-collection {
-  background-color: var(--warm-white);
-}
-
 .featured-collection__header {
   text-align: left;
   margin-bottom: 60px;
@@ -720,10 +715,6 @@ p:last-child {
 }
 
 /* --- Collection List --- */
-.collection-list {
-  background-color: var(--warm-white);
-}
-
 .collection-list__header {
   text-align: left;
   margin-bottom: 60px;
@@ -866,7 +857,6 @@ p:last-child {
   flex-direction: column;
   justify-content: center;
   padding: 80px 100px;
-  background-color: var(--sand);
 }
 
 .image-with-text__content h2 {
@@ -897,7 +887,6 @@ p:last-child {
 
 /* --- Newsletter --- */
 .newsletter {
-  background-color: var(--cobalt);
   text-align: center;
 }
 

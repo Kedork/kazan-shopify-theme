@@ -5,7 +5,7 @@
 
 {%- assign collection = section.settings.collection -%}
 
-<section class="featured-collection section-padding" style="background-color: {{ section.settings.bg_color }};">
+<section class="featured-collection section-padding scheme-{{ section.settings.ground }}">
   <div class="page-width">
     <div class="featured-collection__header">
       {%- if section.settings.eyebrow != blank -%}
@@ -85,10 +85,15 @@
       "default": true
     },
     {
-      "type": "color",
-      "id": "bg_color",
-      "label": "Background color",
-      "default": "#F5F1E9"
+      "type": "select",
+      "id": "ground",
+      "label": "Background",
+      "info": "Products stay on a light ground per brand guidelines.",
+      "options": [
+        { "value": "chalk", "label": "Chalk (light)" },
+        { "value": "bone", "label": "Bone (light)" }
+      ],
+      "default": "chalk"
     }
   ],
   "presets": [
