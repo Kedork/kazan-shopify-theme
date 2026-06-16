@@ -5,8 +5,10 @@
 <section class="cart-page section-padding">
   <div class="page-width">
     <div class="cart-page__header">
-      <p class="eyebrow">Shopping</p>
-      <h1>Your Cart</h1>
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
+      <h1>{{ section.settings.heading }}</h1>
     </div>
 
     {%- if cart.item_count > 0 -%}
@@ -50,14 +52,14 @@
           </div>
           <button type="submit" name="checkout" class="btn btn--primary btn--full">Checkout</button>
           <div class="text-center mt-1">
-            <a href="/collections/all" style="font-size: 0.8125rem;">Continue Shopping</a>
+            <a href="{{ section.settings.empty_button_url | default: routes.all_products_collection_url }}" style="font-size: 0.8125rem;">{{ section.settings.continue_label }}</a>
           </div>
         </div>
       </form>
     {%- else -%}
       <div class="cart-empty">
-        <p class="body-large">Your cart is empty.</p>
-        <a href="/collections/all" class="btn btn--secondary">Browse Work</a>
+        <p class="body-large">{{ section.settings.empty_text }}</p>
+        <a href="{{ section.settings.empty_button_url | default: routes.all_products_collection_url }}" class="btn btn--secondary">{{ section.settings.empty_button_label }}</a>
       </div>
     {%- endif -%}
   </div>
@@ -65,6 +67,48 @@
 
 {% schema %}
 {
-  "name": "Cart"
+  "name": "Cart",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow label",
+      "default": "Shopping"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Your Cart"
+    },
+    {
+      "type": "text",
+      "id": "continue_label",
+      "label": "Continue-shopping link label",
+      "default": "Continue Shopping"
+    },
+    {
+      "type": "header",
+      "content": "Empty cart"
+    },
+    {
+      "type": "text",
+      "id": "empty_text",
+      "label": "Empty-cart message",
+      "default": "Your cart is empty."
+    },
+    {
+      "type": "text",
+      "id": "empty_button_label",
+      "label": "Empty-cart button label",
+      "default": "Browse Work"
+    },
+    {
+      "type": "url",
+      "id": "empty_button_url",
+      "label": "Shop link",
+      "info": "Used by the empty-cart button and the continue-shopping link. Defaults to all products."
+    }
+  ]
 }
 {% endschema %}

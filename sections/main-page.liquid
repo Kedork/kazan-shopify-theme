@@ -1,12 +1,22 @@
 {%- comment -%}
   Kazan Studio — Main Page Section
-  Generic page template (About, etc.)
+  Generic page template (About, etc.). Body copy comes from the page's
+  content in Shopify admin; eyebrow and width are editor-controlled.
 {%- endcomment -%}
+
+{%- if section.settings.width == 'wide' -%}
+  {%- assign content_max = '1000px' -%}
+{%- else -%}
+  {%- assign content_max = '800px' -%}
+{%- endif -%}
 
 <section class="section-padding" style="padding-top: 160px;">
   <div class="page-width">
-    <div style="max-width: 800px; margin: 0 auto;">
-      <h1 style="margin-bottom: 2rem;">{{ page.title }}</h1>
+    <div style="max-width: {{ content_max }}; margin: 0 auto;">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
+      <h1 style="margin-bottom: 2rem;{% if section.settings.eyebrow != blank %} margin-top: 0.5rem;{% endif %}">{{ page.title }}</h1>
       <div class="body-large">{{ page.content }}</div>
     </div>
   </div>
@@ -14,6 +24,24 @@
 
 {% schema %}
 {
-  "name": "Page content"
+  "name": "Page content",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow label",
+      "info": "Optional small label above the title."
+    },
+    {
+      "type": "select",
+      "id": "width",
+      "label": "Content width",
+      "options": [
+        { "value": "narrow", "label": "Narrow" },
+        { "value": "wide", "label": "Wide" }
+      ],
+      "default": "narrow"
+    }
+  ]
 }
 {% endschema %}

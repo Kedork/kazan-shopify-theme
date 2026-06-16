@@ -11,6 +11,87 @@
   "sections": {
     "main": {
       "type": "page-faq",
+      "blocks": {
+        "cat_pieces": {
+          "type": "category",
+          "settings": {
+            "heading": "The Pieces"
+          }
+        },
+        "q_watertight": {
+          "type": "question",
+          "settings": {
+            "question": "Are decorative pieces watertight?",
+            "answer": "<p>Yes. All decorative forms — vases, sculptural vessels, and totem pieces — are glazed watertight on the interior. They hold water and are suitable for fresh flowers.</p>"
+          }
+        },
+        "q_foodsafe": {
+          "type": "question",
+          "settings": {
+            "question": "Are functional pieces food-safe?",
+            "answer": "<p>Yes. Bowls, cups, sake sets, and other functional pieces are made with food-safe glazes and fired to food-safe temperatures. They are safe for food and drink.</p>"
+          }
+        },
+        "cat_shipping": {
+          "type": "category",
+          "settings": {
+            "heading": "Shipping & Delivery"
+          }
+        },
+        "q_freeship": {
+          "type": "question",
+          "settings": {
+            "question": "Do you offer free shipping?",
+            "answer": "<p>Free shipping on all orders $500 and above. Orders below $500 are charged at a flat rate calculated at checkout.</p>"
+          }
+        },
+        "q_localdelivery": {
+          "type": "question",
+          "settings": {
+            "question": "Is local delivery available?",
+            "answer": "<p>Yes. Local delivery is available within 50 miles of Studio City, CA. <a href=\"/pages/contact\">Get in touch</a> to arrange.</p>"
+          }
+        },
+        "cat_commission": {
+          "type": "category",
+          "settings": {
+            "heading": "Commissioning"
+          }
+        },
+        "q_commissionsold": {
+          "type": "question",
+          "settings": {
+            "question": "Can I commission a piece that has already sold?",
+            "answer": "<p>Yes. Any sold piece can be commissioned — a new piece built in the same form, technique, and glaze. Clay and fire make each piece its own, so exact replication isn't possible, but the character of the work carries through. Visit the sold piece's page and use the \"Commission This Piece\" button to begin.</p>"
+          }
+        },
+        "q_commissionprocess": {
+          "type": "question",
+          "settings": {
+            "question": "How does the commission process work?",
+            "answer": "<p>A 50% deposit is required to begin work. Once your request is received, you'll get a secure payment invoice by email. Work begins when the deposit clears. The piece is typically ready in 2–4 weeks. The remaining balance is due before shipping, at which point you'll also confirm your shipping address.</p>"
+          }
+        },
+        "q_commissionnew": {
+          "type": "question",
+          "settings": {
+            "question": "Can I commission an entirely new piece?",
+            "answer": "<p>Yes. For custom commissions not based on an existing piece, <a href=\"/pages/contact\">get in touch</a> directly to discuss form, size, glaze, and timeline.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "cat_pieces",
+        "q_watertight",
+        "q_foodsafe",
+        "cat_shipping",
+        "q_freeship",
+        "q_localdelivery",
+        "cat_commission",
+        "q_commissionsold",
+        "q_commissionprocess",
+        "q_commissionnew"
+      ],
       "settings": {}
     }
   },
