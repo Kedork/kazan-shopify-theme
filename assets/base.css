@@ -1432,10 +1432,7 @@ p:last-child {
 }
 
 /* --- Related Products --- */
-.related-products {
-  background-color: var(--sand);
-}
-
+/* No background: stays on the page's Chalk ground for one continuous paper. */
 .related-products__header {
   text-align: left;
   margin-bottom: 60px;
