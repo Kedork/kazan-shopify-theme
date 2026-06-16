@@ -59,8 +59,8 @@
         "col2"
       ],
       "settings": {
-        "eyebrow": "",
-        "heading": "Collections",
+        "eyebrow": "Collections",
+        "heading": "",
         "columns": "3",
         "bg_color": "#1e3cae"
       }
