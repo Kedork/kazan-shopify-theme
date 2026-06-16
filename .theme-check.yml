@@ -1,0 +1,7 @@
+# Theme Check — https://shopify.dev/docs/storefronts/themes/tools/theme-check
+# Run locally: `shopify theme check`   (CI runs it on every push — see .github/workflows/theme-check.yml)
+#
+# gift_card.liquid is Shopify's stock boilerplate (parser-blocking vendor scripts,
+# missing image dimensions) — not code we maintain — so it's excluded from linting.
+ignore:
+  - templates/gift_card.liquid

@@ -20,6 +20,8 @@
                 <img
                   src="{{ item.image | image_url: width: 200 }}"
                   alt="{{ item.title | escape }}"
+                  width="{{ item.image.width }}"
+                  height="{{ item.image.height }}"
                   loading="lazy"
                 >
               {%- endif -%}

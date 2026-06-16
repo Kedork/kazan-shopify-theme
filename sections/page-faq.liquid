@@ -1,7 +1,10 @@
+{% # theme-check-disable UnclosedHTMLElement %}
 {%- comment -%}
   Kazan Studio — The Details / FAQ Page
   Block-driven: each category heading and each question is an editor block,
   so content is fully editable in the theme customizer (no code edits).
+  UnclosedHTMLElement is disabled: the accordion groups open/close <div>s
+  across Liquid conditionals (valid at runtime; static analysis can't match them).
 {%- endcomment -%}
 
 <section class="faq-page section-padding">

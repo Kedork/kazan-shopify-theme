@@ -28,6 +28,8 @@
               src="{{ product.featured_image | image_url: width: 1200 }}"
               alt="{{ product.featured_image.alt | escape | default: product.title }}"
               id="main-product-image"
+              width="{{ product.featured_image.width }}"
+              height="{{ product.featured_image.height }}"
               loading="eager"
             >
           {%- endif -%}
@@ -46,6 +48,8 @@
                 <img
                   src="{{ image | image_url: width: 200 }}"
                   alt="{{ image.alt | escape | default: product.title }}"
+                  width="{{ image.width }}"
+                  height="{{ image.height }}"
                   loading="lazy"
                 >
               </button>
