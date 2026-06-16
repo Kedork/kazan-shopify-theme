@@ -4,7 +4,7 @@
 
   Status badge (§08) — one per tile, top-left:
     New (coral)      → available + tag 'new'
-    Edition (butter) → available + tag 'edition'
+    Edition (butter) → available + custom.edition metafield filled
     Sold (ink)       → unavailable + tag 'no-commission'
     Commission (line)→ unavailable + commissionable
 {%- endcomment -%}
@@ -16,7 +16,7 @@
     if product.tags contains 'new'
       assign badge_label = 'New'
       assign badge_mod = 'new'
-    elsif product.tags contains 'edition'
+    elsif product.metafields.custom.edition.value != blank
       assign badge_label = 'Edition'
       assign badge_mod = 'edition'
     endif
