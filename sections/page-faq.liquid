@@ -29,10 +29,10 @@
               <div class="faq-section"><div class="faq-items">
               {%- assign group_open = true -%}
             {%- endunless -%}
-            <div class="faq-item" {{ block.shopify_attributes }}>
-              <h3 class="faq-item__question">{{ block.settings.question }}</h3>
+            <details class="faq-item" {{ block.shopify_attributes }}>
+              <summary class="faq-item__question">{{ block.settings.question }}</summary>
               <div class="faq-item__answer">{{ block.settings.answer }}</div>
-            </div>
+            </details>
         {%- endcase -%}
       {%- endfor -%}
       {%- if group_open -%}</div></div>{%- endif -%}

@@ -249,7 +249,7 @@ p:last-child {
 
 .btn--primary {
   background-color: var(--charcoal);
-  color: var(--warm-white);
+  color: var(--sand);
 }
 
 .btn--primary:hover {
@@ -284,6 +284,26 @@ p:last-child {
   width: 100%;
 }
 
+/* Tertiary / link — Coral underline, for low-stakes navigation */
+.btn--link {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+  padding: 0;
+  background: none;
+  border: none;
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.btn--link:hover {
+  opacity: 0.7;
+}
+
 /* --- Forms --- */
 .form-field {
   margin-bottom: 1.5rem;
@@ -309,7 +329,7 @@ p:last-child {
   font-size: 0.9375rem;
   font-weight: 400;
   color: var(--charcoal);
-  background-color: var(--warm-white);
+  background-color: transparent;
   border: 1px solid var(--sand);
   transition: border-color 0.3s ease;
   appearance: none;
@@ -645,20 +665,19 @@ p:last-child {
   position: absolute;
   top: 12px;
   left: 12px;
-  background-color: var(--accent);
-  color: var(--warm-white);
   font-family: var(--font-heading);
   font-size: 0.5625rem;
-  font-weight: 400;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.16em;
   padding: 6px 12px;
-  transition: opacity 0.3s ease;
 }
 
-.product-card:hover .product-card__badge {
-  opacity: 0.75;
-}
+/* §08 status badges — flat fills, no radius, one per tile */
+.product-card__badge--new        { background-color: var(--accent);   color: var(--warm-white); }
+.product-card__badge--edition    { background-color: var(--clay);     color: var(--charcoal); }
+.product-card__badge--sold       { background-color: var(--charcoal); color: var(--sand); }
+.product-card__badge--commission { background-color: transparent;     color: var(--charcoal); border: 1px solid var(--charcoal); }
 
 .product-card__title {
   font-family: var(--font-heading);
@@ -673,17 +692,14 @@ p:last-child {
 .product-card__price {
   font-family: var(--font-body);
   font-size: 0.875rem;
-  font-weight: 400;
+  font-weight: 600;
   color: var(--accent);
 }
 
-.product-card__sold {
-  font-family: var(--font-heading);
-  font-size: 0.5625rem;
-  font-weight: 400;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: var(--accent);
+/* Sold pieces keep a struck-through price to signal value (§08) */
+.product-card__price--sold {
+  text-decoration: line-through;
+  opacity: 0.5;
 }
 
 /* --- Collections Index Page --- */
@@ -911,9 +927,9 @@ p:last-child {
 
 .newsletter__form .form-input {
   flex: 1;
-  background-color: var(--charcoal);
-  border: 1px solid var(--charcoal);
-  color: var(--warm-white);
+  background-color: transparent;
+  border: 1px solid var(--sand);
+  color: var(--sand);
 }
 
 .newsletter__form .form-input::placeholder {
@@ -1020,13 +1036,14 @@ p:last-child {
 .product-page__price {
   font-family: var(--font-body);
   font-size: 1.25rem;
-  font-weight: 400;
+  font-weight: 600;
   color: var(--accent);
   margin-bottom: 2rem;
 }
 
 .product-page__price--sold {
-  color: var(--accent);
+  text-decoration: line-through;
+  opacity: 0.5;
 }
 
 .product-page__description {
@@ -1160,20 +1177,47 @@ p:last-child {
 .faq-items {
   display: flex;
   flex-direction: column;
-  gap: 2.5rem;
+}
+
+/* Accordion — hairline dividers, Coral serif +/- toggle (§08) */
+.faq-item {
+  border-top: 1px solid var(--sand);
 }
 
 .faq-item__question {
-  font-family: var(--font-heading);
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
+  list-style: none;
+  cursor: pointer;
+  position: relative;
+  padding: 1.5rem 2.5rem 1.5rem 0;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.5;
   color: var(--charcoal);
-  margin-bottom: 0.875rem;
+}
+
+.faq-item__question::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item__question::after {
+  content: '+';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--accent);
+}
+
+.faq-item[open] .faq-item__question::after {
+  content: '\2212';
 }
 
 .faq-item__answer {
+  padding: 0 2.5rem 1.75rem 0;
   font-family: var(--font-body);
   font-size: 0.9375rem;
   font-weight: 400;

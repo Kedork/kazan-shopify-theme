@@ -30,7 +30,7 @@
                 <p class="caption mt-1">{{ item.variant.title }}</p>
               {%- endif -%}
             </div>
-            <span class="cart-item__price">{{ item.final_line_price | money }}</span>
+            <span class="cart-item__price">{{ item.final_line_price | money_without_trailing_zeros }}</span>
             <a href="{{ routes.cart_change_url }}?id={{ item.key }}&quantity=0" class="cart-item__remove" aria-label="Remove {{ item.title }}">
               Remove
             </a>
@@ -40,7 +40,7 @@
         <div class="cart-totals">
           <div class="cart-totals__row">
             <span class="cart-totals__label">Subtotal</span>
-            <span class="cart-totals__value">{{ cart.total_price | money }}</span>
+            <span class="cart-totals__value">{{ cart.total_price | money_without_trailing_zeros }}</span>
           </div>
           <div class="cart-totals__row">
             <span class="cart-totals__label">Shipping</span>
@@ -48,7 +48,7 @@
           </div>
           <div class="cart-totals__row cart-totals__row--total">
             <span class="cart-totals__label">Total</span>
-            <span class="cart-totals__value" style="font-weight: 400;">{{ cart.total_price | money }}</span>
+            <span class="cart-totals__value" style="font-weight: 400;">{{ cart.total_price | money_without_trailing_zeros }}</span>
           </div>
           <button type="submit" name="checkout" class="btn btn--primary btn--full">Checkout</button>
           <div class="text-center mt-1">

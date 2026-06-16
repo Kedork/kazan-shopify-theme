@@ -1,7 +1,35 @@
 {%- comment -%}
   Product Card Snippet
   Usage: {% render 'product-card', product: product %}
+
+  Status badge (§08) — one per tile, top-left:
+    New (coral)      → available + tag 'new'
+    Edition (butter) → available + tag 'edition'
+    Sold (ink)       → unavailable + tag 'no-commission'
+    Commission (line)→ unavailable + commissionable
 {%- endcomment -%}
+
+{%- liquid
+  assign badge_label = ''
+  assign badge_mod = ''
+  if product.available
+    if product.tags contains 'new'
+      assign badge_label = 'New'
+      assign badge_mod = 'new'
+    elsif product.tags contains 'edition'
+      assign badge_label = 'Edition'
+      assign badge_mod = 'edition'
+    endif
+  else
+    if product.tags contains 'no-commission'
+      assign badge_label = 'Sold'
+      assign badge_mod = 'sold'
+    else
+      assign badge_label = 'Commission'
+      assign badge_mod = 'commission'
+    endif
+  endif
+-%}
 
 <a href="{{ product.url }}" class="product-card">
   <div class="product-card__image">
@@ -14,16 +42,10 @@
         loading="lazy"
       >
     {%- endif -%}
-    {%- unless product.available -%}
-      {%- unless product.tags contains 'no-commission' -%}
-        <span class="product-card__badge">Commission</span>
-      {%- endunless -%}
-    {%- endunless -%}
+    {%- if badge_label != blank -%}
+      <span class="product-card__badge product-card__badge--{{ badge_mod }}">{{ badge_label }}</span>
+    {%- endif -%}
   </div>
   <h3 class="product-card__title">{{ product.title }}</h3>
-  {%- if product.available -%}
-    <span class="product-card__price">{{ product.price | money }}</span>
-  {%- else -%}
-    <span class="product-card__sold">{{ product.price | money }} — Sold</span>
-  {%- endif -%}
+  <span class="product-card__price{% unless product.available %} product-card__price--sold{% endunless %}">{{ product.price | money_without_trailing_zeros }}</span>
 </a>

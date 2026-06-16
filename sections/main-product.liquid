@@ -59,9 +59,9 @@
         <h1 class="product-page__title">{{ product.title }}</h1>
 
         {%- if product.available -%}
-          <p class="product-page__price">{{ product.price | money }}</p>
+          <p class="product-page__price">{{ product.price | money_without_trailing_zeros }}</p>
         {%- else -%}
-          <p class="product-page__price product-page__price--sold">{{ product.price | money }} — Sold</p>
+          <p class="product-page__price product-page__price--sold">{{ product.price | money_without_trailing_zeros }}</p>
         {%- endif -%}
 
         {%- if product.description != blank -%}
@@ -90,7 +90,7 @@
                 <div class="commission-panel__details">
                   <div class="commission-detail">
                     <span class="commission-detail__label">Deposit</span>
-                    <span class="commission-detail__value">{{ deposit | money }} (50% upfront)</span>
+                    <span class="commission-detail__value">{{ deposit | money_without_trailing_zeros }} (50% upfront)</span>
                   </div>
                   <div class="commission-detail">
                     <span class="commission-detail__label">Timeline</span>
@@ -98,7 +98,7 @@
                   </div>
                   <div class="commission-detail">
                     <span class="commission-detail__label">Balance</span>
-                    <span class="commission-detail__value">{{ deposit | money }} due before shipping</span>
+                    <span class="commission-detail__value">{{ deposit | money_without_trailing_zeros }} due before shipping</span>
                   </div>
                 </div>
                 <p class="commission-panel__note">Once your request is received, you'll be sent a secure payment invoice for the deposit. Work begins when payment clears.</p>
@@ -117,7 +117,7 @@
                     </div>
                     <div class="form-field">
                       <label for="commission-message" class="form-label">Message</label>
-                      <textarea id="commission-message" name="contact[body]" class="form-textarea">I'd like to commission a piece similar to {{ product.title | escape }}. I understand a deposit of {{ deposit | money }} is required to begin, with the remaining {{ deposit | money }} due before shipping.</textarea>
+                      <textarea id="commission-message" name="contact[body]" class="form-textarea">I'd like to commission a piece similar to {{ product.title | escape }}. I understand a deposit of {{ deposit | money_without_trailing_zeros }} is required to begin, with the remaining {{ deposit | money_without_trailing_zeros }} due before shipping.</textarea>
                     </div>
                     <button type="submit" class="btn btn--primary btn--full">Send Commission Request</button>
                   {%- endif -%}
