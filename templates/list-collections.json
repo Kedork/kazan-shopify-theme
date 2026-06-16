@@ -12,7 +12,45 @@
     "main": {
       "type": "list-collections",
       "settings": {}
+    },
+    "collection_list_tJCrNG": {
+      "type": "collection-list",
+      "blocks": {
+        "collection_6p9ikC": {
+          "type": "collection",
+          "settings": {
+            "collection": "quest-to-purple"
+          }
+        },
+        "collection_qpwBAi": {
+          "type": "collection",
+          "settings": {
+            "collection": "objects"
+          }
+        },
+        "collection_LzWYCP": {
+          "type": "collection",
+          "settings": {
+            "collection": "vessels"
+          }
+        }
+      },
+      "block_order": [
+        "collection_6p9ikC",
+        "collection_qpwBAi",
+        "collection_LzWYCP"
+      ],
+      "name": "Collection list",
+      "settings": {
+        "eyebrow": "Explore",
+        "heading": "Collections",
+        "columns": "3",
+        "ground": "cobalt"
+      }
     }
   },
-  "order": ["main"]
+  "order": [
+    "main",
+    "collection_list_tJCrNG"
+  ]
 }
