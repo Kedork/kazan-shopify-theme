@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -41,20 +50,23 @@
         "img-colorway-a": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/IMG_2442.jpg",
             "full_width": false,
-            "caption": "Assembly 01 — glaze fired"
+            "caption": "Assembly 01 — Orange/Blue"
           }
         },
         "img-colorway-b": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/IMG_2446.jpg",
             "full_width": false,
-            "caption": "Assembly 01 — underglaze"
+            "caption": "Assembly 01 — Blue/Yellow"
           }
         },
         "img-macro": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/IMG_2450.jpg",
             "full_width": true,
             "caption": "Glaze, detail"
           }
@@ -62,6 +74,7 @@
         "img-structure": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/IMG_2441.jpg",
             "full_width": false,
             "caption": "Reverse — the lattice"
           }
@@ -69,8 +82,9 @@
         "img-profile": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/instagram-image_e5632daa-aef8-4f16-b225-cd430e9eaa7d.jpg",
             "full_width": false,
-            "caption": "Profile"
+            "caption": "Speckle Detail"
           }
         }
       },
@@ -87,16 +101,18 @@
         "img-profile"
       ],
       "settings": {
+        "img_hero": "shopify://shop_images/IMG_2448.jpg",
         "hero_height": 70,
         "hero_focus": "center",
         "eyebrow": "2026 — Stoneware",
         "heading": "Assembly",
-        "body": "<p>Assembly begins with one form repeated. Each sphere is pressed, hollowed and left to stiffen, then scored, slipped and joined to the next — a grid built up row by row until it stands on its own.</p><p>The face arrives late. Nothing about a stack of spheres suggests one, until the glasses and the nose go on and then it is impossible to see anything else. That turn is the piece.</p><p>The two Assembly 01 colorways came off the same forms and the same bench. One went into the glaze fire and came back running with orange; the other stayed in underglaze, speckled and matte. Precision meets unpredictability in clay — the form is decided, the surface is not.</p>",
+        "body": "<p>Assembly begins with one form repeated. Each form is pressed, hollowed and left to stiffen, then scored, slipped and joined to the next — a grid built up row by row until it stands on its own.</p><p>The face arrives later. Nothing about a stack of spheres suggests one, until the facial features go on and then it is impossible to see anything else. That turn is the piece.</p><p>The two Assembly 01 colorways came off the same forms and the same bench. One went into the glaze fire and came back running with orange; the other stayed in underglaze, speckled and matte. Precision meets unpredictability in clay — the form is decided, the surface is not.</p>",
         "intro_ground": "chalk",
         "gallery_ratio": "1 / 1",
         "gallery_ground": "chalk",
         "process_eyebrow": "Process",
         "process_ground": "chalk",
+        "collection": "",
         "pieces_eyebrow": "Available",
         "pieces_heading": "Pieces in this series",
         "products_to_show": 6,
