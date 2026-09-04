@@ -1,0 +1,112 @@
+{
+  "sections": {
+    "main": {
+      "type": "series",
+      "blocks": {
+        "spec-year": {
+          "type": "spec",
+          "settings": {
+            "label": "Year",
+            "value": "2026"
+          }
+        },
+        "spec-material": {
+          "type": "spec",
+          "settings": {
+            "label": "Material",
+            "value": "Stoneware"
+          }
+        },
+        "spec-technique": {
+          "type": "spec",
+          "settings": {
+            "label": "Technique",
+            "value": "Modular, hand-built"
+          }
+        },
+        "spec-surface": {
+          "type": "spec",
+          "settings": {
+            "label": "Surface",
+            "value": "Glaze and underglaze"
+          }
+        },
+        "spec-series": {
+          "type": "spec",
+          "settings": {
+            "label": "Series",
+            "value": "Ongoing"
+          }
+        },
+        "img-colorway-a": {
+          "type": "image",
+          "settings": {
+            "full_width": false,
+            "caption": "Assembly 01 — glaze fired"
+          }
+        },
+        "img-colorway-b": {
+          "type": "image",
+          "settings": {
+            "full_width": false,
+            "caption": "Assembly 01 — underglaze"
+          }
+        },
+        "img-macro": {
+          "type": "image",
+          "settings": {
+            "full_width": true,
+            "caption": "Glaze, detail"
+          }
+        },
+        "img-structure": {
+          "type": "image",
+          "settings": {
+            "full_width": false,
+            "caption": "Reverse — the lattice"
+          }
+        },
+        "img-profile": {
+          "type": "image",
+          "settings": {
+            "full_width": false,
+            "caption": "Profile"
+          }
+        }
+      },
+      "block_order": [
+        "spec-year",
+        "spec-material",
+        "spec-technique",
+        "spec-surface",
+        "spec-series",
+        "img-colorway-a",
+        "img-colorway-b",
+        "img-macro",
+        "img-structure",
+        "img-profile"
+      ],
+      "settings": {
+        "hero_height": 70,
+        "hero_focus": "center",
+        "eyebrow": "2026 — Stoneware",
+        "heading": "Assembly",
+        "body": "<p>Assembly begins with one form repeated. Each sphere is pressed, hollowed and left to stiffen, then scored, slipped and joined to the next — a grid built up row by row until it stands on its own.</p><p>The face arrives late. Nothing about a stack of spheres suggests one, until the glasses and the nose go on and then it is impossible to see anything else. That turn is the piece.</p><p>The two Assembly 01 colorways came off the same forms and the same bench. One went into the glaze fire and came back running with orange; the other stayed in underglaze, speckled and matte. Precision meets unpredictability in clay — the form is decided, the surface is not.</p>",
+        "intro_ground": "chalk",
+        "gallery_ratio": "1 / 1",
+        "gallery_ground": "chalk",
+        "process_eyebrow": "Process",
+        "process_ground": "chalk",
+        "pieces_eyebrow": "Available",
+        "pieces_heading": "Pieces in this series",
+        "products_to_show": 6,
+        "columns": "3",
+        "show_view_all": true,
+        "pieces_ground": "bone"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

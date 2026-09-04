@@ -1,0 +1,539 @@
+{%- comment -%}
+  Kazan Studio — Series Page
+
+  A reusable page section for an ongoing, numbered body of work (Assembly, and
+  whatever follows it). Deliberately NOT a copy of `desert-totem.liquid`:
+
+    - Desert Totem is one finished, not-for-sale piece, so its copy and images
+      are hardcoded and it closes on a mailto.
+    - A series grows. So everything here is editor-driven — copy in settings,
+      gallery images and spec rows as blocks — and it closes on a collection of
+      real, buyable pieces instead of an email link.
+
+  Images use `image_picker` (not pasted CDN URLs) so Shopify serves srcset and
+  the width/height attributes come out of the filter.
+{%- endcomment -%}
+
+{%- liquid
+  assign has_hero = false
+  if section.settings.img_hero != blank
+    assign has_hero = true
+  endif
+
+  assign spec_count = 0
+  assign image_count = 0
+  assign video_count = 0
+  for block in section.blocks
+    case block.type
+      when 'spec'
+        assign spec_count = spec_count | plus: 1
+      when 'image'
+        assign image_count = image_count | plus: 1
+      when 'video'
+        assign video_count = video_count | plus: 1
+    endcase
+  endfor
+
+  assign collection = section.settings.collection
+-%}
+
+<style>
+  #shopify-section-{{ section.id }} .series-hero {
+    width: 100%;
+    height: {{ section.settings.hero_height }}vh;
+    overflow: hidden;
+    background-color: var(--cobalt);
+  }
+  #shopify-section-{{ section.id }} .series-hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center {{ section.settings.hero_focus }};
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .series-intro__grid {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 80px;
+    align-items: start;
+  }
+  #shopify-section-{{ section.id }} .series-intro h1 {
+    margin-bottom: 2rem;
+  }
+  #shopify-section-{{ section.id }} .series-intro__body p {
+    font-size: 1.125rem;
+    font-weight: 400;
+    line-height: 2;
+    margin-bottom: 1.25em;
+  }
+  #shopify-section-{{ section.id }} .series-intro__body p:last-child {
+    margin-bottom: 0;
+  }
+
+  #shopify-section-{{ section.id }} .series-specs {
+    border-top: 1px solid currentColor;
+    padding-top: 2rem;
+  }
+  #shopify-section-{{ section.id }} .series-spec {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1.5rem;
+    padding: 0.875rem 0;
+    border-bottom: 1px solid currentColor;
+  }
+  #shopify-section-{{ section.id }} .series-spec__label {
+    font-family: var(--font-heading);
+    font-size: 0.625rem;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    white-space: nowrap;
+  }
+  #shopify-section-{{ section.id }} .series-spec__value {
+    font-weight: 400;
+    font-size: 0.9375rem;
+    text-align: right;
+  }
+
+  /* Gallery — two tracks; a block set to "Full width" spans both. */
+  #shopify-section-{{ section.id }} .series-gallery__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  #shopify-section-{{ section.id }} .series-gallery__item {
+    overflow: hidden;
+    background-color: var(--sand);
+    margin: 0;
+  }
+  #shopify-section-{{ section.id }} .series-gallery__item--full {
+    grid-column: 1 / -1;
+  }
+  #shopify-section-{{ section.id }} .series-gallery__item img {
+    width: 100%;
+    aspect-ratio: {{ section.settings.gallery_ratio }};
+    object-fit: cover;
+    display: block;
+  }
+  #shopify-section-{{ section.id }} .series-gallery__caption {
+    font-family: var(--font-heading);
+    font-size: 0.625rem;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    padding-top: 0.875rem;
+    display: block;
+  }
+
+  #shopify-section-{{ section.id }} .series-process__header {
+    margin-bottom: 3rem;
+  }
+  #shopify-section-{{ section.id }} .series-process__grid {
+    display: grid;
+    grid-template-columns: repeat({{ video_count | at_least: 1 | at_most: 3 }}, 1fr);
+    gap: 24px;
+    align-items: start;
+  }
+  #shopify-section-{{ section.id }} .series-video {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  #shopify-section-{{ section.id }} .series-video video {
+    width: 100%;
+    aspect-ratio: 9 / 16;
+    object-fit: cover;
+    background-color: var(--sand);
+    display: block;
+  }
+  #shopify-section-{{ section.id }} .series-video__label {
+    font-family: var(--font-heading);
+    font-size: 0.625rem;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+  }
+
+  #shopify-section-{{ section.id }} .series-pieces__header {
+    margin-bottom: 3rem;
+  }
+  #shopify-section-{{ section.id }} .series-pieces__footer {
+    margin-top: 48px;
+  }
+
+  @media screen and (max-width: 900px) {
+    #shopify-section-{{ section.id }} .series-intro__grid {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+    #shopify-section-{{ section.id }} .series-process__grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+    #shopify-section-{{ section.id }} .series-video video {
+      aspect-ratio: 16 / 9;
+    }
+  }
+  @media screen and (max-width: 600px) {
+    #shopify-section-{{ section.id }} .series-hero {
+      height: 55vh;
+    }
+    #shopify-section-{{ section.id }} .series-gallery__grid {
+      grid-template-columns: 1fr;
+    }
+    #shopify-section-{{ section.id }} .series-gallery__item--full {
+      grid-column: auto;
+    }
+  }
+</style>
+
+{%- comment -%} Hero {%- endcomment -%}
+{%- if has_hero -%}
+  <div class="series-hero">
+    {{
+      section.settings.img_hero
+      | image_url: width: 2400
+      | image_tag:
+        loading: 'eager',
+        fetchpriority: 'high',
+        sizes: '100vw',
+        widths: '600, 900, 1200, 1600, 2000, 2400',
+        alt: section.settings.img_hero.alt | default: section.settings.heading
+    }}
+  </div>
+{%- endif -%}
+
+{%- comment -%} Intro + spec table {%- endcomment -%}
+<section class="series-intro section-padding scheme-{{ section.settings.intro_ground }}">
+  <div class="page-width">
+    <div class="series-intro__grid">
+
+      <div class="series-intro__copy">
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+        {%- endif -%}
+        <h1>{{ section.settings.heading | default: page.title }}</h1>
+        {%- if section.settings.body != blank -%}
+          <div class="series-intro__body">{{ section.settings.body }}</div>
+        {%- endif -%}
+      </div>
+
+      {%- if spec_count > 0 -%}
+        <dl class="series-specs">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'spec' -%}
+              <div class="series-spec" {{ block.shopify_attributes }}>
+                <dt class="series-spec__label">{{ block.settings.label }}</dt>
+                <dd class="series-spec__value">{{ block.settings.value }}</dd>
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+        </dl>
+      {%- endif -%}
+
+    </div>
+  </div>
+</section>
+
+{%- comment -%} Gallery {%- endcomment -%}
+{%- if image_count > 0 -%}
+  <section class="series-gallery scheme-{{ section.settings.gallery_ground }}" style="padding-bottom: 120px;">
+    <div class="page-width">
+      <div class="series-gallery__grid">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'image' -%}
+            <figure
+              class="series-gallery__item{% if block.settings.full_width %} series-gallery__item--full{% endif %}"
+              {{ block.shopify_attributes }}
+            >
+              {%- if block.settings.image != blank -%}
+                {%- liquid
+                  assign img_sizes = '(max-width: 600px) 100vw, 50vw'
+                  if block.settings.full_width
+                    assign img_sizes = '100vw'
+                  endif
+                -%}
+                {{
+                  block.settings.image
+                  | image_url: width: 1600
+                  | image_tag:
+                    loading: 'lazy',
+                    sizes: img_sizes,
+                    widths: '400, 600, 800, 1200, 1600',
+                    alt: block.settings.image.alt | default: block.settings.caption
+                }}
+              {%- endif -%}
+              {%- if block.settings.caption != blank -%}
+                <figcaption class="series-gallery__caption">{{ block.settings.caption }}</figcaption>
+              {%- endif -%}
+            </figure>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </section>
+{%- endif -%}
+
+{%- comment -%} Process videos {%- endcomment -%}
+{%- if video_count > 0 -%}
+  <section class="series-process section-padding scheme-{{ section.settings.process_ground }}">
+    <div class="page-width">
+      {%- if section.settings.process_eyebrow != blank -%}
+        <div class="series-process__header">
+          <p class="eyebrow">{{ section.settings.process_eyebrow }}</p>
+        </div>
+      {%- endif -%}
+      <div class="series-process__grid">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'video' -%}
+            <div class="series-video" {{ block.shopify_attributes }}>
+              {%- if block.settings.video != blank -%}
+                {{
+                  block.settings.video
+                  | video_tag: controls: true, playsinline: true, preload: 'metadata'
+                }}
+              {%- elsif block.settings.video_url != blank -%}
+                {% # theme-check-disable RemoteAsset %}
+                <video
+                  src="{{ block.settings.video_url }}"
+                  controls
+                  playsinline
+                  preload="metadata"
+                  aria-label="{{ block.settings.label | escape }}"
+                ></video>
+                {% # theme-check-enable RemoteAsset %}
+              {%- endif -%}
+              {%- if block.settings.label != blank -%}
+                <span class="series-video__label">{{ block.settings.label }}</span>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </section>
+{%- endif -%}
+
+{%- comment -%}
+  The pieces. This is what replaces Desert Totem's mailto CTA — a series ends in
+  work you can actually buy. Products stay on a light ground per the locked
+  brand decision (see New-Brand-Custom-Theme-Plan.md §"Locked decisions").
+{%- endcomment -%}
+{%- if collection != blank -%}
+  <section class="series-pieces section-padding scheme-{{ section.settings.pieces_ground }}">
+    <div class="page-width">
+      <div class="series-pieces__header">
+        {%- if section.settings.pieces_eyebrow != blank -%}
+          <p class="eyebrow">{{ section.settings.pieces_eyebrow }}</p>
+        {%- endif -%}
+        <h2>{{ section.settings.pieces_heading | default: collection.title }}</h2>
+      </div>
+
+      <div class="grid grid--{{ section.settings.columns }}">
+        {%- for product in collection.products limit: section.settings.products_to_show -%}
+          {% render 'product-card', product: product %}
+        {%- else -%}
+          <p>No pieces from this series are listed yet.</p>
+        {%- endfor -%}
+      </div>
+
+      {%- if section.settings.show_view_all -%}
+        <div class="series-pieces__footer">
+          <a href="{{ collection.url }}" class="btn btn--secondary">View All</a>
+        </div>
+      {%- endif -%}
+    </div>
+  </section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Series",
+  "tag": "section",
+  "settings": [
+    { "type": "header", "content": "Hero" },
+    {
+      "type": "image_picker",
+      "id": "img_hero",
+      "label": "Hero image",
+      "info": "Full-bleed. Square source images crop hard here — set the focus below."
+    },
+    {
+      "type": "range",
+      "id": "hero_height",
+      "label": "Hero height",
+      "min": 40,
+      "max": 90,
+      "step": 5,
+      "unit": "vh",
+      "default": 70
+    },
+    {
+      "type": "select",
+      "id": "hero_focus",
+      "label": "Hero crop focus",
+      "options": [
+        { "value": "top", "label": "Top" },
+        { "value": "30%", "label": "Upper third" },
+        { "value": "center", "label": "Centre" },
+        { "value": "bottom", "label": "Bottom" }
+      ],
+      "default": "center"
+    },
+
+    { "type": "header", "content": "Introduction" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "2026 — Stoneware" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Assembly" },
+    {
+      "type": "richtext",
+      "id": "body",
+      "label": "Body copy",
+      "info": "Two to four short paragraphs."
+    },
+    {
+      "type": "select",
+      "id": "intro_ground",
+      "label": "Introduction background",
+      "options": [
+        { "value": "chalk", "label": "Chalk (light)" },
+        { "value": "bone", "label": "Bone (light)" },
+        { "value": "cobalt", "label": "Cobalt" },
+        { "value": "ink", "label": "Ink" }
+      ],
+      "default": "chalk"
+    },
+
+    { "type": "header", "content": "Gallery" },
+    {
+      "type": "select",
+      "id": "gallery_ratio",
+      "label": "Image ratio",
+      "info": "The August 2026 Assembly frames are square.",
+      "options": [
+        { "value": "1 / 1", "label": "Square" },
+        { "value": "4 / 5", "label": "Portrait 4:5" },
+        { "value": "3 / 4", "label": "Portrait 3:4" },
+        { "value": "3 / 2", "label": "Landscape 3:2" }
+      ],
+      "default": "1 / 1"
+    },
+    {
+      "type": "select",
+      "id": "gallery_ground",
+      "label": "Gallery background",
+      "options": [
+        { "value": "chalk", "label": "Chalk (light)" },
+        { "value": "bone", "label": "Bone (light)" },
+        { "value": "cobalt", "label": "Cobalt" },
+        { "value": "ink", "label": "Ink" }
+      ],
+      "default": "chalk"
+    },
+
+    { "type": "header", "content": "Process" },
+    { "type": "text", "id": "process_eyebrow", "label": "Process eyebrow", "default": "Process" },
+    {
+      "type": "select",
+      "id": "process_ground",
+      "label": "Process background",
+      "options": [
+        { "value": "chalk", "label": "Chalk (light)" },
+        { "value": "bone", "label": "Bone (light)" },
+        { "value": "cobalt", "label": "Cobalt" },
+        { "value": "ink", "label": "Ink" }
+      ],
+      "default": "chalk"
+    },
+
+    { "type": "header", "content": "The pieces" },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection",
+      "info": "Leave blank to hide this band until the series is listed."
+    },
+    { "type": "text", "id": "pieces_eyebrow", "label": "Eyebrow", "default": "Available" },
+    { "type": "text", "id": "pieces_heading", "label": "Heading", "default": "Pieces in this series" },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "label": "Pieces to show",
+      "min": 2,
+      "max": 12,
+      "step": 1,
+      "default": 6
+    },
+    {
+      "type": "select",
+      "id": "columns",
+      "label": "Columns",
+      "options": [
+        { "value": "2", "label": "2" },
+        { "value": "3", "label": "3" },
+        { "value": "4", "label": "4" }
+      ],
+      "default": "3"
+    },
+    { "type": "checkbox", "id": "show_view_all", "label": "Show 'View All' button", "default": true },
+    {
+      "type": "select",
+      "id": "pieces_ground",
+      "label": "Pieces background",
+      "info": "Products stay on a light ground per brand guidelines.",
+      "options": [
+        { "value": "chalk", "label": "Chalk (light)" },
+        { "value": "bone", "label": "Bone (light)" }
+      ],
+      "default": "bone"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "spec",
+      "name": "Spec row",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label", "default": "Year" },
+        { "type": "text", "id": "value", "label": "Value", "default": "2026" }
+      ]
+    },
+    {
+      "type": "image",
+      "name": "Gallery image",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        {
+          "type": "checkbox",
+          "id": "full_width",
+          "label": "Full width",
+          "info": "Spans both columns. Good for a macro.",
+          "default": false
+        },
+        { "type": "text", "id": "caption", "label": "Caption", "info": "Optional. Also used as the alt text fallback." }
+      ]
+    },
+    {
+      "type": "video",
+      "name": "Process video",
+      "settings": [
+        { "type": "video", "id": "video", "label": "Video" },
+        {
+          "type": "text",
+          "id": "video_url",
+          "label": "Video URL (fallback)",
+          "info": "Only used if no video is picked above. For files already uploaded to Content → Files."
+        },
+        { "type": "text", "id": "label", "label": "Label", "default": "Forming" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Series",
+      "blocks": [
+        { "type": "spec" },
+        { "type": "image" },
+        { "type": "image" }
+      ]
+    }
+  ]
+}
+{% endschema %}
