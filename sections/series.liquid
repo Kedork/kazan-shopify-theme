@@ -71,9 +71,11 @@
     margin-bottom: 0;
   }
 
+  /* No padding under the top rule: each row already brings its own 0.875rem,
+     so anything extra here breaks the rhythm and the top rule floats away
+     from the first label. */
   #shopify-section-{{ section.id }} .series-specs {
     border-top: 1px solid currentColor;
-    padding-top: 2rem;
   }
   #shopify-section-{{ section.id }} .series-spec {
     display: flex;
