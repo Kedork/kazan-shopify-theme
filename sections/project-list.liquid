@@ -112,6 +112,14 @@
           >
             <div class="project-card__image">
               {%- if block.settings.image != blank -%}
+                {%- liquid
+                  # See series.liquid: `alt: x | default: y` inside a filter's
+                  # argument list defaults image_tag's output, not the alt.
+                  assign card_alt = block.settings.image.alt
+                  if card_alt == blank
+                    assign card_alt = block.settings.title
+                  endif
+                -%}
                 {{
                   block.settings.image
                   | image_url: width: 1400
@@ -119,7 +127,7 @@
                     loading: 'lazy',
                     sizes: '(max-width: 900px) 100vw, 50vw',
                     widths: '400, 600, 800, 1000, 1400',
-                    alt: block.settings.image.alt | default: block.settings.title
+                    alt: card_alt
                 }}
               {%- endif -%}
             </div>

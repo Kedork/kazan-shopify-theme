@@ -22,6 +22,31 @@
 
   <link rel="canonical" href="{{ canonical_url }}">
 
+  {%- comment -%}
+    Open Graph / Twitter. Shopify's content_for_header already injects the
+    og:image family, so only the rest is declared here — without og:title and
+    og:description a shared link showed a picture and the bare URL.
+  {%- endcomment -%}
+  {%- liquid
+    assign og_title = page_title | default: shop.name
+    assign og_description = page_description | default: shop.description | default: shop.name
+    assign og_type = 'website'
+    case request.page_type
+      when 'product'
+        assign og_type = 'product'
+      when 'article'
+        assign og_type = 'article'
+    endcase
+  -%}
+  <meta property="og:site_name" content="{{ shop.name | escape }}">
+  <meta property="og:url" content="{{ canonical_url }}">
+  <meta property="og:title" content="{{ og_title | escape }}">
+  <meta property="og:type" content="{{ og_type }}">
+  <meta property="og:description" content="{{ og_description | escape }}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ og_title | escape }}">
+  <meta name="twitter:description" content="{{ og_description | escape }}">
+
   {%- if settings.favicon != blank -%}
     <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
   {%- endif -%}

@@ -240,6 +240,15 @@
 
 {%- comment -%} Hero {%- endcomment -%}
 {%- if has_hero -%}
+  {%- liquid
+    # Resolve the alt into a variable first. `alt: x | default: y` inside a
+    # filter's argument list applies default to image_tag's OUTPUT, not to alt,
+    # so the attribute silently vanishes when the file has no alt text set.
+    assign hero_alt = section.settings.img_hero.alt
+    if hero_alt == blank
+      assign hero_alt = section.settings.heading
+    endif
+  -%}
   <div class="series-hero">
     {{
       section.settings.img_hero
@@ -249,7 +258,7 @@
         fetchpriority: 'high',
         sizes: '100vw',
         widths: '600, 900, 1200, 1600, 2000, 2400',
-        alt: section.settings.img_hero.alt | default: section.settings.heading
+        alt: hero_alt
     }}
   </div>
 {%- endif -%}
@@ -317,6 +326,13 @@
                   if block.settings.full_width
                     assign img_sizes = '100vw'
                   endif
+                  assign img_alt = block.settings.image.alt
+                  if img_alt == blank
+                    assign img_alt = block.settings.caption
+                  endif
+                  if img_alt == blank
+                    assign img_alt = section.settings.heading
+                  endif
                 -%}
                 {{
                   block.settings.image
@@ -325,7 +341,7 @@
                     loading: 'lazy',
                     sizes: img_sizes,
                     widths: '400, 600, 800, 1200, 1600',
-                    alt: block.settings.image.alt | default: block.settings.caption
+                    alt: img_alt
                 }}
               {%- endif -%}
               {%- if block.settings.caption != blank -%}
