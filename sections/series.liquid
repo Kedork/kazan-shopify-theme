@@ -127,6 +127,32 @@
     display: block;
   }
 
+  /* Notice — a time-boxed line (a current exhibition, say). Blank it when the
+     show closes and the band disappears. */
+  #shopify-section-{{ section.id }} .series-notice {
+    padding-top: 28px;
+    padding-bottom: 28px;
+    border-top: 1px solid currentColor;
+    border-bottom: 1px solid currentColor;
+  }
+  #shopify-section-{{ section.id }} .series-notice__inner {
+    display: flex;
+    align-items: baseline;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  #shopify-section-{{ section.id }} .series-notice .eyebrow {
+    margin-bottom: 0;
+    white-space: nowrap;
+  }
+  #shopify-section-{{ section.id }} .series-notice__text {
+    font-size: 1.0625rem;
+    line-height: 1.7;
+  }
+  #shopify-section-{{ section.id }} .series-notice__text p {
+    margin-bottom: 0;
+  }
+
   /* Statement — the thesis of the series, in the brand's signature
      Instrument Serif italic. Sits after the gallery so it lands once you have
      already seen the work. */
@@ -259,6 +285,20 @@
     </div>
   </div>
 </section>
+
+{%- comment -%} Notice — current exhibition or other time-boxed line {%- endcomment -%}
+{%- if section.settings.notice != blank -%}
+  <section class="series-notice scheme-{{ section.settings.notice_ground }}">
+    <div class="page-width">
+      <div class="series-notice__inner">
+        {%- if section.settings.notice_label != blank -%}
+          <p class="eyebrow">{{ section.settings.notice_label }}</p>
+        {%- endif -%}
+        <div class="series-notice__text">{{ section.settings.notice }}</div>
+      </div>
+    </div>
+  </section>
+{%- endif -%}
 
 {%- comment -%} Gallery {%- endcomment -%}
 {%- if image_count > 0 -%}
@@ -446,6 +486,32 @@
       "type": "select",
       "id": "intro_ground",
       "label": "Introduction background",
+      "options": [
+        { "value": "chalk", "label": "Chalk (light)" },
+        { "value": "bone", "label": "Bone (light)" },
+        { "value": "cobalt", "label": "Cobalt" },
+        { "value": "ink", "label": "Ink" }
+      ],
+      "default": "chalk"
+    },
+
+    { "type": "header", "content": "Notice" },
+    {
+      "type": "text",
+      "id": "notice_label",
+      "label": "Notice label",
+      "default": "On view"
+    },
+    {
+      "type": "richtext",
+      "id": "notice",
+      "label": "Notice",
+      "info": "One line for something time-boxed, such as a current exhibition. Clear it when the show closes and the band disappears."
+    },
+    {
+      "type": "select",
+      "id": "notice_ground",
+      "label": "Notice background",
       "options": [
         { "value": "chalk", "label": "Chalk (light)" },
         { "value": "bone", "label": "Bone (light)" },

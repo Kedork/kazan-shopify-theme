@@ -122,7 +122,10 @@
         "products_to_show": 6,
         "columns": "3",
         "show_view_all": true,
-        "pieces_ground": "bone"
+        "pieces_ground": "bone",
+        "notice_label": "On view",
+        "notice": "<p><em>The Presidents&rsquo; Show</em> — American Ceramic Society, Southern California Chapter. Beato Gallery, Beatrice Wood Center for the Arts, Ojai. 26 September &ndash; 8 November 2026.</p>",
+        "notice_ground": "chalk"
       }
     }
   },
