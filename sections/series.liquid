@@ -369,7 +369,19 @@
         <h2>{{ section.settings.pieces_heading | default: collection.title }}</h2>
       </div>
 
-      <div class="grid grid--{{ section.settings.columns }}">
+      {%- liquid
+        # Never leave a dangling empty cell: a series that has two pieces
+        # listed gets a two-track grid, not three tracks with a hole in it.
+        assign shown = collection.products.size
+        if shown > section.settings.products_to_show
+          assign shown = section.settings.products_to_show
+        endif
+        assign cols = section.settings.columns | times: 1
+        if shown > 0 and shown < cols
+          assign cols = shown
+        endif
+      -%}
+      <div class="grid grid--{{ cols }}">
         {%- for product in collection.products limit: section.settings.products_to_show -%}
           {% render 'product-card', product: product %}
         {%- else -%}
