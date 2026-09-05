@@ -127,6 +127,30 @@
     display: block;
   }
 
+  /* Statement — the thesis of the series, in the brand's signature
+     Instrument Serif italic. Sits after the gallery so it lands once you have
+     already seen the work. */
+  #shopify-section-{{ section.id }} .series-statement {
+    text-align: center;
+  }
+  #shopify-section-{{ section.id }} .series-statement__line {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(1.75rem, 4.5vw, 3.25rem);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    max-width: 20ch;
+    margin: 0 auto;
+    text-wrap: balance;
+  }
+  #shopify-section-{{ section.id }} .series-statement__support {
+    font-size: 1.125rem;
+    line-height: 2;
+    max-width: 46ch;
+    margin: 2rem auto 0;
+  }
+
   #shopify-section-{{ section.id }} .series-process__header {
     margin-bottom: 3rem;
   }
@@ -271,6 +295,21 @@
           {%- endif -%}
         {%- endfor -%}
       </div>
+    </div>
+  </section>
+{%- endif -%}
+
+{%- comment -%} Statement {%- endcomment -%}
+{%- if section.settings.statement != blank -%}
+  <section class="series-statement section-padding scheme-{{ section.settings.statement_ground }}">
+    <div class="page-width">
+      {%- if section.settings.statement_eyebrow != blank -%}
+        <p class="eyebrow">{{ section.settings.statement_eyebrow }}</p>
+      {%- endif -%}
+      <p class="series-statement__line">{{ section.settings.statement }}</p>
+      {%- if section.settings.statement_support != blank -%}
+        <div class="series-statement__support">{{ section.settings.statement_support }}</div>
+      {%- endif -%}
     </div>
   </section>
 {%- endif -%}
@@ -429,6 +468,38 @@
         { "value": "ink", "label": "Ink" }
       ],
       "default": "chalk"
+    },
+
+    { "type": "header", "content": "Statement" },
+    {
+      "type": "text",
+      "id": "statement_eyebrow",
+      "label": "Statement eyebrow",
+      "default": "The idea"
+    },
+    {
+      "type": "text",
+      "id": "statement",
+      "label": "Statement",
+      "info": "One line, set large in the display italic. Leave blank to hide the band."
+    },
+    {
+      "type": "richtext",
+      "id": "statement_support",
+      "label": "Supporting copy",
+      "info": "Optional. One short paragraph under the statement."
+    },
+    {
+      "type": "select",
+      "id": "statement_ground",
+      "label": "Statement background",
+      "options": [
+        { "value": "chalk", "label": "Chalk (light)" },
+        { "value": "bone", "label": "Bone (light)" },
+        { "value": "cobalt", "label": "Cobalt" },
+        { "value": "ink", "label": "Ink" }
+      ],
+      "default": "cobalt"
     },
 
     { "type": "header", "content": "Process" },
