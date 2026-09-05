@@ -12,6 +12,12 @@
     "collection_list_tJCrNG": {
       "type": "collection-list",
       "blocks": {
+        "collection_kXq4fz": {
+          "type": "collection",
+          "settings": {
+            "collection": "assembly"
+          }
+        },
         "collection_6p9ikC": {
           "type": "collection",
           "settings": {
@@ -32,6 +38,7 @@
         }
       },
       "block_order": [
+        "collection_kXq4fz",
         "collection_6p9ikC",
         "collection_qpwBAi",
         "collection_LzWYCP"
