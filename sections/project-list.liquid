@@ -1,0 +1,203 @@
+{%- comment -%}
+  Kazan Studio — Project List
+
+  Large cards for bodies of work (Desert Totem, Assembly, whatever follows),
+  linking to their own pages rather than to collections.
+
+  This exists because neither of the nearby sections fits: `collection-list`
+  only accepts Shopify collections — commerce groupings, not series — and
+  `image-with-text` handles one subject at a time. A project needs a page
+  link, an eyebrow, a title and a line of context, shown alongside its peers.
+{%- endcomment -%}
+
+{%- liquid
+  assign columns = section.settings.columns | times: 1
+  assign card_count = section.blocks.size
+  if card_count < columns and card_count > 0
+    assign columns = card_count
+  endif
+-%}
+
+<style>
+  #shopify-section-{{ section.id }} .project-list__header {
+    margin-bottom: 3rem;
+  }
+  #shopify-section-{{ section.id }} .project-list__grid {
+    display: grid;
+    grid-template-columns: repeat({{ columns }}, 1fr);
+    gap: 40px;
+  }
+  #shopify-section-{{ section.id }} .project-card {
+    display: flex;
+    flex-direction: column;
+    color: inherit;
+  }
+  #shopify-section-{{ section.id }} .project-card:hover {
+    opacity: 1;
+  }
+  #shopify-section-{{ section.id }} .project-card__image {
+    overflow: hidden;
+    background-color: var(--sand);
+    margin-bottom: 1.5rem;
+  }
+  #shopify-section-{{ section.id }} .project-card__image img {
+    width: 100%;
+    aspect-ratio: {{ section.settings.image_ratio }};
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease;
+  }
+  #shopify-section-{{ section.id }} .project-card:hover .project-card__image img,
+  #shopify-section-{{ section.id }} .project-card:focus-visible .project-card__image img {
+    transform: scale(1.03);
+  }
+  #shopify-section-{{ section.id }} .project-card__title {
+    margin-bottom: 0.75rem;
+  }
+  #shopify-section-{{ section.id }} .project-card__text {
+    font-size: 1rem;
+    line-height: 1.8;
+    margin-bottom: 1.25rem;
+    max-width: 46ch;
+  }
+  /* The whole card is the link, so this is an affordance, not a control. */
+  #shopify-section-{{ section.id }} .project-card__cue {
+    font-family: var(--font-heading);
+    font-size: 0.625rem;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    margin-top: auto;
+  }
+  #shopify-section-{{ section.id }} .project-card__cue::after {
+    content: " →";
+  }
+
+  @media screen and (max-width: 900px) {
+    #shopify-section-{{ section.id }} .project-list__grid {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    #shopify-section-{{ section.id }} .project-card__image img {
+      transition: none;
+    }
+    #shopify-section-{{ section.id }} .project-card:hover .project-card__image img {
+      transform: none;
+    }
+  }
+</style>
+
+{%- if section.blocks.size > 0 -%}
+  <section class="project-list section-padding scheme-{{ section.settings.ground }}">
+    <div class="page-width">
+      <div class="project-list__header">
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+        {%- endif -%}
+        {%- if section.settings.heading != blank -%}
+          <h2>{{ section.settings.heading }}</h2>
+        {%- endif -%}
+      </div>
+
+      <div class="project-list__grid">
+        {%- for block in section.blocks -%}
+          <a
+            href="{{ block.settings.link | default: '#' }}"
+            class="project-card"
+            {{ block.shopify_attributes }}
+          >
+            <div class="project-card__image">
+              {%- if block.settings.image != blank -%}
+                {{
+                  block.settings.image
+                  | image_url: width: 1400
+                  | image_tag:
+                    loading: 'lazy',
+                    sizes: '(max-width: 900px) 100vw, 50vw',
+                    widths: '400, 600, 800, 1000, 1400',
+                    alt: block.settings.image.alt | default: block.settings.title
+                }}
+              {%- endif -%}
+            </div>
+            {%- if block.settings.eyebrow != blank -%}
+              <p class="eyebrow">{{ block.settings.eyebrow }}</p>
+            {%- endif -%}
+            <h3 class="project-card__title">{{ block.settings.title }}</h3>
+            {%- if block.settings.text != blank -%}
+              <div class="project-card__text">{{ block.settings.text }}</div>
+            {%- endif -%}
+            {%- if block.settings.cue != blank -%}
+              <span class="project-card__cue">{{ block.settings.cue }}</span>
+            {%- endif -%}
+          </a>
+        {%- endfor -%}
+      </div>
+    </div>
+  </section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Project list",
+  "tag": "section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Projects" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Bodies of Work" },
+    {
+      "type": "select",
+      "id": "columns",
+      "label": "Columns",
+      "info": "Drops to one column on narrow screens. Uses fewer if there are fewer projects.",
+      "options": [
+        { "value": "2", "label": "2" },
+        { "value": "3", "label": "3" }
+      ],
+      "default": "2"
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "label": "Image ratio",
+      "options": [
+        { "value": "4 / 5", "label": "Portrait 4:5" },
+        { "value": "1 / 1", "label": "Square" },
+        { "value": "3 / 2", "label": "Landscape 3:2" }
+      ],
+      "default": "4 / 5"
+    },
+    {
+      "type": "select",
+      "id": "ground",
+      "label": "Background",
+      "options": [
+        { "value": "chalk", "label": "Chalk (light)" },
+        { "value": "bone", "label": "Bone (light)" },
+        { "value": "cobalt", "label": "Cobalt" },
+        { "value": "ink", "label": "Ink" }
+      ],
+      "default": "chalk"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "project",
+      "name": "Project",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "eyebrow", "label": "Eyebrow", "info": "Year and material, e.g. 2026 — Stoneware" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Project" },
+        { "type": "richtext", "id": "text", "label": "Short description", "info": "One or two sentences." },
+        { "type": "url", "id": "link", "label": "Link", "info": "The project's page." },
+        { "type": "text", "id": "cue", "label": "Link cue", "default": "View project" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Project list",
+      "blocks": [{ "type": "project" }, { "type": "project" }]
+    }
+  ]
+}
+{% endschema %}
