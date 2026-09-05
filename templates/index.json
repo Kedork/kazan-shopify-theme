@@ -12,13 +12,51 @@
     "hero": {
       "type": "hero-banner",
       "settings": {
+        "image": "shopify://shop_images/IMG_2448.jpg",
         "eyebrow": "Los Angeles",
         "heading": "Precision meets unpredictability in clay.",
         "subheading": "",
         "button_label": "View the work",
         "button_link": "/pages/assembly",
-        "ground": "cobalt",
-        "image": "shopify://shop_images/IMG_2449.jpg"
+        "ground": "cobalt"
+      }
+    },
+    "projects": {
+      "type": "project-list",
+      "blocks": {
+        "assembly": {
+          "type": "project",
+          "settings": {
+            "image": "shopify://shop_images/instagram-image_f41c6ecd-7d65-47f5-b7a4-2714a59f9abe.jpg",
+            "eyebrow": "2026 — Stoneware",
+            "title": "Assembly",
+            "text": "<p>Modular faces built a sphere at a time, then glazed two ways — a crystal glaze that blooms and runs, and white underglaze flicked over cobalt.</p>",
+            "link": "/pages/assembly",
+            "cue": "View project"
+          }
+        },
+        "desert-totem": {
+          "type": "project",
+          "settings": {
+            "image": "shopify://shop_images/IMG_1319.jpg",
+            "eyebrow": "2025 — Stoneware",
+            "title": "Desert Totem",
+            "text": "<p>Stacked, carved and glazed to read like something uncovered rather than made. Installed in the Mojave.</p>",
+            "link": "/pages/desert-totem",
+            "cue": "View project"
+          }
+        }
+      },
+      "block_order": [
+        "assembly",
+        "desert-totem"
+      ],
+      "settings": {
+        "eyebrow": "Projects",
+        "heading": "Bodies of Work",
+        "columns": "2",
+        "image_ratio": "4 / 5",
+        "ground": "chalk"
       }
     },
     "featured": {
@@ -89,44 +127,6 @@
         "placeholder": "Your email address",
         "button_label": "Subscribe",
         "ground": "cobalt"
-      }
-    },
-    "projects": {
-      "type": "project-list",
-      "blocks": {
-        "assembly": {
-          "type": "project",
-          "settings": {
-            "image": "shopify://shop_images/IMG_2446.jpg",
-            "eyebrow": "2026 — Stoneware",
-            "title": "Assembly",
-            "text": "<p>Modular faces built a sphere at a time, then glazed two ways — a crystal glaze that blooms and runs, and white underglaze flicked over cobalt.</p>",
-            "link": "/pages/assembly",
-            "cue": "View project"
-          }
-        },
-        "desert-totem": {
-          "type": "project",
-          "settings": {
-            "image": "shopify://shop_images/IMG_1319.jpg",
-            "eyebrow": "2025 — Stoneware",
-            "title": "Desert Totem",
-            "text": "<p>Stacked, carved and glazed to read like something uncovered rather than made. Installed in the Mojave.</p>",
-            "link": "/pages/desert-totem",
-            "cue": "View project"
-          }
-        }
-      },
-      "block_order": [
-        "assembly",
-        "desert-totem"
-      ],
-      "settings": {
-        "eyebrow": "Projects",
-        "heading": "Bodies of Work",
-        "columns": "2",
-        "image_ratio": "4 / 5",
-        "ground": "chalk"
       }
     }
   },
