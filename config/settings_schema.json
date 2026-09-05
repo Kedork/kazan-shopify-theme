@@ -72,8 +72,14 @@
         "id": "heading_font_family",
         "label": "Heading font",
         "options": [
-          { "value": "Bricolage Grotesque", "label": "Bricolage Grotesque" },
-          { "value": "Instrument Serif", "label": "Instrument Serif" }
+          {
+            "value": "Bricolage Grotesque",
+            "label": "Bricolage Grotesque"
+          },
+          {
+            "value": "Instrument Serif",
+            "label": "Instrument Serif"
+          }
         ],
         "default": "Bricolage Grotesque"
       },
@@ -82,8 +88,14 @@
         "id": "body_font_family",
         "label": "Body font",
         "options": [
-          { "value": "Bricolage Grotesque", "label": "Bricolage Grotesque" },
-          { "value": "Instrument Serif", "label": "Instrument Serif" }
+          {
+            "value": "Bricolage Grotesque",
+            "label": "Bricolage Grotesque"
+          },
+          {
+            "value": "Instrument Serif",
+            "label": "Instrument Serif"
+          }
         ],
         "default": "Bricolage Grotesque"
       }
@@ -122,6 +134,12 @@
         "id": "social_instagram",
         "label": "Instagram URL",
         "info": "Linked from the footer and contact section."
+      },
+      {
+        "type": "image_picker",
+        "id": "share_image",
+        "label": "Default social share image",
+        "info": "Shown when a link is shared on social. Must be a raster image (JPG/PNG) — most platforms will not render an SVG, so the logo cannot serve here. A page can override this with a custom.share_image metafield."
       }
     ]
   }

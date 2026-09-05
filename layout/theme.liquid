@@ -43,6 +43,37 @@
   <meta property="og:title" content="{{ og_title | escape }}">
   <meta property="og:type" content="{{ og_type }}">
   <meta property="og:description" content="{{ og_description | escape }}">
+
+  {%- comment -%}
+    Share image. Shopify's own og:image falls back to the theme logo, which is
+    an SVG — and Facebook, LinkedIn, iMessage and Slack will not render SVG, so
+    a shared page previewed with no image at all. Product and collection pages
+    were already fine; pages were not.
+
+    Resolved most specific first: the page's own custom.share_image metafield,
+    then the theme's default. Emitted before content_for_header so this tag is
+    the first og:image in the document, which is the one crawlers take.
+  {%- endcomment -%}
+  {%- liquid
+    assign share_image = blank
+    case request.page_type
+      when 'product'
+        assign share_image = product.featured_image
+      when 'collection'
+        assign share_image = collection.image
+      when 'page'
+        assign share_image = page.metafields.custom.share_image.value
+    endcase
+    if share_image == blank
+      assign share_image = settings.share_image
+    endif
+  -%}
+  {%- if share_image != blank -%}
+    {%- assign share_image_url = share_image | image_url: width: 1200 -%}
+    <meta property="og:image" content="https:{{ share_image_url }}">
+    <meta name="twitter:image" content="https:{{ share_image_url }}">
+  {%- endif -%}
+
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{{ og_title | escape }}">
   <meta name="twitter:description" content="{{ og_description | escape }}">
