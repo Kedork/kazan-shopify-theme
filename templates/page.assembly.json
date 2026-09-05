@@ -106,10 +106,14 @@
         "hero_focus": "center",
         "eyebrow": "2026 — Stoneware",
         "heading": "Assembly",
-        "body": "<p>Nobody arrives finished. You are assembled — one experience at a time, from childhood forward, each one joined to the last until the shape of you is something no single part accounts for. Assembly is built the same way.</p><p>Each form is pressed, hollowed and left to stiffen, then scored, slipped and joined to the next — a grid built up row by row until it stands on its own. The face arrives later. Nothing about a stack of spheres suggests one, until the features go on and then it is impossible to see anything else. That turn is the piece.</p><p>Both Assembly 01 colorways are glazed. They are simply different glazes. The orange is Mayco&rsquo;s Jungle Gems — a gloss base carrying chips of glass frit that bloom open in the fire and run down the form; where a chip happens to sit is where it blooms, so the pattern is settled by the kiln rather than by the hand. The blue is white underglaze flicked over a cobalt glaze. Precision meets unpredictability in clay: the form is decided, the surface is not.</p>",
+        "body": "<p>Nobody arrives finished. You are assembled — one experience at a time, from childhood forward, each one joined to the last until the shape of you is something no single part accounts for. Assembly is built the same way.</p><p>Each form is pressed, hollowed and left to stiffen, then scored, slipped and joined to the next — a grid built up row by row until it stands on its own. The face arrives later. Nothing about a stack of spheres suggests one, until the features go on and then it is impossible to see anything else. That turn is the piece.</p><p>Both Assembly 01 colorways are glazed. They are simply different glazes. The orange is a gloss base carrying chips of glass frit that bloom open in the fire and run down the form; where a chip happens to sit is where it blooms, so the pattern is settled by the kiln rather than by the hand. The blue is white underglaze flicked over a cobalt glaze.</p>",
         "intro_ground": "chalk",
         "gallery_ratio": "1 / 1",
         "gallery_ground": "chalk",
+        "statement_eyebrow": "The idea",
+        "statement": "No one is cast in one piece. We are assembled.",
+        "statement_support": "<p>Part joined to part, one at a time, until the whole reads as a face and no single part accounts for it. That is what this series is.</p>",
+        "statement_ground": "cobalt",
         "process_eyebrow": "Process",
         "process_ground": "chalk",
         "collection": "",
@@ -118,11 +122,7 @@
         "products_to_show": 6,
         "columns": "3",
         "show_view_all": true,
-        "pieces_ground": "bone",
-        "statement_eyebrow": "The idea",
-        "statement": "No one is cast in one piece. We are assembled.",
-        "statement_support": "<p>Part joined to part, one at a time, until the whole reads as a face and no single part accounts for it. That is what this series is.</p>",
-        "statement_ground": "cobalt"
+        "pieces_ground": "bone"
       }
     }
   },
