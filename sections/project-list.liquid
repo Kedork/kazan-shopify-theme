@@ -89,7 +89,10 @@
 </style>
 
 {%- if section.blocks.size > 0 -%}
-  <section class="project-list section-padding scheme-{{ section.settings.ground }}">
+  <section
+    class="project-list section-padding scheme-{{ section.settings.ground }}"
+    {% if section.settings.anchor != blank %}id="{{ section.settings.anchor }}"{% endif %}
+  >
     <div class="page-width">
       <div class="project-list__header">
         {%- if section.settings.eyebrow != blank -%}
@@ -144,6 +147,12 @@
   "settings": [
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Projects" },
     { "type": "text", "id": "heading", "label": "Heading", "default": "Bodies of Work" },
+    {
+      "type": "text",
+      "id": "anchor",
+      "label": "Anchor id",
+      "info": "Lets a menu item link straight here, e.g. an id of 'projects' is reachable at /#projects."
+    },
     {
       "type": "select",
       "id": "columns",

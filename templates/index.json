@@ -56,7 +56,8 @@
         "heading": "Bodies of Work",
         "columns": "2",
         "image_ratio": "4 / 5",
-        "ground": "chalk"
+        "ground": "chalk",
+        "anchor": "projects"
       }
     },
     "featured": {

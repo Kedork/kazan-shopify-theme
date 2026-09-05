@@ -413,6 +413,61 @@ p:last-child {
   opacity: 1;
 }
 
+/* --- Nav submenu (projects under Work) --- */
+.site-header__item--parent {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.site-header__submenu {
+  position: absolute;
+  top: 100%;
+  left: -20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: max-content;
+  /* The 20px top padding bridges the gap under the parent so the panel does
+     not close while the pointer travels down into it. */
+  padding: 20px;
+  background-color: var(--warm-white);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-4px);
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+}
+
+.site-header--dark .site-header__submenu,
+.site-header--transparent .site-header__submenu {
+  background-color: var(--charcoal);
+}
+
+/* Hover for pointers; :focus-within so a keyboard reaches it with no JS —
+   focusing the parent link reveals the panel, then Tab walks into it. */
+.site-header__item--parent:hover .site-header__submenu,
+.site-header__item--parent:focus-within .site-header__submenu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.site-header__submenu a {
+  white-space: nowrap;
+}
+
+/* Mobile: children listed under their parent, indented — no disclosure to tap. */
+.mobile-nav__child {
+  padding-left: 24px;
+  opacity: 0.72;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-header__submenu {
+    transition: none;
+  }
+}
+
 .site-header__cart {
   position: relative;
   display: flex;

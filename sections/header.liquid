@@ -17,7 +17,27 @@
 
     <nav class="site-header__nav" aria-label="Main navigation">
       {%- for link in section.settings.menu.links -%}
-        <a href="{{ link.url }}">{{ link.title }}</a>
+        {%- if link.links.size > 0 -%}
+          {%- comment -%}
+            Opens on hover and on :focus-within, so it works for keyboard users
+            without any JS. On touch, tapping the parent follows its own link —
+            which is why the parent needs a real destination, not a dead "#".
+          {%- endcomment -%}
+          <span class="site-header__item site-header__item--parent">
+            <a href="{{ link.url }}" {% if link.active or link.child_active %}aria-current="page"{% endif %}>
+              {{- link.title -}}
+            </a>
+            <span class="site-header__submenu">
+              {%- for child in link.links -%}
+                <a href="{{ child.url }}" {% if child.active %}aria-current="page"{% endif %}>
+                  {{- child.title -}}
+                </a>
+              {%- endfor -%}
+            </span>
+          </span>
+        {%- else -%}
+          <a href="{{ link.url }}" {% if link.active %}aria-current="page"{% endif %}>{{ link.title }}</a>
+        {%- endif -%}
       {%- endfor -%}
       <a href="{{ routes.cart_url }}" class="site-header__cart" aria-label="Cart">
         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -43,6 +63,13 @@
 <nav class="mobile-nav" data-mobile-nav aria-label="Mobile navigation">
   {%- for link in section.settings.menu.links -%}
     <a href="{{ link.url }}">{{ link.title }}</a>
+    {%- comment -%}
+      No disclosure to tap on mobile — children are simply listed under their
+      parent, indented. One less thing between a visitor and the work.
+    {%- endcomment -%}
+    {%- for child in link.links -%}
+      <a href="{{ child.url }}" class="mobile-nav__child">{{ child.title }}</a>
+    {%- endfor -%}
   {%- endfor -%}
   <a href="{{ routes.cart_url }}">Cart ({{ cart.item_count }})</a>
 </nav>
