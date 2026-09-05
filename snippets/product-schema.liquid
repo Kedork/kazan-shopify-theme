@@ -1,0 +1,88 @@
+{%- comment -%}
+  Kazan Studio — Product structured data
+  Usage: {% render 'product-schema', product: product %}
+
+  Emitted as a single node typed both Product and VisualArtwork. Product is
+  what search engines read for price and availability; VisualArtwork is what
+  these objects actually are, and carries the medium and surface that a
+  generic Product type has nowhere to put.
+
+  Dimensions are published as a plain `size` string rather than parsed into
+  width/height/depth — the metafield is free text ("9.5 x 12.5 x 8") and
+  guessing at which number is which would put wrong data in a machine-readable
+  field. A human-readable size is honest; an invented depth is not.
+{%- endcomment -%}
+
+{%- liquid
+  assign variant = product.selected_or_first_available_variant
+
+  if product.available
+    assign availability = 'https://schema.org/InStock'
+  else
+    assign availability = 'https://schema.org/OutOfStock'
+  endif
+
+  assign plain_description = product.description | strip_html | strip_newlines | truncate: 5000
+  assign material = product.metafields.custom.material.value
+  assign glaze = product.metafields.custom.glaze.value
+  assign technique = product.metafields.custom.technique.value
+  assign dimensions = product.metafields.custom.dimensions.value
+  assign year = product.metafields.custom.year.value
+-%}
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": ["Product", "VisualArtwork"],
+    "@id": {{ product.url | prepend: shop.url | append: '#product' | json }},
+    "name": {{ product.title | json }},
+    "description": {{ plain_description | json }},
+    "url": {{ product.url | prepend: shop.url | json }},
+    "sku": {{ variant.sku | default: variant.id | json }},
+    {%- if product.featured_image != blank -%}
+      "image": [
+        {%- for media in product.media limit: 6 -%}
+          {%- if media.media_type == 'image' -%}
+            {{ media | image_url: width: 1600 | prepend: 'https:' | json }}{% unless forloop.last %},{% endunless %}
+          {%- endif -%}
+        {%- endfor -%}
+      ],
+    {%- endif -%}
+    "brand": {
+      "@type": "Brand",
+      "name": {{ shop.name | json }}
+    },
+    "creator": {
+      "@type": "Person",
+      "name": "Kevork Kazanjian"
+    },
+    "artform": "Ceramic",
+    {%- if material != blank -%}
+      "artMedium": {{ material | json }},
+    {%- endif -%}
+    {%- if glaze != blank -%}
+      "artworkSurface": {{ glaze | json }},
+    {%- endif -%}
+    {%- if technique != blank -%}
+      "creationTechnique": {{ technique | json }},
+    {%- endif -%}
+    {%- if dimensions != blank -%}
+      "size": {{ dimensions | append: ' in' | json }},
+    {%- endif -%}
+    {%- if year != blank -%}
+      "dateCreated": {{ year | json }},
+    {%- endif -%}
+    "offers": {
+      "@type": "Offer",
+      "url": {{ product.url | prepend: shop.url | json }},
+      "price": {{ product.price | divided_by: 100.0 | json }},
+      "priceCurrency": {{ cart.currency.iso_code | json }},
+      "availability": {{ availability | json }},
+      "itemCondition": "https://schema.org/NewCondition",
+      "seller": {
+        "@type": "Organization",
+        "name": {{ shop.name | json }}
+      }
+    }
+  }
+</script>
