@@ -63,6 +63,12 @@
     "collections": {
       "type": "collection-list",
       "blocks": {
+        "collection_r8d9FG": {
+          "type": "collection",
+          "settings": {
+            "collection": "assembly"
+          }
+        },
         "col2": {
           "type": "collection",
           "settings": {
@@ -71,6 +77,7 @@
         }
       },
       "block_order": [
+        "collection_r8d9FG",
         "col2"
       ],
       "settings": {
