@@ -54,49 +54,23 @@
       "settings": {
         "eyebrow": "Projects",
         "heading": "Bodies of Work",
+        "anchor": "projects",
         "columns": "2",
         "image_ratio": "4 / 5",
-        "ground": "chalk",
-        "anchor": "projects"
-      }
-    },
-    "featured": {
-      "type": "featured-collection",
-      "settings": {
-        "eyebrow": "Selected Work",
-        "heading": "Featured Pieces",
-        "collection": "featured",
-        "products_to_show": 6,
-        "columns": "3",
-        "show_view_all": true,
         "ground": "chalk"
       }
     },
     "collections": {
       "type": "collection-list",
       "blocks": {
-        "collection_zUpyCW": {
-          "type": "collection",
-          "settings": {
-            "collection": "quest-to-purple"
-          }
-        },
-        "col1": {
-          "type": "collection",
-          "settings": {
-            "collection": "objects"
-          }
-        },
         "col2": {
           "type": "collection",
           "settings": {
-            "collection": "vessels"
+            "collection": "pottery"
           }
         }
       },
       "block_order": [
-        "collection_zUpyCW",
-        "col1",
         "col2"
       ],
       "settings": {
@@ -134,7 +108,6 @@
   "order": [
     "hero",
     "projects",
-    "featured",
     "collections",
     "about",
     "newsletter"
