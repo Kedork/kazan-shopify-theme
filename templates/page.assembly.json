@@ -50,7 +50,7 @@
         "img-colorway-a": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/IMG_2442.jpg",
+            "image": "shopify://shop_images/Assembly01OB-1.jpg",
             "full_width": false,
             "caption": "Assembly 01 — Orange/Blue"
           }
@@ -58,7 +58,7 @@
         "img-colorway-b": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/IMG_2446.jpg",
+            "image": "shopify://shop_images/Assembly01BY-1.jpg",
             "full_width": false,
             "caption": "Assembly 01 — Blue/Yellow"
           }
@@ -66,7 +66,7 @@
         "img-macro": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/IMG_2450.jpg",
+            "image": "shopify://shop_images/Assembly01OB_Detail-5.jpg",
             "full_width": true,
             "caption": "Glaze, detail"
           }
@@ -74,7 +74,7 @@
         "img-structure": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/IMG_2441.jpg",
+            "image": "shopify://shop_images/Assembly01OB-3.jpg",
             "full_width": false,
             "caption": "Reverse — the lattice"
           }
@@ -82,7 +82,7 @@
         "img-profile": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/instagram-image_e5632daa-aef8-4f16-b225-cd430e9eaa7d.jpg",
+            "image": "shopify://shop_images/Assembly01BY_Detail-4.jpg",
             "full_width": false,
             "caption": "Speckle Detail"
           }
