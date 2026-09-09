@@ -21,27 +21,13 @@
         "collection_6p9ikC": {
           "type": "collection",
           "settings": {
-            "collection": "quest-to-purple"
-          }
-        },
-        "collection_qpwBAi": {
-          "type": "collection",
-          "settings": {
-            "collection": "objects"
-          }
-        },
-        "collection_LzWYCP": {
-          "type": "collection",
-          "settings": {
-            "collection": "vessels"
+            "collection": "pottery"
           }
         }
       },
       "block_order": [
         "collection_kXq4fz",
-        "collection_6p9ikC",
-        "collection_qpwBAi",
-        "collection_LzWYCP"
+        "collection_6p9ikC"
       ],
       "name": "Collection list",
       "settings": {
