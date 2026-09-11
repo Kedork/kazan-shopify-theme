@@ -37,7 +37,14 @@
           "type": "spec",
           "settings": {
             "label": "Surface",
-            "value": "Crystal glaze / cobalt glaze"
+            "value": "Glaze, underglaze"
+          }
+        },
+        "spec-forms": {
+          "type": "spec",
+          "settings": {
+            "label": "Forms",
+            "value": "01, 02"
           }
         },
         "spec-series": {
@@ -63,12 +70,28 @@
             "caption": "Assembly 01 — Blue/Yellow"
           }
         },
-        "img-macro": {
+        "img-02-front": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/Assembly01OB_Detail-5.jpg",
+            "image": "shopify://shop_images/Assembly02YP-1.jpg",
+            "full_width": false,
+            "caption": "Assembly 02 — Yellow/Purple"
+          }
+        },
+        "img-02-three-quarter": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Assembly02YP-6.jpg",
+            "full_width": false,
+            "caption": "Assembly 02 — Three-quarter"
+          }
+        },
+        "img-trio": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/AssemblySeries-Front.jpg",
             "full_width": true,
-            "caption": "Glaze, detail"
+            "caption": "Left to right — 01 Blue/Yellow, 02 Yellow/Purple, 01 Orange/Blue"
           }
         },
         "img-structure": {
@@ -86,6 +109,22 @@
             "full_width": false,
             "caption": "Speckle Detail"
           }
+        },
+        "img-02-detail": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Assembly02YP_Detail-2.jpg",
+            "full_width": false,
+            "caption": "Assembly 02 — Glasses, detail"
+          }
+        },
+        "img-macro": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Assembly01OB_Detail-5.jpg",
+            "full_width": false,
+            "caption": "Crystal glaze, detail"
+          }
         }
       },
       "block_order": [
@@ -93,12 +132,17 @@
         "spec-material",
         "spec-technique",
         "spec-surface",
+        "spec-forms",
         "spec-series",
         "img-colorway-a",
         "img-colorway-b",
-        "img-macro",
+        "img-02-front",
+        "img-02-three-quarter",
+        "img-trio",
         "img-structure",
-        "img-profile"
+        "img-profile",
+        "img-02-detail",
+        "img-macro"
       ],
       "settings": {
         "img_hero": "shopify://shop_images/AssemblySeries-Scatter.jpg",
@@ -106,7 +150,7 @@
         "hero_focus": "center",
         "eyebrow": "2026 — Stoneware",
         "heading": "Assembly",
-        "body": "<p>Nobody arrives finished. You are assembled — one experience at a time, from childhood forward, each one joined to the last until the shape of you is something no single part accounts for. Assembly is built the same way.</p><p>Each form is pressed, hollowed and left to stiffen, then scored, slipped and joined to the next — a grid built up row by row until it stands on its own. The face arrives later. Nothing about a stack of spheres suggests one, until the features go on and then it is impossible to see anything else. That turn is the piece.</p><p>Both Assembly 01 colorways are glazed. They are simply different glazes. The orange is a gloss base carrying chips of glass frit that bloom open in the fire and run down the form; where a chip happens to sit is where it blooms, so the pattern is settled by the kiln rather than by the hand. The blue is white underglaze flicked over a cobalt glaze.</p>",
+        "body": "<p>Nobody arrives finished. You are assembled — one experience at a time, from childhood forward, each one joined to the last until the shape of you is something no single part accounts for. Assembly is built the same way.</p><p>Each form is pressed, hollowed and left to stiffen, then scored, slipped and joined to the next — a grid built up row by row until it stands on its own. The face arrives later. Nothing about a stack of spheres suggests one, until the features go on and then it is impossible to see anything else. That turn is the piece.</p><p>Each form carries a number, and a number can be made more than once — never in the same glaze combination. Assembly 01 exists twice: in a crystal glaze, a gloss base carrying chips of glass frit that bloom open in the fire and run down the form, and in white underglaze flicked over a cobalt glaze. Assembly 02 is the second form — taller, with brows and filled lenses — in a yellow glaze, its features in purple underglaze under clear.</p>",
         "intro_ground": "chalk",
         "notice_label": "On view",
         "notice": "<p><em>The Presidents’ Show</em> — American Ceramic Society, Southern California Chapter. Beato Gallery, Beatrice Wood Center for the Arts, Ojai. 26 September – 8 November 2026.</p>",
@@ -120,7 +164,7 @@
         "process_eyebrow": "Process",
         "process_ground": "chalk",
         "collection": "assembly",
-        "pieces_eyebrow": "Available",
+        "pieces_eyebrow": "In the series",
         "pieces_heading": "Pieces in this series",
         "products_to_show": 6,
         "columns": "3",

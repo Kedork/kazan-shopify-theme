@@ -118,6 +118,13 @@
     object-fit: cover;
     display: block;
   }
+  /* Full-width images keep their own proportions. A group shot cropped to
+     the gallery ratio loses the pieces at either edge, and a square that
+     spans the page is taller than the screen. */
+  #shopify-section-{{ section.id }} .series-gallery__item--full img {
+    aspect-ratio: auto;
+    height: auto;
+  }
   #shopify-section-{{ section.id }} .series-gallery__caption {
     font-family: var(--font-heading);
     font-size: 0.625rem;
@@ -671,7 +678,7 @@
           "type": "checkbox",
           "id": "full_width",
           "label": "Full width",
-          "info": "Spans both columns. Good for a macro.",
+          "info": "Spans both columns at the image's own proportions instead of the gallery ratio. Good for a group shot.",
           "default": false
         },
         { "type": "text", "id": "caption", "label": "Caption", "info": "Optional. Also used as the alt text fallback." }
