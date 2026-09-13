@@ -18,13 +18,6 @@
             "heading": "The Pieces"
           }
         },
-        "q_watertight": {
-          "type": "question",
-          "settings": {
-            "question": "Are decorative pieces watertight?",
-            "answer": "<p>Yes. All decorative forms — vases, sculptural vessels, and totem pieces — are glazed watertight on the interior. They hold water and are suitable for fresh flowers.</p>"
-          }
-        },
         "q_foodsafe": {
           "type": "question",
           "settings": {
@@ -62,7 +55,7 @@
           "type": "question",
           "settings": {
             "question": "Can I commission a piece that has already sold?",
-            "answer": "<p>Yes. Any sold piece can be commissioned — a new piece built in the same form, technique, and glaze. Clay and fire make each piece its own, so exact replication isn't possible, but the character of the work carries through. Visit the sold piece's page and use the \"Commission This Piece\" button to begin.</p>"
+            "answer": "<p>Yes. A sold piece can be commissioned as a new piece built in the same form, technique, and glaze. Clay and fire make each piece its own, so exact replication isn't possible, but the character of the work carries through.</p><p>The Assembly series works differently. Assembly pieces are numbered by form, and a glaze combination is used only once per number. A commissioned Assembly 01 is built in the same form, in a combination of its own. The sold piece's pairing of number and glaze will not be made again, though that glaze combination can be carried onto a different form.</p><p>Visit the sold piece's page and use the \"Commission This Piece\" button to begin.</p>"
           }
         },
         "q_commissionprocess": {
@@ -82,7 +75,6 @@
       },
       "block_order": [
         "cat_pieces",
-        "q_watertight",
         "q_foodsafe",
         "cat_shipping",
         "q_freeship",
