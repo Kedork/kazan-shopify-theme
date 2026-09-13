@@ -145,12 +145,28 @@
         <div class="product-page__meta">
           {%- assign meta_keys = 'material,glaze,technique,edition,dimensions,year' | split: ',' -%}
           {%- assign meta_labels = 'Material,Glaze,Technique,Edition,Dimensions,Year' | split: ',' -%}
+          {%- assign dim_keys = 'height,width,depth' | split: ',' -%}
+          {%- assign dim_letters = 'H,W,D' | split: ',' -%}
           {%- for key in meta_keys -%}
-            {%- assign meta_value = product.metafields.custom[key] -%}
+            {%- if key == 'dimensions' -%}
+              {%- comment -%} Built from custom.height / width / depth, e.g. "12.5 H × 9 W × 7 D in" {%- endcomment -%}
+              {%- assign dim_parts = '' -%}
+              {%- for dim_key in dim_keys -%}
+                {%- assign dim = product.metafields.custom[dim_key].value -%}
+                {%- if dim != blank -%}
+                  {%- capture dim_part -%}{% render 'inches', n: dim %} {{ dim_letters[forloop.index0] }}{%- endcapture -%}
+                  {%- assign dim_parts = dim_parts | append: dim_part | append: '|' -%}
+                {%- endif -%}
+              {%- endfor -%}
+              {%- assign meta_value = dim_parts | split: '|' | join: ' × ' -%}
+              {%- if meta_value != blank -%}{%- assign meta_value = meta_value | append: ' in' -%}{%- endif -%}
+            {%- else -%}
+              {%- assign meta_value = product.metafields.custom[key] -%}
+            {%- endif -%}
             {%- if meta_value != blank -%}
               <div class="product-page__meta-row">
                 <span class="product-page__meta-label">{{ meta_labels[forloop.index0] }}</span>
-                <span class="product-page__meta-value">{% if key == 'dimensions' %}{{ meta_value }} in{% else %}{{ meta_value }}{% endif %}</span>
+                <span class="product-page__meta-value">{{ meta_value }}</span>
               </div>
             {%- endif -%}
           {%- endfor -%}

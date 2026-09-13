@@ -1,0 +1,13 @@
+{%- comment -%}
+  Prints a number_decimal metafield value without a trailing ".0"
+  (Shopify stores 9 as 9.0). Usage: {% render 'inches', n: product.metafields.custom.width.value %}
+{%- endcomment -%}
+{%- liquid
+  assign s = n | append: ''
+  assign tail = s | slice: -2, 2
+  if tail == '.0'
+    assign len = s.size | minus: 2
+    assign s = s | slice: 0, len
+  endif
+  echo s
+-%}

@@ -7,10 +7,9 @@
   these objects actually are, and carries the medium and surface that a
   generic Product type has nowhere to put.
 
-  Dimensions are published as a plain `size` string rather than parsed into
-  width/height/depth — the metafield is free text ("9.5 x 12.5 x 8") and
-  guessing at which number is which would put wrong data in a machine-readable
-  field. A human-readable size is honest; an invented depth is not.
+  Dimensions come from three number metafields (custom.height / width / depth,
+  in inches) and are published as separate QuantitativeValues. Each is emitted
+  only when set, so a piece with no measurements publishes no size at all.
 {%- endcomment -%}
 
 {%- liquid
@@ -26,7 +25,7 @@
   assign material = product.metafields.custom.material.value
   assign glaze = product.metafields.custom.glaze.value
   assign technique = product.metafields.custom.technique.value
-  assign dimensions = product.metafields.custom.dimensions.value
+  assign dim_keys = 'height,width,depth' | split: ','
   assign year = product.metafields.custom.year.value
 -%}
 
@@ -66,9 +65,16 @@
     {%- if technique != blank -%}
       "creationTechnique": {{ technique | json }},
     {%- endif -%}
-    {%- if dimensions != blank -%}
-      "size": {{ dimensions | append: ' in' | json }},
-    {%- endif -%}
+    {%- for dim_key in dim_keys -%}
+      {%- assign dim = product.metafields.custom[dim_key].value -%}
+      {%- if dim != blank -%}
+        {{ dim_key | json }}: {
+          "@type": "QuantitativeValue",
+          "value": {{ dim | json }},
+          "unitCode": "INH"
+        },
+      {%- endif -%}
+    {%- endfor -%}
     {%- if year != blank -%}
       "dateCreated": {{ year | json }},
     {%- endif -%}
