@@ -44,8 +44,10 @@
       padding-bottom: 10px;
       text-align: center;
     }
+    .announcement-bar p {
+      margin: 0;
+    }
     .announcement-bar .eyebrow {
-      margin-bottom: 0;
       letter-spacing: 0.24em;
       white-space: nowrap;
     }
@@ -54,8 +56,7 @@
       line-height: 1.4;
     }
     .announcement-bar__link {
-      font-size: 0.8125rem;
-      line-height: 1.4;
+      margin-left: 14px;
       text-decoration: underline;
       text-underline-offset: 3px;
       white-space: nowrap;
@@ -67,10 +68,12 @@
       {%- if section.settings.label != blank -%}
         <p class="eyebrow">{{ section.settings.label }}</p>
       {%- endif -%}
-      <p class="announcement-bar__text">{{ section.settings.text }}</p>
-      {%- if section.settings.link != blank and section.settings.link_label != blank -%}
-        <a class="announcement-bar__link" href="{{ section.settings.link }}">{{ section.settings.link_label }}</a>
-      {%- endif -%}
+      <p class="announcement-bar__text">
+        {{- section.settings.text -}}
+        {%- if section.settings.link != blank and section.settings.link_label != blank -%}
+          <a class="announcement-bar__link" href="{{ section.settings.link }}">{{ section.settings.link_label }}</a>
+        {%- endif -%}
+      </p>
     </div>
   </div>
 {%- endif -%}
