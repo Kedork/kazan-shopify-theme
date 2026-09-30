@@ -87,17 +87,6 @@
         "ground": "cobalt"
       }
     },
-    "newsletter": {
-      "type": "newsletter",
-      "settings": {
-        "eyebrow": "Mailing List",
-        "heading": "Stay Connected",
-        "text": "New work, studio updates, and exhibition announcements.",
-        "placeholder": "Your email address",
-        "button_label": "Subscribe",
-        "ground": "cobalt"
-      }
-    },
     "about": {
       "type": "image-with-text",
       "settings": {
@@ -110,13 +99,24 @@
         "button_link": "/pages/about",
         "ground": "bone"
       }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "eyebrow": "Mailing List",
+        "heading": "Stay Connected",
+        "text": "New work, studio updates, and exhibition announcements.",
+        "placeholder": "Your email address",
+        "button_label": "Subscribe",
+        "ground": "cobalt"
+      }
     }
   },
   "order": [
     "hero",
     "projects",
     "collections",
-    "newsletter",
-    "about"
+    "about",
+    "newsletter"
   ]
 }
