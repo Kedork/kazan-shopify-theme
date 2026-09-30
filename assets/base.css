@@ -30,6 +30,9 @@ body {
   background-color: var(--warm-white);
   line-height: 1.8;
   overflow-x: hidden;
+  /* Room for the announcement bar, which sits above the fixed header.
+     Unset (0) when there is no bar — see sections/announcement-bar.liquid. */
+  padding-top: var(--announcement-h, 0px);
 }
 
 img, video {
@@ -341,7 +344,7 @@ p:last-child {
 /* --- Header --- */
 .site-header {
   position: fixed;
-  top: 0;
+  top: var(--announcement-h, 0px);
   left: 0;
   right: 0;
   z-index: 1000;
@@ -522,7 +525,7 @@ p:last-child {
   background-color: var(--warm-white);
   background-image: var(--grain);
   z-index: 999;
-  padding: 100px 60px 60px;
+  padding: calc(100px + var(--announcement-h, 0px)) 60px 60px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -1004,7 +1007,7 @@ p:last-child {
 
 .product-page__gallery {
   position: sticky;
-  top: 120px;
+  top: calc(120px + var(--announcement-h, 0px));
 }
 
 .product-page__main-image {

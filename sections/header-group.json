@@ -11,6 +11,17 @@
   "type": "header",
   "name": "Header group",
   "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "settings": {
+        "show": true,
+        "label": "On view",
+        "text": "<em>The Presidents’ Show</em>, ACS SoCal Chapter, Beato Gallery, BWCA, Ojai, 26 Sep – 8 Nov 2026",
+        "link": "/pages/assembly",
+        "link_label": "See the work",
+        "ground": "cobalt"
+      }
+    },
     "header": {
       "type": "header",
       "settings": {
@@ -20,6 +31,7 @@
     }
   },
   "order": [
+    "announcement-bar",
     "header"
   ]
 }
