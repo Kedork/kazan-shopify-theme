@@ -34,7 +34,8 @@
         "eyebrow": "Explore",
         "heading": "Collections",
         "columns": "3",
-        "ground": "bone"
+        "ground": "bone",
+        "color_scheme": "bone"
       }
     }
   },

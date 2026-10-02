@@ -3,9 +3,12 @@
     "main": {
       "type": "main-collection",
       "settings": {
-        "columns": "3"
+        "columns": "3",
+        "color_scheme": "chalk"
       }
     }
   },
-  "order": ["main"]
+  "order": [
+    "main"
+  ]
 }

@@ -168,7 +168,12 @@
         "show_view_all": true,
         "view_all_label": "View All",
         "empty_text": "No pieces from this series are listed yet.",
-        "pieces_ground": "bone"
+        "pieces_ground": "bone",
+        "intro_scheme": "chalk",
+        "gallery_scheme": "chalk",
+        "statement_scheme": "cobalt",
+        "process_scheme": "chalk",
+        "pieces_scheme": "bone"
       }
     }
   },
