@@ -3,7 +3,7 @@
   Used as the primary section on collection.json template
 {%- endcomment -%}
 
-<section class="collection-page section-padding">
+<section class="collection-page section-padding scheme color-{{ section.settings.color_scheme.id }}">
   <div class="page-width">
     <div class="collection-page__header">
       <p class="eyebrow">Work</p>
@@ -54,6 +54,12 @@
 {
   "name": "Collection grid",
   "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Colour scheme",
+      "default": "chalk"
+    },
     {
       "type": "select",
       "id": "columns",

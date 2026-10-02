@@ -27,16 +27,11 @@
   }
 
   /* --- Sticky Header Background --- */
+  // "Transparent over the hero": clear at the top, the scheme's background once scrolled.
   const header = document.querySelector('[data-header]');
-  if (header && header.classList.contains('site-header--transparent')) {
+  if (header && header.hasAttribute('data-transparent')) {
     function updateHeader() {
-      if (window.scrollY > 80) {
-        header.classList.remove('site-header--transparent');
-        header.classList.add('site-header--light');
-      } else {
-        header.classList.remove('site-header--light');
-        header.classList.add('site-header--transparent');
-      }
+      header.classList.toggle('site-header--transparent', window.scrollY <= 80);
     }
     window.addEventListener('scroll', updateHeader, { passive: true });
     updateHeader();

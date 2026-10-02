@@ -13,11 +13,11 @@
         loading="lazy"
       >
     {%- else -%}
-      <div style="width: 100%; height: 100%; background-color: var(--sand);"></div>
+      <div style="width: 100%; height: 100%; background-color: var(--scheme-hairline);"></div>
     {%- endif -%}
   </div>
 
-  <div class="image-with-text__content scheme-{{ section.settings.ground }}">
+  <div class="image-with-text__content scheme color-{{ section.settings.color_scheme.id }}">
     {%- if section.settings.eyebrow != blank -%}
       <p class="eyebrow">{{ section.settings.eyebrow }}</p>
     {%- endif -%}
@@ -81,10 +81,16 @@
       "label": "Button link"
     },
     {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Content colour scheme",
+      "default": "bone"
+    },
+    {
       "type": "select",
       "id": "ground",
-      "label": "Content background",
-      "info": "Pulls from the brand palette.",
+      "label": "Old background (no longer used)",
+      "info": "Replaced by the colour scheme above; this no longer does anything and will be removed.",
       "options": [
         { "value": "chalk", "label": "Chalk (light)" },
         { "value": "bone", "label": "Bone (light)" },

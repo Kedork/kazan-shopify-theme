@@ -3,7 +3,7 @@
   Full-viewport hero with image/video background
 {%- endcomment -%}
 
-<section class="hero scheme-{{ section.settings.ground | default: 'cobalt' }}" data-hero>
+<section class="hero scheme color-{{ section.settings.color_scheme.id }}" data-hero>
   <div class="hero__media">
     {%- if section.settings.video != blank -%}
       {{ section.settings.video | video_tag: autoplay: true, loop: true, muted: true, playsinline: true }}
@@ -78,10 +78,17 @@
       "label": "Button link"
     },
     {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Colour scheme",
+      "info": "Shown behind the image, and fully when no image is set. Brand guideline: a dark scheme (Cobalt or Ink) keeps the text legible.",
+      "default": "cobalt"
+    },
+    {
       "type": "select",
       "id": "ground",
-      "label": "Background ground",
-      "info": "Shown behind the image (and fully when no image is set). Dark grounds keep the hero text legible.",
+      "label": "Old background (no longer used)",
+      "info": "Replaced by the colour scheme above; this no longer does anything and will be removed.",
       "options": [
         { "value": "cobalt", "label": "Cobalt" },
         { "value": "ink", "label": "Ink (deep)" }

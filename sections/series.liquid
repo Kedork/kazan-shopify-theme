@@ -107,7 +107,7 @@
   }
   #shopify-section-{{ section.id }} .series-gallery__item {
     overflow: hidden;
-    background-color: var(--sand);
+    background-color: var(--scheme-hairline);
     margin: 0;
   }
   #shopify-section-{{ section.id }} .series-gallery__item--full {
@@ -177,7 +177,7 @@
     width: 100%;
     aspect-ratio: 9 / 16;
     object-fit: cover;
-    background-color: var(--sand);
+    background-color: var(--scheme-hairline);
     display: block;
   }
   #shopify-section-{{ section.id }} .series-video__label {
@@ -246,7 +246,7 @@
 {%- endif -%}
 
 {%- comment -%} Intro + spec table {%- endcomment -%}
-<section class="series-intro section-padding scheme-{{ section.settings.intro_ground }}">
+<section class="series-intro section-padding scheme color-{{ section.settings.intro_scheme.id }}">
   <div class="page-width">
     <div class="series-intro__grid">
 
@@ -279,7 +279,7 @@
 
 {%- comment -%} Gallery {%- endcomment -%}
 {%- if image_count > 0 -%}
-  <section class="series-gallery scheme-{{ section.settings.gallery_ground }}" style="padding-bottom: 120px;">
+  <section class="series-gallery scheme color-{{ section.settings.gallery_scheme.id }}" style="padding-bottom: 120px;">
     <div class="page-width">
       <div class="series-gallery__grid">
         {%- for block in section.blocks -%}
@@ -325,7 +325,7 @@
 
 {%- comment -%} Statement {%- endcomment -%}
 {%- if section.settings.statement != blank -%}
-  <section class="series-statement section-padding scheme-{{ section.settings.statement_ground }}">
+  <section class="series-statement section-padding scheme color-{{ section.settings.statement_scheme.id }}">
     <div class="page-width">
       {%- if section.settings.statement_eyebrow != blank -%}
         <p class="eyebrow">{{ section.settings.statement_eyebrow }}</p>
@@ -340,7 +340,7 @@
 
 {%- comment -%} Process videos {%- endcomment -%}
 {%- if video_count > 0 -%}
-  <section class="series-process section-padding scheme-{{ section.settings.process_ground }}">
+  <section class="series-process section-padding scheme color-{{ section.settings.process_scheme.id }}">
     <div class="page-width">
       {%- if section.settings.process_eyebrow != blank -%}
         <div class="series-process__header">
@@ -384,7 +384,7 @@
   brand decision (see New-Brand-Custom-Theme-Plan.md §"Locked decisions").
 {%- endcomment -%}
 {%- if collection != blank -%}
-  <section class="series-pieces section-padding scheme-{{ section.settings.pieces_ground }}">
+  <section class="series-pieces section-padding scheme color-{{ section.settings.pieces_scheme.id }}">
     <div class="page-width">
       <div class="series-pieces__header">
         {%- if section.settings.pieces_eyebrow != blank -%}
@@ -467,16 +467,23 @@
       "info": "Two to four short paragraphs."
     },
     {
+      "type": "color_scheme",
+      "id": "intro_scheme",
+      "label": "Introduction colour scheme",
+      "default": "chalk"
+    },
+    {
       "type": "select",
       "id": "intro_ground",
-      "label": "Introduction background",
+      "label": "Old background (no longer used)",
       "options": [
         { "value": "chalk", "label": "Chalk (light)" },
         { "value": "bone", "label": "Bone (light)" },
         { "value": "cobalt", "label": "Cobalt" },
         { "value": "ink", "label": "Ink" }
       ],
-      "default": "chalk"
+      "default": "chalk",
+      "info": "Replaced by the colour scheme above; this no longer does anything and will be removed."
     },
 
     { "type": "header", "content": "Gallery" },
@@ -494,16 +501,23 @@
       "default": "1 / 1"
     },
     {
+      "type": "color_scheme",
+      "id": "gallery_scheme",
+      "label": "Gallery colour scheme",
+      "default": "chalk"
+    },
+    {
       "type": "select",
       "id": "gallery_ground",
-      "label": "Gallery background",
+      "label": "Old background (no longer used)",
       "options": [
         { "value": "chalk", "label": "Chalk (light)" },
         { "value": "bone", "label": "Bone (light)" },
         { "value": "cobalt", "label": "Cobalt" },
         { "value": "ink", "label": "Ink" }
       ],
-      "default": "chalk"
+      "default": "chalk",
+      "info": "Replaced by the colour scheme above; this no longer does anything and will be removed."
     },
 
     { "type": "header", "content": "Statement" },
@@ -526,31 +540,45 @@
       "info": "Optional. One short paragraph under the statement."
     },
     {
+      "type": "color_scheme",
+      "id": "statement_scheme",
+      "label": "Statement colour scheme",
+      "default": "cobalt"
+    },
+    {
       "type": "select",
       "id": "statement_ground",
-      "label": "Statement background",
+      "label": "Old background (no longer used)",
       "options": [
         { "value": "chalk", "label": "Chalk (light)" },
         { "value": "bone", "label": "Bone (light)" },
         { "value": "cobalt", "label": "Cobalt" },
         { "value": "ink", "label": "Ink" }
       ],
-      "default": "cobalt"
+      "default": "cobalt",
+      "info": "Replaced by the colour scheme above; this no longer does anything and will be removed."
     },
 
     { "type": "header", "content": "Process" },
     { "type": "text", "id": "process_eyebrow", "label": "Process eyebrow", "default": "Process" },
     {
+      "type": "color_scheme",
+      "id": "process_scheme",
+      "label": "Process colour scheme",
+      "default": "chalk"
+    },
+    {
       "type": "select",
       "id": "process_ground",
-      "label": "Process background",
+      "label": "Old background (no longer used)",
       "options": [
         { "value": "chalk", "label": "Chalk (light)" },
         { "value": "bone", "label": "Bone (light)" },
         { "value": "cobalt", "label": "Cobalt" },
         { "value": "ink", "label": "Ink" }
       ],
-      "default": "chalk"
+      "default": "chalk",
+      "info": "Replaced by the colour scheme above; this no longer does anything and will be removed."
     },
 
     { "type": "header", "content": "The pieces" },
@@ -591,10 +619,17 @@
       "default": "No pieces from this series are listed yet."
     },
     {
+      "type": "color_scheme",
+      "id": "pieces_scheme",
+      "label": "Pieces colour scheme",
+      "info": "Brand guideline: products sit on a light scheme (Chalk or Bone).",
+      "default": "bone"
+    },
+    {
       "type": "select",
       "id": "pieces_ground",
-      "label": "Pieces background",
-      "info": "Products stay on a light ground per brand guidelines.",
+      "label": "Old background (no longer used)",
+      "info": "Replaced by the colour scheme above; this no longer does anything and will be removed.",
       "options": [
         { "value": "chalk", "label": "Chalk (light)" },
         { "value": "bone", "label": "Bone (light)" }

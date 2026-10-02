@@ -63,7 +63,7 @@
     }
   </style>
 
-  <div class="announcement-bar scheme-{{ section.settings.ground }}" role="region" aria-label="Announcement" data-announcement-bar>
+  <div class="announcement-bar scheme color-{{ section.settings.color_scheme.id }}" role="region" aria-label="Announcement" data-announcement-bar>
     <div class="announcement-bar__inner page-width">
       {%- if section.settings.label != blank -%}
         <p class="eyebrow">{{ section.settings.label }}</p>
@@ -142,14 +142,22 @@
       "info": "Shown after the text when a link is set."
     },
     {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Colour scheme",
+      "info": "Brand guideline: a dark scheme (Cobalt or Ink) keeps the text legible.",
+      "default": "cobalt"
+    },
+    {
       "type": "select",
       "id": "ground",
-      "label": "Background",
+      "label": "Old background (no longer used)",
       "options": [
         { "value": "cobalt", "label": "Cobalt" },
         { "value": "ink", "label": "Ink" }
       ],
-      "default": "cobalt"
+      "default": "cobalt",
+      "info": "Replaced by the colour scheme above; this no longer does anything and will be removed."
     }
   ],
   "presets": [

@@ -2,7 +2,7 @@
   Kazan Studio — Main Cart Section
 {%- endcomment -%}
 
-<section class="cart-page section-padding">
+<section class="cart-page section-padding scheme color-{{ section.settings.color_scheme.id }}">
   <div class="page-width">
     <div class="cart-page__header">
       {%- if section.settings.eyebrow != blank -%}
@@ -71,6 +71,12 @@
 {
   "name": "Cart",
   "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Colour scheme",
+      "default": "chalk"
+    },
     {
       "type": "text",
       "id": "eyebrow",

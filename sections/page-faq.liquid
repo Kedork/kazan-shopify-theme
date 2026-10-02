@@ -7,7 +7,7 @@
   across Liquid conditionals (valid at runtime; static analysis can't match them).
 {%- endcomment -%}
 
-<section class="faq-page section-padding">
+<section class="faq-page section-padding scheme color-{{ section.settings.color_scheme.id }}">
   <div class="page-width">
 
     <div class="faq-page__header">
@@ -52,6 +52,12 @@
 {
   "name": "FAQ page",
   "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Colour scheme",
+      "default": "chalk"
+    },
     {
       "type": "text",
       "id": "eyebrow",
