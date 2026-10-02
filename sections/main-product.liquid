@@ -9,7 +9,7 @@
   <div class="page-width">
     {%- comment -%} Breadcrumb {%- endcomment -%}
     <div class="product-page__breadcrumb">
-      <a href="/collections/all">Work</a>
+      <a href="{{ routes.all_products_collection_url }}">Work</a>
       {%- for col in product.collections -%}
         {%- unless col.handle == 'all' or col.handle == 'frontpage' -%}
           <span>/</span>
