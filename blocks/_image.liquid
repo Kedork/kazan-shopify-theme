@@ -1,0 +1,26 @@
+{%- comment -%} Image in a Row. SPIKE. {%- endcomment -%}
+<figure class="pf-image" style="--span: {{ block.settings.span }};" {{ block.shopify_attributes }}>
+  {%- if block.settings.image != blank -%}
+    {{ block.settings.image | image_url: width: 1600 | image_tag: loading: 'lazy', sizes: '(max-width: 600px) 100vw, 50vw', widths: '400, 800, 1200, 1600' }}
+  {%- else -%}
+    <div class="pf-image__placeholder"></div>
+  {%- endif -%}
+</figure>
+
+{% stylesheet %}
+  .pf-image { grid-column: span min(var(--span), var(--cols)); margin: 0; }
+  .pf-image img { width: 100%; height: auto; display: block; }
+  .pf-image__placeholder { aspect-ratio: 4 / 5; background-color: var(--scheme-hairline); }
+  @media (max-width: 600px) { .pf-image { grid-column: auto; } }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Image",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "range", "id": "span", "label": "Span (columns)", "min": 1, "max": 6, "step": 1, "default": 1 }
+  ],
+  "presets": [{ "name": "Image" }]
+}
+{% endschema %}

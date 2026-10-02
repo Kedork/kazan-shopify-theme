@@ -1,0 +1,15 @@
+{%- comment -%}
+  Kazan Studio — Portfolio (US-1.8). A project page built from Row blocks.
+  SPIKE: minimal version to test nested theme blocks in the editor.
+{%- endcomment -%}
+<div class="portfolio">
+  {% content_for 'blocks' %}
+</div>
+
+{% schema %}
+{
+  "name": "Portfolio",
+  "blocks": [{ "type": "_row" }],
+  "presets": [{ "name": "Portfolio" }]
+}
+{% endschema %}

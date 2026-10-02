@@ -1,0 +1,82 @@
+{
+  "sections": {
+    "main": {
+      "type": "portfolio",
+      "blocks": {
+        "row-1": {
+          "type": "_row",
+          "settings": {
+            "columns": 2,
+            "color_scheme": "chalk"
+          },
+          "blocks": {
+            "text-1": {
+              "type": "_text",
+              "settings": {
+                "heading": "Spike row one",
+                "text": "<p>Text block in a two-column row.</p>"
+              }
+            },
+            "image-1": {
+              "type": "_image",
+              "settings": {
+                "span": 1
+              }
+            }
+          },
+          "block_order": [
+            "text-1",
+            "image-1"
+          ]
+        },
+        "row-2": {
+          "type": "_row",
+          "settings": {
+            "columns": 4,
+            "color_scheme": "cobalt"
+          },
+          "blocks": {
+            "image-2": {
+              "type": "_image",
+              "settings": {
+                "span": 1
+              }
+            },
+            "image-3": {
+              "type": "_image",
+              "settings": {
+                "span": 1
+              }
+            },
+            "image-4": {
+              "type": "_image",
+              "settings": {
+                "span": 1
+              }
+            },
+            "image-5": {
+              "type": "_image",
+              "settings": {
+                "span": 1
+              }
+            }
+          },
+          "block_order": [
+            "image-2",
+            "image-3",
+            "image-4",
+            "image-5"
+          ]
+        }
+      },
+      "block_order": [
+        "row-1",
+        "row-2"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

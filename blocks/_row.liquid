@@ -1,0 +1,31 @@
+{%- comment -%} Row: a grid of 1–6 columns holding Image and Text blocks. SPIKE. {%- endcomment -%}
+<div class="pf-row scheme color-{{ block.settings.color_scheme.id }}" {{ block.shopify_attributes }}>
+  <div class="page-width pf-row__grid" style="--cols: {{ block.settings.columns }};">
+    {% content_for 'blocks' %}
+  </div>
+</div>
+
+{% stylesheet %}
+  .pf-row { padding: 60px 0; }
+  .pf-row__grid { display: grid; grid-template-columns: repeat(var(--cols), minmax(0, 1fr)); gap: 16px; align-items: start; }
+  @media (max-width: 600px) { .pf-row__grid { grid-template-columns: 1fr; } }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Row",
+  "blocks": [{ "type": "_image" }, { "type": "_text" }],
+  "settings": [
+    { "type": "range", "id": "columns", "label": "Columns", "min": 1, "max": 6, "step": 1, "default": 2 },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "chalk" }
+  ],
+  "presets": [
+    { "name": "Row" },
+    {
+      "name": "Two images",
+      "settings": { "columns": 2 },
+      "blocks": [{ "type": "_image" }, { "type": "_image" }]
+    }
+  ]
+}
+{% endschema %}
