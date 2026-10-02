@@ -392,6 +392,15 @@
             "image-10-3",
             "image-10-4"
           ]
+        },
+        "empty-0": {
+          "type": "_row",
+          "settings": {
+            "columns": 1,
+            "color_scheme": "bone"
+          },
+          "blocks": {},
+          "block_order": []
         }
       },
       "block_order": [
@@ -404,7 +413,8 @@
         "row-7",
         "row-8",
         "row-9",
-        "row-10"
+        "row-10",
+        "empty-0"
       ],
       "settings": {}
     }
