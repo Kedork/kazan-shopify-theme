@@ -5,7 +5,7 @@
 
 {%- assign collection = section.settings.collection -%}
 
-<section class="featured-collection section-padding scheme-{{ section.settings.ground }}">
+<section class="featured-collection section-padding scheme color-{{ section.settings.color_scheme.id }}">
   <div class="page-width">
     <div class="featured-collection__header">
       {%- if section.settings.eyebrow != blank -%}
@@ -22,7 +22,7 @@
       {%- else -%}
         {%- for i in (1..section.settings.products_to_show) -%}
           <div class="product-card">
-            <div class="product-card__image" style="background-color: var(--sand);"></div>
+            <div class="product-card__image" style="background-color: var(--scheme-hairline);"></div>
             <h3 class="product-card__title">Sample Product {{ i }}</h3>
             <span class="product-card__price">$0.00</span>
           </div>
@@ -85,10 +85,17 @@
       "default": true
     },
     {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "info": "Brand guideline: products sit on a light scheme (Chalk or Bone).",
+      "default": "chalk"
+    },
+    {
       "type": "select",
       "id": "ground",
-      "label": "Background",
-      "info": "Products stay on a light ground per brand guidelines.",
+      "label": "Old background (no longer used)",
+      "info": "Replaced by the color scheme above; this no longer does anything and will be removed.",
       "options": [
         { "value": "chalk", "label": "Chalk (light)" },
         { "value": "bone", "label": "Bone (light)" }

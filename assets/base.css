@@ -26,8 +26,8 @@ html {
 body {
   font-family: var(--font-body);
   font-weight: 400;
-  color: var(--charcoal);
-  background-color: var(--warm-white);
+  color: var(--scheme-text);
+  background-color: var(--scheme-bg);
   line-height: 1.8;
   overflow-x: hidden;
   /* Room for the announcement bar, which sits above the fixed header.
@@ -42,7 +42,7 @@ img, video {
 }
 
 a {
-  color: var(--accent);
+  color: var(--scheme-link);
   text-decoration: none;
   transition: color 0.3s ease, opacity 0.3s ease;
 }
@@ -89,7 +89,7 @@ h1, h2, h3, h4, h5, h6,
   text-transform: uppercase;
   letter-spacing: 0.12em;
   line-height: 1.2;
-  color: inherit;
+  color: var(--scheme-heading);
 }
 
 /* Display headings — Instrument Serif, title case (Brand Vol. 01) */
@@ -135,7 +135,7 @@ p:last-child {
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 0.3em;
-  color: var(--accent);
+  color: var(--scheme-label);
   margin-bottom: 1rem;
 }
 
@@ -148,31 +148,14 @@ p:last-child {
 .caption {
   font-size: 0.8125rem;
   font-weight: 400;
-  color: var(--accent);
+  color: var(--scheme-label);
   letter-spacing: 0.02em;
 }
 
-/* --- Section color schemes — Brand Vol.01 ground/type interchange --- */
-.scheme-chalk  { background-color: var(--warm-white); color: var(--charcoal); }
-.scheme-bone   { background-color: var(--sand);       color: var(--charcoal); }
-.scheme-cobalt { background-color: var(--cobalt);     color: var(--sand); }
-.scheme-ink    { background-color: var(--charcoal);   color: var(--sand); }
-
-/* Eyebrows: Coral on light grounds, Butter on dark grounds */
-.scheme-chalk .eyebrow,
-.scheme-bone .eyebrow { color: var(--accent); }
-.scheme-cobalt .eyebrow,
-.scheme-ink .eyebrow { color: var(--clay); }
-
-/* Links + buttons adapt on dark grounds */
-.scheme-cobalt a:not(.btn),
-.scheme-ink a:not(.btn) { color: var(--clay); }
-.scheme-cobalt .btn--primary,
-.scheme-ink .btn--primary { background-color: var(--clay); color: var(--charcoal); }
-.scheme-cobalt .btn--secondary,
-.scheme-ink .btn--secondary { color: var(--sand); border-color: var(--sand); }
-.scheme-cobalt .btn--secondary:hover,
-.scheme-ink .btn--secondary:hover { background-color: var(--sand); color: var(--charcoal); }
+/* --- Color schemes (Theme settings → Colors) ---
+   layout/theme.liquid writes each scheme as .color-<id> { --scheme-*: … }.
+   A section adds "scheme color-<id>"; everything inside reads the variables. */
+.scheme { background-color: var(--scheme-bg); color: var(--scheme-text); }
 
 /* --- Layout --- */
 .page-width {
@@ -241,24 +224,24 @@ p:last-child {
 }
 
 .btn--primary {
-  background-color: var(--charcoal);
-  color: var(--sand);
+  background-color: var(--scheme-button);
+  color: var(--scheme-button-label);
 }
 
 .btn--primary:hover {
-  background-color: var(--mid);
+  background-color: var(--scheme-button-hover);
   opacity: 1;
 }
 
 .btn--secondary {
   background-color: transparent;
-  color: var(--charcoal);
-  border: 1.5px solid var(--charcoal);
+  color: var(--scheme-secondary);
+  border: 1.5px solid var(--scheme-secondary);
 }
 
 .btn--secondary:hover {
-  background-color: var(--charcoal);
-  color: var(--warm-white);
+  background-color: var(--scheme-secondary);
+  color: var(--scheme-bg);
   opacity: 1;
 }
 
@@ -288,7 +271,7 @@ p:last-child {
   padding: 0;
   background: none;
   border: none;
-  color: var(--accent);
+  color: var(--scheme-link);
   text-decoration: underline;
   text-underline-offset: 4px;
 }
@@ -309,7 +292,7 @@ p:last-child {
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 0.2em;
-  color: var(--accent);
+  color: var(--scheme-label);
   margin-bottom: 0.5rem;
 }
 
@@ -321,9 +304,9 @@ p:last-child {
   font-family: var(--font-body);
   font-size: 0.9375rem;
   font-weight: 400;
-  color: var(--charcoal);
+  color: var(--scheme-text);
   background-color: transparent;
-  border: 1px solid var(--sand);
+  border: 1px solid var(--scheme-hairline);
   transition: border-color 0.3s ease;
   appearance: none;
   -webkit-appearance: none;
@@ -333,7 +316,7 @@ p:last-child {
 .form-textarea:focus,
 .form-select:focus {
   outline: none;
-  border-color: var(--accent);
+  border-color: var(--scheme-link);
 }
 
 .form-textarea {
@@ -358,14 +341,8 @@ p:last-child {
   padding: 20px 60px;
 }
 
-.site-header--light {
-  background-color: var(--warm-white);
-}
-
-.site-header--dark {
-  background-color: var(--charcoal);
-}
-
+/* The header's own scheme sets its background (.scheme). "Transparent over
+   the hero" clears it until the page scrolls (assets/theme.js). */
 .site-header--transparent {
   background-color: transparent;
 }
@@ -387,7 +364,7 @@ p:last-child {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  color: var(--charcoal);
+  color: var(--scheme-text);
 }
 
 .site-header__nav {
@@ -402,17 +379,13 @@ p:last-child {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.2em;
-  color: var(--charcoal);
+  color: var(--scheme-text);
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
-.site-header--dark .site-header__nav a {
-  color: var(--sand);
-}
-
 .site-header__nav a:hover {
-  color: var(--accent);
+  color: var(--scheme-link);
   opacity: 1;
 }
 
@@ -434,16 +407,11 @@ p:last-child {
   /* The 20px top padding bridges the gap under the parent so the panel does
      not close while the pointer travels down into it. */
   padding: 20px;
-  background-color: var(--warm-white);
+  background-color: var(--scheme-bg);
   opacity: 0;
   visibility: hidden;
   transform: translateY(-4px);
   transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
-}
-
-.site-header--dark .site-header__submenu,
-.site-header--transparent .site-header__submenu {
-  background-color: var(--charcoal);
 }
 
 /* Hover for pointers; :focus-within so a keyboard reaches it with no JS —
@@ -507,12 +475,8 @@ p:last-child {
   display: block;
   width: 24px;
   height: 1.5px;
-  background-color: var(--charcoal);
+  background-color: var(--scheme-text);
   transition: all 0.3s ease;
-}
-
-.site-header--dark .mobile-menu-toggle span {
-  background-color: var(--sand);
 }
 
 .mobile-nav {
@@ -522,7 +486,7 @@ p:last-child {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: var(--warm-white);
+  background-color: var(--scheme-bg);
   background-image: var(--grain);
   z-index: 999;
   padding: calc(100px + var(--announcement-h, 0px)) 60px 60px;
@@ -548,13 +512,11 @@ p:last-child {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.2em;
-  color: var(--charcoal);
+  color: var(--scheme-text);
 }
 
-/* --- Footer --- */
+/* --- Footer --- (colors from its scheme) */
 .site-footer {
-  background-color: var(--charcoal);
-  color: var(--sand);
   padding: 80px 0 40px;
 }
 
@@ -567,7 +529,7 @@ p:last-child {
 .site-footer__brand p {
   font-size: 0.875rem;
   font-weight: 400;
-  color: var(--sand);
+  color: var(--scheme-text);
   opacity: 0.7;
   line-height: 1.8;
 }
@@ -578,7 +540,7 @@ p:last-child {
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 0.3em;
-  color: var(--clay);
+  color: var(--scheme-label);
   margin-bottom: 1.5rem;
 }
 
@@ -586,7 +548,7 @@ p:last-child {
   display: block;
   font-size: 0.875rem;
   font-weight: 400;
-  color: var(--sand);
+  color: var(--scheme-text);
   margin-bottom: 0.75rem;
   opacity: 0.7;
   transition: opacity 0.3s ease;
@@ -640,36 +602,28 @@ p:last-child {
   position: relative;
   z-index: 2;
   text-align: center;
-  color: var(--warm-white);
+  color: var(--scheme-heading);
   max-width: 800px;
   padding: 0 40px;
   text-shadow: none;
 }
 
-.hero__content .eyebrow {
-  color: var(--clay);
+/* Eyebrows are <p>s, so these outrank ".hero__content p" / ".newsletter p". */
+.hero__content .eyebrow,
+.newsletter .eyebrow {
+  color: var(--scheme-label);
 }
 
 .hero__content h1 {
-  color: var(--warm-white);
   margin-bottom: 1.5rem;
 }
 
 .hero__content p {
   font-size: 1.125rem;
   font-weight: 400;
-  color: var(--sand);
+  color: var(--scheme-text);
   margin-bottom: 2.5rem;
   line-height: 2;
-}
-
-.hero__content .btn--primary {
-  background-color: var(--clay);
-  color: var(--charcoal);
-}
-
-.hero__content .btn--primary:hover {
-  background-color: var(--sand);
 }
 
 /* --- Featured Collection --- */
@@ -694,7 +648,7 @@ p:last-child {
   position: relative;
   overflow: hidden;
   aspect-ratio: 3 / 4;
-  background-color: var(--sand);
+  background-color: var(--scheme-hairline);
   margin-bottom: 0.875rem;
 }
 
@@ -733,7 +687,7 @@ p:last-child {
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: var(--charcoal);
+  color: var(--scheme-text);
   margin-bottom: 0.375rem;
 }
 
@@ -741,7 +695,7 @@ p:last-child {
   font-family: var(--font-body);
   font-size: 0.875rem;
   font-weight: 600;
-  color: var(--accent);
+  color: var(--scheme-label);
 }
 
 /* Sold pieces keep a struck-through price to signal value (§08) */
@@ -768,7 +722,7 @@ p:last-child {
   font-family: var(--font-body);
   font-size: 0.9375rem;
   font-weight: 400;
-  color: var(--charcoal);
+  color: var(--scheme-text);
   line-height: 1.9;
   opacity: 0.75;
   margin-bottom: 2rem;
@@ -813,7 +767,7 @@ p:last-child {
 .collection-card__image {
   position: relative;
   overflow: hidden;
-  background-color: var(--sand);
+  background-color: var(--scheme-hairline);
 }
 
 .collection-card__image img {
@@ -834,7 +788,7 @@ p:last-child {
   flex-direction: column;
   justify-content: center;
   padding: 60px 80px;
-  background-color: var(--sand);
+  background-color: var(--scheme-panel);
 }
 
 .collection-card__count {
@@ -843,7 +797,7 @@ p:last-child {
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 0.3em;
-  color: var(--accent);
+  color: var(--scheme-label);
   margin-bottom: 1rem;
 }
 
@@ -853,7 +807,7 @@ p:last-child {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: var(--charcoal);
+  color: var(--scheme-text);
   margin-bottom: 1.5rem;
 }
 
@@ -863,8 +817,8 @@ p:last-child {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.2em;
-  color: var(--accent);
-  border-bottom: 1px solid var(--accent);
+  color: var(--scheme-link);
+  border-bottom: 1px solid var(--scheme-link);
   padding-bottom: 4px;
   display: inline-block;
   align-self: flex-start;
@@ -872,23 +826,14 @@ p:last-child {
 }
 
 .collection-card:hover .collection-card__cta {
-  color: var(--charcoal);
-  border-color: var(--charcoal);
+  color: var(--scheme-text);
+  border-color: var(--scheme-text);
 }
 
-/* On cobalt/ink grounds, drop the card panel so text sits on the ground (gallery wall) */
-.scheme-cobalt .collection-card__overlay,
-.scheme-ink .collection-card__overlay { background-color: transparent; }
-.scheme-cobalt .collection-card__title,
-.scheme-ink .collection-card__title { color: var(--sand); }
-.scheme-cobalt .collection-card__count,
-.scheme-ink .collection-card__count { color: var(--clay); }
-.scheme-cobalt .collection-card__description,
-.scheme-ink .collection-card__description { color: var(--sand); }
-.scheme-cobalt .collection-card__cta,
-.scheme-ink .collection-card__cta { color: var(--clay); border-color: var(--clay); }
-.scheme-cobalt .collection-card:hover .collection-card__cta,
-.scheme-ink .collection-card:hover .collection-card__cta { color: var(--sand); border-color: var(--sand); }
+/* The grain schemes drop the card panel so the speckle runs under the text
+   (gallery wall). Other schemes use their Card panel color. */
+.color-cobalt .collection-card__overlay,
+.color-ink .collection-card__overlay { background-color: transparent; }
 
 /* --- Image with Text --- */
 .image-with-text {
@@ -955,12 +900,11 @@ p:last-child {
 }
 
 .newsletter h2 {
-  color: var(--warm-white);
   margin-bottom: 0.75rem;
 }
 
 .newsletter p {
-  color: var(--sand);
+  color: var(--scheme-text);
   font-weight: 400;
   margin-bottom: 2rem;
   opacity: 0.7;
@@ -976,17 +920,11 @@ p:last-child {
 .newsletter__form .form-input {
   flex: 1;
   background-color: transparent;
-  border: 1px solid var(--sand);
-  color: var(--sand);
 }
 
 .newsletter__form .form-input::placeholder {
-  color: var(--sand);
+  color: var(--scheme-text);
   opacity: 0.5;
-}
-
-.newsletter__form .form-input:focus {
-  border-color: var(--clay);
 }
 
 .newsletter__form .btn {
@@ -1045,7 +983,7 @@ p:last-child {
 .product-page__thumbnail.is-active,
 .product-page__thumbnail:hover {
   opacity: 1;
-  border-color: var(--accent);
+  border-color: var(--scheme-link);
 }
 
 .product-page__thumbnail img {
@@ -1064,12 +1002,12 @@ p:last-child {
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 0.2em;
-  color: var(--accent);
+  color: var(--scheme-label);
   margin-bottom: 2rem;
 }
 
 .product-page__breadcrumb a {
-  color: var(--accent);
+  color: var(--scheme-link);
 }
 
 .product-page__breadcrumb span {
@@ -1085,7 +1023,7 @@ p:last-child {
   font-family: var(--font-body);
   font-size: 1.25rem;
   font-weight: 600;
-  color: var(--accent);
+  color: var(--scheme-label);
   margin-bottom: 2rem;
 }
 
@@ -1119,14 +1057,14 @@ p:last-child {
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 0.2em;
-  color: var(--accent);
+  color: var(--scheme-label);
 }
 
 .product-page__meta-value {
   font-family: var(--font-body);
   font-size: 0.9375rem;
   font-weight: 400;
-  color: var(--charcoal);
+  color: var(--scheme-text);
 }
 
 .product-page__add-to-cart {
@@ -1146,13 +1084,13 @@ p:last-child {
 
 .commission-panel__inner {
   padding-top: 2rem;
-  border-top: 1px solid var(--sand);
+  border-top: 1px solid var(--scheme-hairline);
   margin-top: 1.5rem;
 }
 
 .commission-panel__intro {
   font-size: 0.9375rem;
-  color: var(--charcoal);
+  color: var(--scheme-text);
   margin-bottom: 1.5rem;
   line-height: 1.8;
 }
@@ -1166,7 +1104,7 @@ p:last-child {
   justify-content: space-between;
   align-items: baseline;
   padding: 0.625rem 0;
-  border-bottom: 1px solid var(--sand);
+  border-bottom: 1px solid var(--scheme-hairline);
 }
 
 .commission-detail__label {
@@ -1179,19 +1117,19 @@ p:last-child {
 
 .commission-detail__value {
   font-size: 0.875rem;
-  color: var(--charcoal);
+  color: var(--scheme-text);
 }
 
 .commission-panel__note {
   font-size: 0.875rem;
-  color: var(--accent);
+  color: var(--scheme-label);
   margin-bottom: 2rem;
   font-style: italic;
 }
 
 .commission-success {
   font-size: 0.9375rem;
-  color: var(--accent);
+  color: var(--scheme-label);
   line-height: 1.8;
   padding: 1.5rem 0;
 }
@@ -1207,7 +1145,7 @@ p:last-child {
 }
 
 .faq-section {
-  border-top: 1px solid var(--sand);
+  border-top: 1px solid var(--scheme-hairline);
   padding-top: 3rem;
   margin-bottom: 4rem;
 }
@@ -1229,7 +1167,7 @@ p:last-child {
 
 /* Accordion — hairline dividers, Coral serif +/- toggle (§08) */
 .faq-item {
-  border-top: 1px solid var(--sand);
+  border-top: 1px solid var(--scheme-hairline);
 }
 
 .faq-item__question {
@@ -1241,7 +1179,7 @@ p:last-child {
   font-size: 1rem;
   font-weight: 600;
   line-height: 1.5;
-  color: var(--charcoal);
+  color: var(--scheme-text);
 }
 
 .faq-item__question::-webkit-details-marker {
@@ -1257,7 +1195,7 @@ p:last-child {
   font-family: var(--font-display);
   font-size: 1.5rem;
   line-height: 1;
-  color: var(--accent);
+  color: var(--scheme-label);
 }
 
 .faq-item[open] .faq-item__question::after {
@@ -1269,28 +1207,28 @@ p:last-child {
   font-family: var(--font-body);
   font-size: 0.9375rem;
   font-weight: 400;
-  color: var(--charcoal);
+  color: var(--scheme-text);
   line-height: 1.9;
   max-width: 640px;
 }
 
 .faq-item__answer a {
-  color: var(--accent);
+  color: var(--scheme-link);
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 
 .faq-cta {
-  border-top: 1px solid var(--sand);
+  border-top: 1px solid var(--scheme-hairline);
   padding-top: 3rem;
   font-family: var(--font-body);
   font-size: 1rem;
   font-weight: 400;
-  color: var(--charcoal);
+  color: var(--scheme-text);
 }
 
 .faq-cta a {
-  color: var(--accent);
+  color: var(--scheme-link);
 }
 
 /* --- Collection Page --- */
@@ -1319,13 +1257,13 @@ p:last-child {
   align-items: center;
   margin-bottom: 40px;
   padding-bottom: 20px;
-  border-bottom: 1px solid var(--sand);
+  border-bottom: 1px solid var(--scheme-hairline);
 }
 
 .collection-page__count {
   font-size: 0.8125rem;
   font-weight: 400;
-  color: var(--accent);
+  color: var(--scheme-label);
 }
 
 .collection-page__sort {
@@ -1333,9 +1271,9 @@ p:last-child {
   font-size: 0.625rem;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  color: var(--charcoal);
+  color: var(--scheme-text);
   padding: 8px 16px;
-  border: 1px solid var(--sand);
+  border: 1px solid var(--scheme-hairline);
   background-color: transparent;
 }
 
@@ -1355,13 +1293,13 @@ p:last-child {
   gap: 30px;
   align-items: center;
   padding: 30px 0;
-  border-bottom: 1px solid var(--sand);
+  border-bottom: 1px solid var(--scheme-hairline);
 }
 
 .cart-item__image {
   aspect-ratio: 3 / 4;
   overflow: hidden;
-  background-color: var(--sand);
+  background-color: var(--scheme-hairline);
 }
 
 .cart-item__image img {
@@ -1382,7 +1320,7 @@ p:last-child {
   font-family: var(--font-body);
   font-size: 0.9375rem;
   font-weight: 600;
-  color: var(--accent);
+  color: var(--scheme-label);
 }
 
 .cart-item__remove {
@@ -1390,7 +1328,7 @@ p:last-child {
   font-size: 0.5625rem;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  color: var(--charcoal);
+  color: var(--scheme-text);
   opacity: 0.5;
   background: none;
   border: none;
@@ -1416,7 +1354,7 @@ p:last-child {
 }
 
 .cart-totals__row--total {
-  border-top: 2px solid var(--charcoal);
+  border-top: 2px solid var(--scheme-text);
   margin-top: 12px;
   padding-top: 20px;
   font-weight: 400;
@@ -1506,7 +1444,7 @@ p:last-child {
 .quantity-selector {
   display: inline-flex;
   align-items: center;
-  border: 1px solid var(--sand);
+  border: 1px solid var(--scheme-hairline);
 }
 
 .quantity-selector button {
@@ -1516,12 +1454,12 @@ p:last-child {
   align-items: center;
   justify-content: center;
   font-size: 1.125rem;
-  color: var(--charcoal);
+  color: var(--scheme-text);
   transition: background-color 0.2s ease;
 }
 
 .quantity-selector button:hover {
-  background-color: var(--sand);
+  background-color: var(--scheme-hairline);
 }
 
 .quantity-selector input {
@@ -1531,10 +1469,10 @@ p:last-child {
   font-family: var(--font-body);
   font-size: 0.9375rem;
   font-weight: 400;
-  color: var(--charcoal);
+  color: var(--scheme-text);
   border: none;
-  border-left: 1px solid var(--sand);
-  border-right: 1px solid var(--sand);
+  border-left: 1px solid var(--scheme-hairline);
+  border-right: 1px solid var(--scheme-hairline);
   background: transparent;
   -moz-appearance: textfield;
 }
@@ -1569,7 +1507,7 @@ p:last-child {
 .section-divider {
   border: none;
   height: 1px;
-  background-color: var(--sand);
+  background-color: var(--scheme-hairline);
   margin: 0;
 }
 
@@ -1762,12 +1700,11 @@ p:last-child {
    Atmosphere, Motion & Detail — Vol.01 craft pass
    ============================================ */
 
-/* --- Speckle grain on the saturated grounds (the brand texture, in the UI) --- */
-.hero,
-.newsletter,
-.site-footer,
-.scheme-cobalt,
-.scheme-ink {
+/* --- Speckle grain on the saturated grounds (the brand texture, in the UI) ---
+   Only the Cobalt and Ink schemes carry it (Kevork, 2 Oct 2026): a scheme made
+   in the editor has none. The header stays flat, as it always has. */
+.color-cobalt:not(.site-header),
+.color-ink:not(.site-header) {
   background-image: var(--grain);
 }
 

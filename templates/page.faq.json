@@ -84,8 +84,12 @@
         "q_commissionprocess",
         "q_commissionnew"
       ],
-      "settings": {}
+      "settings": {
+        "color_scheme": "chalk"
+      }
     }
   },
-  "order": ["main"]
+  "order": [
+    "main"
+  ]
 }

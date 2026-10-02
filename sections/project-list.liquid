@@ -37,7 +37,7 @@
   }
   #shopify-section-{{ section.id }} .project-card__image {
     overflow: hidden;
-    background-color: var(--sand);
+    background-color: var(--scheme-hairline);
     margin-bottom: 1.5rem;
   }
   #shopify-section-{{ section.id }} .project-card__image img {
@@ -90,7 +90,7 @@
 
 {%- if section.blocks.size > 0 -%}
   <section
-    class="project-list section-padding scheme-{{ section.settings.ground }}"
+    class="project-list section-padding scheme color-{{ section.settings.color_scheme.id }}"
     {% if section.settings.anchor != blank %}id="{{ section.settings.anchor }}"{% endif %}
   >
     <div class="page-width">
@@ -184,16 +184,23 @@
       "default": "4 / 5"
     },
     {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "chalk"
+    },
+    {
       "type": "select",
       "id": "ground",
-      "label": "Background",
+      "label": "Old background (no longer used)",
       "options": [
         { "value": "chalk", "label": "Chalk (light)" },
         { "value": "bone", "label": "Bone (light)" },
         { "value": "cobalt", "label": "Cobalt" },
         { "value": "ink", "label": "Ink" }
       ],
-      "default": "chalk"
+      "default": "chalk",
+      "info": "Replaced by the color scheme above; this no longer does anything and will be removed."
     }
   ],
   "blocks": [

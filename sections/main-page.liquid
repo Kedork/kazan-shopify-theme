@@ -10,7 +10,7 @@
   {%- assign content_max = '800px' -%}
 {%- endif -%}
 
-<section class="section-padding" style="padding-top: 160px;">
+<section class="section-padding scheme color-{{ section.settings.color_scheme.id }}" style="padding-top: 160px;">
   <div class="page-width">
     <div style="max-width: {{ content_max }}; margin: 0 auto;">
       {%- if section.settings.eyebrow != blank -%}
@@ -26,6 +26,12 @@
 {
   "name": "Page content",
   "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "chalk"
+    },
     {
       "type": "text",
       "id": "eyebrow",

@@ -1,0 +1,17 @@
+{%- doc -%}
+  Writes one color scheme's roles as --scheme-* custom properties.
+  Rendered inside a CSS rule by layout/theme.liquid.
+
+  @param {object} scheme - A color_scheme from settings.color_schemes
+{%- enddoc -%}
+--scheme-bg: {{ scheme.settings.background }};
+--scheme-text: {{ scheme.settings.text }};
+--scheme-heading: {{ scheme.settings.heading }};
+--scheme-label: {{ scheme.settings.label }};
+--scheme-link: {{ scheme.settings.link }};
+--scheme-button: {{ scheme.settings.button }};
+--scheme-button-label: {{ scheme.settings.button_label }};
+--scheme-button-hover: {{ scheme.settings.button_hover }};
+--scheme-secondary: {{ scheme.settings.secondary_button }};
+--scheme-hairline: {{ scheme.settings.hairline }};
+--scheme-panel: {{ scheme.settings.panel }};

@@ -3,16 +3,25 @@
   Supports: logo, navigation, cart icon, mobile menu
 {%- endcomment -%}
 
-<header class="site-header site-header--{{ section.settings.color_scheme }}" data-header>
+{%- liquid
+  # The mark has a light and a dark variant; pick by how dark the scheme's
+  # background is, so any scheme gets the readable one. Transparent sits over
+  # the (dark) hero, so it always takes the light mark.
+  assign logo_variant = 'dark'
+  assign header_bg_brightness = section.settings.scheme.settings.background | color_brightness
+  if header_bg_brightness < 128 or section.settings.transparent
+    assign logo_variant = 'light'
+  endif
+-%}
+<header
+  class="site-header scheme color-{{ section.settings.scheme.id }}{% if section.settings.transparent %} site-header--transparent{% endif %}"
+  data-header
+  {% if section.settings.transparent %}data-transparent{% endif %}
+>
   <div class="site-header__inner">
     <a href="/" class="site-header__logo" aria-label="{{ shop.name }}">
-      {%- if section.settings.color_scheme == 'dark' or section.settings.color_scheme == 'transparent' -%}
-        {%- render 'logo-mark', variant: 'light' -%}
-        <span class="site-header__wordmark" style="color: var(--sand);">KAZAN STUDIO</span>
-      {%- else -%}
-        {%- render 'logo-mark', variant: 'dark' -%}
-        <span class="site-header__wordmark">KAZAN STUDIO</span>
-      {%- endif -%}
+      {%- render 'logo-mark', variant: logo_variant -%}
+      <span class="site-header__wordmark">KAZAN STUDIO</span>
     </a>
 
     <nav class="site-header__nav" aria-label="Main navigation">
@@ -86,9 +95,24 @@
       "default": "main-menu"
     },
     {
+      "type": "color_scheme",
+      "id": "scheme",
+      "label": "Color scheme",
+      "info": "The mobile menu always uses the page's Chalk scheme.",
+      "default": "ink"
+    },
+    {
+      "type": "checkbox",
+      "id": "transparent",
+      "label": "Transparent over the hero",
+      "info": "Clear until the page scrolls, then the scheme's background. Only use with a dark hero first on the page.",
+      "default": false
+    },
+    {
       "type": "select",
       "id": "color_scheme",
-      "label": "Color scheme",
+      "label": "Old color setting (no longer used)",
+      "info": "Replaced by the color scheme above; this no longer does anything and will be removed.",
       "options": [
         { "value": "light", "label": "Light" },
         { "value": "dark", "label": "Dark" },

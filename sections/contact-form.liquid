@@ -2,7 +2,7 @@
   Kazan Studio — Contact Form Section
 {%- endcomment -%}
 
-<section class="section-padding scheme-{{ section.settings.ground }}">
+<section class="section-padding scheme color-{{ section.settings.color_scheme.id }}">
   <div class="page-width">
     <div class="contact-section">
       <div class="contact-section__info">
@@ -99,10 +99,16 @@
       "label": "Contact email"
     },
     {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "chalk"
+    },
+    {
       "type": "select",
       "id": "ground",
-      "label": "Background",
-      "info": "Pulls from the brand palette.",
+      "label": "Old background (no longer used)",
+      "info": "Replaced by the color scheme above; this no longer does anything and will be removed.",
       "options": [
         { "value": "chalk", "label": "Chalk (light)" },
         { "value": "bone", "label": "Bone (light)" },
