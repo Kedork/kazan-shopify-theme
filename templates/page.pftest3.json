@@ -1,0 +1,31 @@
+{
+  "sections": {
+    "main": {
+      "type": "portfolio",
+      "blocks": {
+        "r": {
+          "type": "_row",
+          "settings": {
+            "columns": 2
+          },
+          "blocks": {
+            "i": {
+              "type": "_image",
+              "settings": {}
+            }
+          },
+          "block_order": [
+            "i"
+          ]
+        }
+      },
+      "block_order": [
+        "r"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}
