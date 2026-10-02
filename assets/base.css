@@ -608,6 +608,12 @@ p:last-child {
   text-shadow: none;
 }
 
+/* Eyebrows are <p>s, so these outrank ".hero__content p" / ".newsletter p". */
+.hero__content .eyebrow,
+.newsletter .eyebrow {
+  color: var(--scheme-label);
+}
+
 .hero__content h1 {
   margin-bottom: 1.5rem;
 }
