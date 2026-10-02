@@ -16,7 +16,7 @@
       },
       {
         "type": "paragraph",
-        "content": "Every section picks one of these schemes. Edit a scheme and every section using it changes. Readable pairs: Ink on Chalk or Bone; Cobalt on Chalk or Bone; Bone or Butter on Cobalt or Ink. Coral on any brand ground is too faint for small text. Only the Cobalt and Ink schemes carry the speckle grain."
+        "content": "Every section picks one of these schemes. Edit a scheme and every section using it changes. The editor numbers them: Scheme 1 is Chalk, 2 is Bone, 3 is Cobalt, 4 is Ink. Readable pairs: Ink on Chalk or Bone; Cobalt on Chalk or Bone; Bone or Butter on Cobalt or Ink. Coral on any brand ground is too faint for small text. Only Schemes 3 and 4 (Cobalt and Ink) carry the speckle grain; a scheme you add has none."
       },
       {
         "type": "color_scheme_group",
