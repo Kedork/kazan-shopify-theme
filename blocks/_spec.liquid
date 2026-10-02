@@ -1,6 +1,6 @@
 {%- comment -%} One label/value row of a Spec table (US-1.8). {%- endcomment -%}
 <div class="pf-spec" {{ block.shopify_attributes }}>
-  <dt class="pf-spec__label">{{ block.settings.label }}</dt>
+  <dt class="pf-spec__label">{{ block.settings.spec_label }}</dt>
   <dd class="pf-spec__value">{{ block.settings.value }}</dd>
 </div>
 
@@ -33,7 +33,7 @@
   "name": "Spec",
   "tag": null,
   "settings": [
-    { "type": "text", "id": "label", "label": "Label", "default": "Label" },
+    { "type": "text", "id": "spec_label", "label": "Label", "default": "Label" },
     { "type": "text", "id": "value", "label": "Value", "default": "Value" }
   ],
   "presets": [{ "name": "Spec" }]

@@ -46,14 +46,14 @@
                 "spec-year": {
                   "type": "_spec",
                   "settings": {
-                    "label": "Year",
+                    "spec_label": "Year",
                     "value": "2026"
                   }
                 },
                 "spec-material": {
                   "type": "_spec",
                   "settings": {
-                    "label": "Material",
+                    "spec_label": "Material",
                     "value": "Stoneware"
                   }
                 }
@@ -154,19 +154,19 @@
             "video-1": {
               "type": "_video",
               "settings": {
-                "label": "Process",
                 "title": "",
                 "ratio": "9 / 16",
-                "span": 1
+                "span": 1,
+                "video_label": "Process"
               }
             },
             "video-2": {
               "type": "_video",
               "settings": {
-                "label": "Process",
                 "title": "",
                 "ratio": "9 / 16",
-                "span": 1
+                "span": 1,
+                "video_label": "Process"
               }
             }
           },
@@ -191,11 +191,11 @@
             "enquire": {
               "type": "_button",
               "settings": {
-                "label": "Enquire",
                 "link": "/pages/contact",
                 "style": "primary",
                 "alignment": "center",
-                "span": 6
+                "span": 6,
+                "button_label": "Enquire"
               }
             }
           },

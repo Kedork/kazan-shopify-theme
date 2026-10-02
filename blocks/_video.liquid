@@ -5,7 +5,7 @@
   poster is a real link to the video, so it works without JavaScript too.
 {%- endcomment -%}
 {%- liquid
-  assign title = block.settings.title | default: block.settings.label | default: 'Video'
+  assign title = block.settings.title | default: block.settings.video_label | default: 'Video'
   assign link = block.settings.video_url
   if link != blank
     if link.type == 'youtube'
@@ -55,8 +55,8 @@
       <div class="pf-video__placeholder" aria-hidden="true"></div>
     {%- endif -%}
   </div>
-  {%- if block.settings.label != blank -%}
-    <span class="pf-video__label">{{ block.settings.label }}</span>
+  {%- if block.settings.video_label != blank -%}
+    <span class="pf-video__label">{{ block.settings.video_label }}</span>
   {%- endif -%}
 </div>
 
@@ -162,7 +162,7 @@
     },
     {
       "type": "text",
-      "id": "label",
+      "id": "video_label",
       "label": "Label",
       "info": "Shown under the video, e.g. \"Pressing the modules\"."
     },
