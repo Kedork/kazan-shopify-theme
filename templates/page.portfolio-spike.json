@@ -46,7 +46,7 @@
           "type": "_row",
           "settings": {
             "columns": 4,
-            "color_scheme": "bone"
+            "color_scheme": "chalk"
           },
           "blocks": {
             "image-2-1": {
@@ -124,7 +124,7 @@
           "type": "_row",
           "settings": {
             "columns": 4,
-            "color_scheme": "bone"
+            "color_scheme": "chalk"
           },
           "blocks": {
             "image-4-1": {
@@ -202,7 +202,7 @@
           "type": "_row",
           "settings": {
             "columns": 4,
-            "color_scheme": "bone"
+            "color_scheme": "chalk"
           },
           "blocks": {
             "image-6-1": {
@@ -280,7 +280,7 @@
           "type": "_row",
           "settings": {
             "columns": 4,
-            "color_scheme": "bone"
+            "color_scheme": "chalk"
           },
           "blocks": {
             "image-8-1": {
@@ -353,6 +353,45 @@
             "image-9-3",
             "image-9-4"
           ]
+        },
+        "row-10": {
+          "type": "_row",
+          "settings": {
+            "columns": 4,
+            "color_scheme": "chalk"
+          },
+          "blocks": {
+            "image-10-1": {
+              "type": "_image",
+              "settings": {
+                "span": 1
+              }
+            },
+            "image-10-2": {
+              "type": "_image",
+              "settings": {
+                "span": 1
+              }
+            },
+            "image-10-3": {
+              "type": "_image",
+              "settings": {
+                "span": 1
+              }
+            },
+            "image-10-4": {
+              "type": "_image",
+              "settings": {
+                "span": 1
+              }
+            }
+          },
+          "block_order": [
+            "image-10-1",
+            "image-10-2",
+            "image-10-3",
+            "image-10-4"
+          ]
         }
       },
       "block_order": [
@@ -364,7 +403,8 @@
         "row-6",
         "row-7",
         "row-8",
-        "row-9"
+        "row-9",
+        "row-10"
       ],
       "settings": {}
     }
