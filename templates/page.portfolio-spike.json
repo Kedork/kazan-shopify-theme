@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -15,13 +24,16 @@
               "settings": {
                 "heading": "Spike row one",
                 "text": "<p>Text block in a two-column row.</p>"
-              }
+              },
+              "blocks": {}
             },
             "image-1": {
               "type": "_image",
               "settings": {
+                "image": "shopify://shop_images/Assembly01BY_Detail-7.jpg",
                 "span": 1
-              }
+              },
+              "blocks": {}
             }
           },
           "block_order": [
@@ -39,26 +51,34 @@
             "image-2": {
               "type": "_image",
               "settings": {
+                "image": "shopify://shop_images/Assembly02YP_Detail-4.jpg",
                 "span": 1
-              }
+              },
+              "blocks": {}
             },
             "image-3": {
               "type": "_image",
               "settings": {
+                "image": "shopify://shop_images/Assembly02YP-3.jpg",
                 "span": 1
-              }
+              },
+              "blocks": {}
             },
             "image-4": {
               "type": "_image",
               "settings": {
+                "image": "shopify://shop_images/Assembly02YP_Detail-5.jpg",
                 "span": 1
-              }
+              },
+              "blocks": {}
             },
             "image-5": {
               "type": "_image",
               "settings": {
+                "image": "shopify://shop_images/Assembly02YP-4.jpg",
                 "span": 1
-              }
+              },
+              "blocks": {}
             }
           },
           "block_order": [
