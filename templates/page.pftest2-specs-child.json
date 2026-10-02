@@ -1,0 +1,43 @@
+{
+  "sections": {
+    "main": {
+      "type": "portfolio",
+      "blocks": {
+        "r": {
+          "type": "_row",
+          "settings": {
+            "columns": 2
+          },
+          "blocks": {
+            "s": {
+              "type": "_specs",
+              "settings": {},
+              "blocks": {
+                "a": {
+                  "type": "_spec",
+                  "settings": {
+                    "label": "Year",
+                    "value": "2026"
+                  }
+                }
+              },
+              "block_order": [
+                "a"
+              ]
+            }
+          },
+          "block_order": [
+            "s"
+          ]
+        }
+      },
+      "block_order": [
+        "r"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

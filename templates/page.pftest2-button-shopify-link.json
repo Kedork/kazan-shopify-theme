@@ -1,0 +1,33 @@
+{
+  "sections": {
+    "main": {
+      "type": "portfolio",
+      "blocks": {
+        "r": {
+          "type": "_row",
+          "settings": {
+            "columns": 2
+          },
+          "blocks": {
+            "b": {
+              "type": "_button",
+              "settings": {
+                "link": "shopify://pages/contact"
+              }
+            }
+          },
+          "block_order": [
+            "b"
+          ]
+        }
+      },
+      "block_order": [
+        "r"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

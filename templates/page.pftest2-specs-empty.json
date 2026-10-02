@@ -8,18 +8,23 @@
           "settings": {
             "columns": 2
           },
-          "blocks": {},
-          "block_order": []
+          "blocks": {
+            "s": {
+              "type": "_specs",
+              "settings": {},
+              "blocks": {},
+              "block_order": []
+            }
+          },
+          "block_order": [
+            "s"
+          ]
         }
       },
       "block_order": [
         "r"
       ],
-      "settings": {
-        "hero_height": 70,
-        "hero_focus": "center",
-        "image_shape": "4 / 5"
-      }
+      "settings": {}
     }
   },
   "order": [
