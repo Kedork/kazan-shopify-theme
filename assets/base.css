@@ -152,7 +152,7 @@ p:last-child {
   letter-spacing: 0.02em;
 }
 
-/* --- Colour schemes (Theme settings → Colors) ---
+/* --- Color schemes (Theme settings → Colors) ---
    layout/theme.liquid writes each scheme as .color-<id> { --scheme-*: … }.
    A section adds "scheme color-<id>"; everything inside reads the variables. */
 .scheme { background-color: var(--scheme-bg); color: var(--scheme-text); }
@@ -515,7 +515,7 @@ p:last-child {
   color: var(--scheme-text);
 }
 
-/* --- Footer --- (colours from its scheme) */
+/* --- Footer --- (colors from its scheme) */
 .site-footer {
   padding: 80px 0 40px;
 }
@@ -831,7 +831,7 @@ p:last-child {
 }
 
 /* The grain schemes drop the card panel so the speckle runs under the text
-   (gallery wall). Other schemes use their Card panel colour. */
+   (gallery wall). Other schemes use their Card panel color. */
 .color-cobalt .collection-card__overlay,
 .color-ink .collection-card__overlay { background-color: transparent; }
 

@@ -12,7 +12,7 @@
     "settings": [
       {
         "type": "header",
-        "content": "Colour schemes"
+        "content": "Color schemes"
       },
       {
         "type": "paragraph",
@@ -77,7 +77,7 @@
             "id": "secondary_button",
             "label": "Secondary button",
             "default": "#16297A",
-            "info": "Outline and text. On hover it fills with this colour and the text takes the background colour."
+            "info": "Outline and text. On hover it fills with this color and the text takes the background color."
           },
           {
             "type": "color",
@@ -113,7 +113,7 @@
       },
       {
         "type": "paragraph",
-        "content": "These six no longer colour sections — the schemes above do. They still colour the status badges, the Subscribe button, the lightbox, the focus ring and a few labels, and are due to be removed."
+        "content": "These six no longer color sections — the schemes above do. They still color the status badges, the Subscribe button, the lightbox, the focus ring and a few labels, and are due to be removed."
       },
       {
         "type": "color",

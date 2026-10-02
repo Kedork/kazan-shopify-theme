@@ -105,10 +105,10 @@
   </style>
 
   {%- comment -%}
-    Colour schemes (Theme settings → Colors). Each scheme becomes a .color-<id>
+    Color schemes (Theme settings → Colors). Each scheme becomes a .color-<id>
     class carrying --scheme-* variables; a section adds "scheme color-<id>".
     :root takes the Chalk scheme (the page itself), or the first scheme if Chalk
-    has been deleted. {% style %} lets the editor recolour live.
+    has been deleted. {% style %} lets the editor recolor live.
   {%- endcomment -%}
   {%- style -%}
     {%- for scheme in settings.color_schemes -%}
