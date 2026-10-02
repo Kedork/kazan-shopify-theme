@@ -21,6 +21,68 @@
     "social_email": "",
     "logo_max_width": 140,
     "content_for_index": [],
-    "share_image": "shopify://shop_images/IMG_2449.jpg"
+    "share_image": "shopify://shop_images/IMG_2449.jpg",
+    "color_schemes": {
+      "chalk": {
+        "settings": {
+          "background": "#F5F1E9",
+          "text": "#16297A",
+          "heading": "#16297A",
+          "label": "#E8736A",
+          "link": "#E8736A",
+          "button": "#16297A",
+          "button_label": "#ECE4D0",
+          "button_hover": "#1E3CAE",
+          "secondary_button": "#16297A",
+          "hairline": "#ECE4D0",
+          "panel": "#ECE4D0"
+        }
+      },
+      "bone": {
+        "settings": {
+          "background": "#ECE4D0",
+          "text": "#16297A",
+          "heading": "#16297A",
+          "label": "#E8736A",
+          "link": "#E8736A",
+          "button": "#16297A",
+          "button_label": "#ECE4D0",
+          "button_hover": "#1E3CAE",
+          "secondary_button": "#16297A",
+          "hairline": "#ECE4D0",
+          "panel": "#ECE4D0"
+        }
+      },
+      "cobalt": {
+        "settings": {
+          "background": "#1E3CAE",
+          "text": "#ECE4D0",
+          "heading": "#F5F1E9",
+          "label": "#E6CF45",
+          "link": "#E6CF45",
+          "button": "#E6CF45",
+          "button_label": "#16297A",
+          "button_hover": "#ECE4D0",
+          "secondary_button": "#ECE4D0",
+          "hairline": "#ECE4D0",
+          "panel": "#1E3CAE"
+        }
+      },
+      "ink": {
+        "settings": {
+          "background": "#16297A",
+          "text": "#ECE4D0",
+          "heading": "#F5F1E9",
+          "label": "#E6CF45",
+          "link": "#E6CF45",
+          "button": "#E6CF45",
+          "button_label": "#16297A",
+          "button_hover": "#ECE4D0",
+          "secondary_button": "#ECE4D0",
+          "hairline": "#ECE4D0",
+          "panel": "#16297A"
+        }
+      }
+    }
   }
 }

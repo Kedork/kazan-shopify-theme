@@ -104,6 +104,27 @@
     }
   </style>
 
+  {%- comment -%}
+    Colour schemes (Theme settings → Colors). Each scheme becomes a .color-<id>
+    class carrying --scheme-* variables; a section adds "scheme color-<id>".
+    :root takes the Chalk scheme (the page itself), or the first scheme if Chalk
+    has been deleted. {% style %} lets the editor recolour live.
+  {%- endcomment -%}
+  {%- style -%}
+    {%- for scheme in settings.color_schemes -%}
+      {%- if forloop.first or scheme.id == 'chalk' -%}
+        :root {
+          {%- render 'scheme-vars', scheme: scheme -%}
+        }
+      {%- endif -%}
+    {%- endfor -%}
+    {%- for scheme in settings.color_schemes %}
+      .color-{{ scheme.id }} {
+        {%- render 'scheme-vars', scheme: scheme -%}
+      }
+    {%- endfor %}
+  {%- endstyle -%}
+
   {{ 'base.css' | asset_url | stylesheet_tag }}
 
   {{ content_for_header }}

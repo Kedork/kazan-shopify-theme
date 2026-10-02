@@ -12,11 +12,108 @@
     "settings": [
       {
         "type": "header",
+        "content": "Colour schemes"
+      },
+      {
+        "type": "paragraph",
+        "content": "Every section picks one of these schemes. Edit a scheme and every section using it changes. Readable pairs: Ink on Chalk or Bone; Cobalt on Chalk or Bone; Bone or Butter on Cobalt or Ink. Coral on any brand ground is too faint for small text. Only the Cobalt and Ink schemes carry the speckle grain."
+      },
+      {
+        "type": "color_scheme_group",
+        "id": "color_schemes",
+        "definition": [
+          {
+            "type": "color",
+            "id": "background",
+            "label": "Background",
+            "default": "#F5F1E9"
+          },
+          {
+            "type": "color",
+            "id": "text",
+            "label": "Text",
+            "default": "#16297A"
+          },
+          {
+            "type": "color",
+            "id": "heading",
+            "label": "Headings",
+            "default": "#16297A"
+          },
+          {
+            "type": "color",
+            "id": "label",
+            "label": "Labels",
+            "default": "#E8736A",
+            "info": "Eyebrows, form labels, prices and captions."
+          },
+          {
+            "type": "color",
+            "id": "link",
+            "label": "Links",
+            "default": "#E8736A",
+            "info": "Text links and the underlined link button. Also the input focus border."
+          },
+          {
+            "type": "color",
+            "id": "button",
+            "label": "Primary button",
+            "default": "#16297A"
+          },
+          {
+            "type": "color",
+            "id": "button_label",
+            "label": "Primary button text",
+            "default": "#ECE4D0"
+          },
+          {
+            "type": "color",
+            "id": "button_hover",
+            "label": "Primary button hover",
+            "default": "#1E3CAE"
+          },
+          {
+            "type": "color",
+            "id": "secondary_button",
+            "label": "Secondary button",
+            "default": "#16297A",
+            "info": "Outline and text. On hover it fills with this colour and the text takes the background colour."
+          },
+          {
+            "type": "color",
+            "id": "hairline",
+            "label": "Hairlines",
+            "default": "#ECE4D0",
+            "info": "Input borders, dividers and empty-image placeholders."
+          },
+          {
+            "type": "color",
+            "id": "panel",
+            "label": "Card panel",
+            "default": "#ECE4D0",
+            "info": "The text panel of collection cards. Match the background for no panel."
+          }
+        ],
+        "role": {
+          "background": "background",
+          "text": "text",
+          "links": "link",
+          "icons": "text",
+          "primary_button": "button",
+          "on_primary_button": "button_label",
+          "primary_button_border": "button",
+          "secondary_button": "background",
+          "on_secondary_button": "secondary_button",
+          "secondary_button_border": "secondary_button"
+        }
+      },
+      {
+        "type": "header",
         "content": "Core palette — Brand Vol. 01 (2026)"
       },
       {
         "type": "paragraph",
-        "content": "Cobalt is the signature ground (heroes, feature bands, footer). Ink is the deepest ground and primary text on light. Butter and Coral are punctuation only — never large fills. Chalk and Bone carry type; never pure white or pure black."
+        "content": "These six no longer colour sections — the schemes above do. They still colour the status badges, the Subscribe button, the lightbox, the focus ring and a few labels, and are due to be removed."
       },
       {
         "type": "color",
