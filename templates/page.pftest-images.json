@@ -1,0 +1,59 @@
+{
+  "sections": {
+    "main": {
+      "type": "portfolio",
+      "blocks": {
+        "row-images": {
+          "type": "_row",
+          "settings": {
+            "columns": 2,
+            "phone_columns": "1",
+            "image_shape": "page",
+            "gap": "medium",
+            "align": "start",
+            "color_scheme": "chalk",
+            "padding_top": "small",
+            "padding_bottom": "small"
+          },
+          "blocks": {
+            "image-1": {
+              "type": "_image",
+              "settings": {
+                "span": 1,
+                "image_shape": "row",
+                "focus": "center",
+                "caption": "",
+                "alt": ""
+              }
+            },
+            "image-2": {
+              "type": "_image",
+              "settings": {
+                "span": 1,
+                "image_shape": "row",
+                "focus": "center",
+                "caption": "",
+                "alt": ""
+              }
+            }
+          },
+          "block_order": [
+            "image-1",
+            "image-2"
+          ]
+        }
+      },
+      "block_order": [
+        "row-images"
+      ],
+      "settings": {
+        "hero_height": 70,
+        "hero_focus": "center",
+        "image_shape": "4 / 5"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

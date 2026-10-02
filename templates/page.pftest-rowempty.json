@@ -1,0 +1,28 @@
+{
+  "sections": {
+    "main": {
+      "type": "portfolio",
+      "blocks": {
+        "r": {
+          "type": "_row",
+          "settings": {
+            "columns": 2
+          },
+          "blocks": {},
+          "block_order": []
+        }
+      },
+      "block_order": [
+        "r"
+      ],
+      "settings": {
+        "hero_height": 70,
+        "hero_focus": "center",
+        "image_shape": "4 / 5"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

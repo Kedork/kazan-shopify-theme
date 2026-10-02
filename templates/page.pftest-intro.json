@@ -1,0 +1,77 @@
+{
+  "sections": {
+    "main": {
+      "type": "portfolio",
+      "blocks": {
+        "row-intro": {
+          "type": "_row",
+          "settings": {
+            "columns": 2,
+            "phone_columns": "1",
+            "image_shape": "page",
+            "gap": "medium",
+            "align": "start",
+            "color_scheme": "chalk",
+            "padding_top": "large",
+            "padding_bottom": "small"
+          },
+          "blocks": {
+            "intro": {
+              "type": "_text",
+              "settings": {
+                "eyebrow": "",
+                "heading": "Project title",
+                "heading_level": "h1",
+                "text": "<p>Introduce the project in two to four short paragraphs: what it is, how it was made, and what it is about.</p>",
+                "style": "paragraph",
+                "alignment": "left",
+                "span": 1
+              }
+            },
+            "specs": {
+              "type": "_specs",
+              "settings": {
+                "span": 1
+              },
+              "blocks": {
+                "spec-year": {
+                  "type": "_spec",
+                  "settings": {
+                    "label": "Year",
+                    "value": "2026"
+                  }
+                },
+                "spec-material": {
+                  "type": "_spec",
+                  "settings": {
+                    "label": "Material",
+                    "value": "Stoneware"
+                  }
+                }
+              },
+              "block_order": [
+                "spec-year",
+                "spec-material"
+              ]
+            }
+          },
+          "block_order": [
+            "intro",
+            "specs"
+          ]
+        }
+      },
+      "block_order": [
+        "row-intro"
+      ],
+      "settings": {
+        "hero_height": 70,
+        "hero_focus": "center",
+        "image_shape": "4 / 5"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

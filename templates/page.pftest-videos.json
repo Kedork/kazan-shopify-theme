@@ -1,0 +1,57 @@
+{
+  "sections": {
+    "main": {
+      "type": "portfolio",
+      "blocks": {
+        "row-videos": {
+          "type": "_row",
+          "settings": {
+            "columns": 2,
+            "phone_columns": "1",
+            "image_shape": "page",
+            "gap": "medium",
+            "align": "start",
+            "color_scheme": "chalk",
+            "padding_top": "large",
+            "padding_bottom": "small"
+          },
+          "blocks": {
+            "video-1": {
+              "type": "_video",
+              "settings": {
+                "label": "Process",
+                "title": "",
+                "ratio": "9 / 16",
+                "span": 1
+              }
+            },
+            "video-2": {
+              "type": "_video",
+              "settings": {
+                "label": "Process",
+                "title": "",
+                "ratio": "9 / 16",
+                "span": 1
+              }
+            }
+          },
+          "block_order": [
+            "video-1",
+            "video-2"
+          ]
+        }
+      },
+      "block_order": [
+        "row-videos"
+      ],
+      "settings": {
+        "hero_height": 70,
+        "hero_focus": "center",
+        "image_shape": "4 / 5"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

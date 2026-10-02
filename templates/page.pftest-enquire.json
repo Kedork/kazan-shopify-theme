@@ -1,0 +1,48 @@
+{
+  "sections": {
+    "main": {
+      "type": "portfolio",
+      "blocks": {
+        "row-enquire": {
+          "type": "_row",
+          "settings": {
+            "columns": 1,
+            "phone_columns": "1",
+            "image_shape": "page",
+            "gap": "medium",
+            "align": "start",
+            "color_scheme": "chalk",
+            "padding_top": "small",
+            "padding_bottom": "large"
+          },
+          "blocks": {
+            "enquire": {
+              "type": "_button",
+              "settings": {
+                "label": "Enquire",
+                "link": "/pages/contact",
+                "style": "primary",
+                "alignment": "center",
+                "span": 6
+              }
+            }
+          },
+          "block_order": [
+            "enquire"
+          ]
+        }
+      },
+      "block_order": [
+        "row-enquire"
+      ],
+      "settings": {
+        "hero_height": 70,
+        "hero_focus": "center",
+        "image_shape": "4 / 5"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

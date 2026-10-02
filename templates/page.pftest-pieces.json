@@ -1,0 +1,35 @@
+{
+  "sections": {
+    "main": {
+      "type": "portfolio",
+      "blocks": {
+        "pieces": {
+          "type": "_pieces",
+          "settings": {
+            "collection": "",
+            "eyebrow": "Available",
+            "heading": "Pieces in this series",
+            "products_to_show": 6,
+            "columns": "3",
+            "show_view_all": true,
+            "view_all_label": "View All",
+            "empty_text": "No pieces from this series are listed yet.",
+            "color_scheme": "bone",
+            "padding_top": "large"
+          }
+        }
+      },
+      "block_order": [
+        "pieces"
+      ],
+      "settings": {
+        "hero_height": 70,
+        "hero_focus": "center",
+        "image_shape": "4 / 5"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}
