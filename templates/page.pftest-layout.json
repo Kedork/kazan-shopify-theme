@@ -131,9 +131,39 @@
             "k1",
             "k2"
           ]
+        },
+        "rv": {
+          "type": "_row",
+          "settings": {
+            "columns": 2
+          },
+          "blocks": {
+            "v": {
+              "type": "_video",
+              "settings": {
+                "video_url": "https://www.youtube.com/watch?v=jNQXAC9IVRw",
+                "video_label": "Test video",
+                "title": "Test video for keyboard check",
+                "ratio": "16 / 9"
+              }
+            },
+            "b": {
+              "type": "_button",
+              "settings": {
+                "button_label": "Enquire",
+                "link": "/pages/contact",
+                "span": 1
+              }
+            }
+          },
+          "block_order": [
+            "v",
+            "b"
+          ]
         }
       },
       "block_order": [
+        "rv",
         "r4",
         "r6",
         "r3p2"
