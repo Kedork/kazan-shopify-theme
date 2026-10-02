@@ -4,6 +4,8 @@
   become 2 columns on tablets; on phones each row uses its phone columns.
   "tag": null so the grid's items are the blocks themselves, not Shopify's
   wrapper divs — otherwise a column span would do nothing.
+  Shopify validates this file against the block files it already holds, so
+  a new child block type must reach Shopify before (or with) this file.
 {%- endcomment -%}
 {%- liquid
   case block.settings.padding_top
