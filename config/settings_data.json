@@ -9,12 +9,6 @@
  */
 {
   "current": {
-    "color_warm_white": "#F5F1E9",
-    "color_sand": "#ECE4D0",
-    "color_clay": "#E6CF45",
-    "color_accent": "#E8736A",
-    "color_charcoal": "#16297A",
-    "color_mid": "#1E3CAE",
     "heading_font_family": "Bricolage Grotesque",
     "body_font_family": "Bricolage Grotesque",
     "social_instagram": "https://www.instagram.com/studio.kazan",
@@ -25,62 +19,62 @@
     "color_schemes": {
       "chalk": {
         "settings": {
-          "background": "#F5F1E9",
-          "text": "#16297A",
-          "heading": "#16297A",
-          "label": "#E8736A",
-          "link": "#E8736A",
-          "button": "#16297A",
-          "button_label": "#ECE4D0",
-          "button_hover": "#1E3CAE",
-          "secondary_button": "#16297A",
-          "hairline": "#ECE4D0",
-          "panel": "#ECE4D0"
+          "background": "{{ settings.colors.chalk }}",
+          "text": "{{ settings.colors.ink }}",
+          "heading": "{{ settings.colors.ink }}",
+          "label": "{{ settings.colors.coral }}",
+          "link": "{{ settings.colors.coral }}",
+          "button": "{{ settings.colors.ink }}",
+          "button_label": "{{ settings.colors.bone }}",
+          "button_hover": "{{ settings.colors.cobalt }}",
+          "secondary_button": "{{ settings.colors.ink }}",
+          "hairline": "{{ settings.colors.bone }}",
+          "panel": "{{ settings.colors.bone }}"
         }
       },
       "bone": {
         "settings": {
-          "background": "#ECE4D0",
-          "text": "#16297A",
-          "heading": "#16297A",
-          "label": "#E8736A",
-          "link": "#E8736A",
-          "button": "#16297A",
-          "button_label": "#ECE4D0",
-          "button_hover": "#1E3CAE",
-          "secondary_button": "#16297A",
-          "hairline": "#ECE4D0",
-          "panel": "#ECE4D0"
+          "background": "{{ settings.colors.bone }}",
+          "text": "{{ settings.colors.ink }}",
+          "heading": "{{ settings.colors.ink }}",
+          "label": "{{ settings.colors.coral }}",
+          "link": "{{ settings.colors.coral }}",
+          "button": "{{ settings.colors.ink }}",
+          "button_label": "{{ settings.colors.bone }}",
+          "button_hover": "{{ settings.colors.cobalt }}",
+          "secondary_button": "{{ settings.colors.ink }}",
+          "hairline": "{{ settings.colors.bone }}",
+          "panel": "{{ settings.colors.bone }}"
         }
       },
       "cobalt": {
         "settings": {
-          "background": "#1E3CAE",
-          "text": "#ECE4D0",
-          "heading": "#F5F1E9",
-          "label": "#E6CF45",
-          "link": "#E6CF45",
-          "button": "#E6CF45",
-          "button_label": "#16297A",
-          "button_hover": "#ECE4D0",
-          "secondary_button": "#ECE4D0",
-          "hairline": "#ECE4D0",
-          "panel": "#1E3CAE"
+          "background": "{{ settings.colors.cobalt }}",
+          "text": "{{ settings.colors.bone }}",
+          "heading": "{{ settings.colors.chalk }}",
+          "label": "{{ settings.colors.butter }}",
+          "link": "{{ settings.colors.butter }}",
+          "button": "{{ settings.colors.butter }}",
+          "button_label": "{{ settings.colors.ink }}",
+          "button_hover": "{{ settings.colors.bone }}",
+          "secondary_button": "{{ settings.colors.bone }}",
+          "hairline": "{{ settings.colors.bone }}",
+          "panel": "{{ settings.colors.cobalt }}"
         }
       },
       "ink": {
         "settings": {
-          "background": "#16297A",
-          "text": "#ECE4D0",
-          "heading": "#F5F1E9",
-          "label": "#E6CF45",
-          "link": "#E6CF45",
-          "button": "#E6CF45",
-          "button_label": "#16297A",
-          "button_hover": "#ECE4D0",
-          "secondary_button": "#ECE4D0",
-          "hairline": "#ECE4D0",
-          "panel": "#16297A"
+          "background": "{{ settings.colors.ink }}",
+          "text": "{{ settings.colors.bone }}",
+          "heading": "{{ settings.colors.chalk }}",
+          "label": "{{ settings.colors.butter }}",
+          "link": "{{ settings.colors.butter }}",
+          "button": "{{ settings.colors.butter }}",
+          "button_label": "{{ settings.colors.ink }}",
+          "button_hover": "{{ settings.colors.bone }}",
+          "secondary_button": "{{ settings.colors.bone }}",
+          "hairline": "{{ settings.colors.bone }}",
+          "panel": "{{ settings.colors.ink }}"
         }
       }
     }

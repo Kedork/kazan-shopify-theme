@@ -12,6 +12,26 @@
     "settings": [
       {
         "type": "header",
+        "content": "Brand palette"
+      },
+      {
+        "type": "paragraph",
+        "content": "Your brand colors. Every color picker in the theme shows these as swatches, so pick a swatch instead of typing a hex value. A color picked from the palette stays linked: change it here and every scheme and setting using it updates. Cobalt is the signature ground; Ink is the deepest ground and text on light; Butter and Coral are punctuation only, never section-sized fills; Chalk and Bone carry type. Up to 20 colors."
+      },
+      {
+        "type": "color_palette",
+        "id": "colors",
+        "default": {
+          "cobalt": "#1E3CAE",
+          "ink": "#16297A",
+          "butter": "#E6CF45",
+          "coral": "#E8736A",
+          "bone": "#ECE4D0",
+          "chalk": "#F5F1E9"
+        }
+      },
+      {
+        "type": "header",
         "content": "Color schemes"
       },
       {
@@ -26,71 +46,71 @@
             "type": "color",
             "id": "background",
             "label": "Background",
-            "default": "#F5F1E9"
+            "default": "{{ settings.colors.chalk }}"
           },
           {
             "type": "color",
             "id": "text",
             "label": "Text",
-            "default": "#16297A"
+            "default": "{{ settings.colors.ink }}"
           },
           {
             "type": "color",
             "id": "heading",
             "label": "Headings",
-            "default": "#16297A"
+            "default": "{{ settings.colors.ink }}"
           },
           {
             "type": "color",
             "id": "label",
             "label": "Labels",
-            "default": "#E8736A",
+            "default": "{{ settings.colors.coral }}",
             "info": "Eyebrows, form labels, prices and captions."
           },
           {
             "type": "color",
             "id": "link",
             "label": "Links",
-            "default": "#E8736A",
+            "default": "{{ settings.colors.coral }}",
             "info": "Text links and the underlined link button. Also the input focus border."
           },
           {
             "type": "color",
             "id": "button",
             "label": "Primary button",
-            "default": "#16297A"
+            "default": "{{ settings.colors.ink }}"
           },
           {
             "type": "color",
             "id": "button_label",
             "label": "Primary button text",
-            "default": "#ECE4D0"
+            "default": "{{ settings.colors.bone }}"
           },
           {
             "type": "color",
             "id": "button_hover",
             "label": "Primary button hover",
-            "default": "#1E3CAE"
+            "default": "{{ settings.colors.cobalt }}"
           },
           {
             "type": "color",
             "id": "secondary_button",
             "label": "Secondary button",
-            "default": "#16297A",
+            "default": "{{ settings.colors.ink }}",
             "info": "Outline and text. On hover it fills with this color and the text takes the background color."
           },
           {
             "type": "color",
             "id": "hairline",
             "label": "Hairlines",
-            "default": "#ECE4D0",
+            "default": "{{ settings.colors.bone }}",
             "info": "Input borders, dividers and empty-image placeholders."
           },
           {
             "type": "color",
             "id": "panel",
             "label": "Card panel",
-            "default": "#ECE4D0",
+            "default": "{{ settings.colors.bone }}",
             "info": "The text panel of collection cards. Match the background for no panel."
           }
         ],
@@ -106,54 +126,6 @@
           "on_secondary_button": "secondary_button",
           "secondary_button_border": "secondary_button"
         }
-      },
-      {
-        "type": "header",
-        "content": "Core palette — Brand Vol. 01 (2026)"
-      },
-      {
-        "type": "paragraph",
-        "content": "These six no longer color sections — the schemes above do. They still color the status badges, the Subscribe button, the lightbox, the focus ring and a few labels, and are due to be removed."
-      },
-      {
-        "type": "color",
-        "id": "color_mid",
-        "label": "Cobalt — signature ground",
-        "info": "Heroes, feature bands, gallery walls, footer.",
-        "default": "#1E3CAE"
-      },
-      {
-        "type": "color",
-        "id": "color_charcoal",
-        "label": "Ink — deep ground + primary text",
-        "info": "Primary text on light backgrounds; deepest dark ground.",
-        "default": "#16297A"
-      },
-      {
-        "type": "color",
-        "id": "color_warm_white",
-        "label": "Chalk — light page background",
-        "default": "#F5F1E9"
-      },
-      {
-        "type": "color",
-        "id": "color_sand",
-        "label": "Bone — secondary light / text on dark",
-        "default": "#ECE4D0"
-      },
-      {
-        "type": "color",
-        "id": "color_clay",
-        "label": "Butter — pop accent",
-        "info": "Small highlights only — never a section-sized fill.",
-        "default": "#E6CF45"
-      },
-      {
-        "type": "color",
-        "id": "color_accent",
-        "label": "Coral — accent / detail",
-        "info": "Eyebrows, labels, links, small details.",
-        "default": "#E8736A"
       }
     ]
   },

@@ -89,14 +89,15 @@
 
   <style>
     :root {
-      /* Brand Vol. 01 (2026) — cobalt/editorial. Chalk/Bone light, Ink text, Cobalt ground, Butter/Coral accents */
-      --warm-white: {{ settings.color_warm_white }};   /* Chalk — light page bg */
-      --sand: {{ settings.color_sand }};               /* Bone — secondary light / text on dark */
-      --clay: {{ settings.color_clay }};               /* Butter — pop accent */
-      --accent: {{ settings.color_accent }};           /* Coral — links, eyebrows, details */
-      --charcoal: {{ settings.color_charcoal }};       /* Ink — primary text + deep grounds */
-      --mid: {{ settings.color_mid }};                 /* Cobalt — signature ground */
-      --cobalt: {{ settings.color_mid }};              /* alias for signature ground */
+      /* Brand palette (Theme settings → Colors). Legacy variable names; sections
+         use the --scheme-* variables, these are for badges, the lightbox, etc. */
+      --warm-white: {{ settings.colors.chalk }};
+      --sand: {{ settings.colors.bone }};
+      --clay: {{ settings.colors.butter }};
+      --accent: {{ settings.colors.coral }};
+      --charcoal: {{ settings.colors.ink }};
+      --mid: {{ settings.colors.cobalt }};
+      --cobalt: {{ settings.colors.cobalt }};
       --font-heading: '{{ settings.heading_font_family | default: "Bricolage Grotesque" }}', sans-serif;
       --font-body: '{{ settings.body_font_family | default: "Bricolage Grotesque" }}', sans-serif;
       --font-display: 'Instrument Serif', Georgia, serif;
