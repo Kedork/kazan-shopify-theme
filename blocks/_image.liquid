@@ -1,25 +1,123 @@
-{%- comment -%} Image in a Row. SPIKE. {%- endcomment -%}
-<figure class="pf-image" style="--span: {{ block.settings.span }};" {{ block.shopify_attributes }}>
-  {%- if block.settings.image != blank -%}
-    {{ block.settings.image | image_url: width: 1600 | image_tag: loading: 'lazy', sizes: '(max-width: 600px) 100vw, 50vw', widths: '400, 800, 1200, 1600' }}
-  {%- else -%}
-    <div class="pf-image__placeholder"></div>
+{%- comment -%}
+  Image in a Row (US-1.8, US-1.6). Shape comes from the image, else its row,
+  else the page (--pf-img-shape → --pf-row-shape → --pf-shape). Alt text is the
+  image's own (Files), else this block's override — never the page title.
+{%- endcomment -%}
+{%- liquid
+  assign img = block.settings.image
+  assign alt = img.alt
+  if alt == blank
+    assign alt = block.settings.alt
+  endif
+  assign span = block.settings.span | times: 1
+-%}
+<figure
+  class="pf-image"
+  style="--span: {{ span }}; --pf-focus: center {{ block.settings.focus }};{% unless block.settings.image_shape == 'row' %} --pf-img-shape: {{ block.settings.image_shape }};{% endunless %}"
+  {{ block.shopify_attributes }}
+>
+  <div class="pf-image__media">
+    {%- if img != blank -%}
+      {{
+        img
+        | image_url: width: 2000
+        | image_tag:
+          loading: 'lazy',
+          sizes: '(max-width: 600px) 100vw, (max-width: 900px) 50vw, 33vw',
+          widths: '400, 600, 800, 1200, 1600, 2000',
+          alt: alt
+      }}
+    {%- else -%}
+      <div class="pf-image__placeholder" aria-hidden="true"></div>
+    {%- endif -%}
+  </div>
+  {%- if block.settings.caption != blank -%}
+    <figcaption class="pf-image__caption">{{ block.settings.caption }}</figcaption>
   {%- endif -%}
 </figure>
 
 {% stylesheet %}
-  .pf-image { grid-column: span min(var(--span), var(--cols)); margin: 0; }
-  .pf-image img { width: 100%; height: auto; display: block; }
-  .pf-image__placeholder { aspect-ratio: 4 / 5; background-color: var(--scheme-hairline); }
-  @media (max-width: 600px) { .pf-image { grid-column: auto; } }
+  .pf-image {
+    margin: 0;
+  }
+  .pf-image__media {
+    aspect-ratio: var(--pf-img-shape, var(--pf-row-shape, var(--pf-shape, 4 / 5)));
+    overflow: hidden;
+    background-color: var(--scheme-hairline);
+  }
+  .pf-image__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: var(--pf-focus, center);
+    display: block;
+  }
+  .pf-image__placeholder {
+    width: 100%;
+    height: 100%;
+    min-height: 120px;
+  }
+  .pf-image__caption {
+    font-family: var(--font-heading);
+    font-size: 0.625rem;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    padding-top: 0.875rem;
+    display: block;
+  }
 {% endstylesheet %}
 
 {% schema %}
 {
   "name": "Image",
+  "tag": null,
   "settings": [
     { "type": "image_picker", "id": "image", "label": "Image" },
-    { "type": "range", "id": "span", "label": "Span (columns)", "min": 1, "max": 6, "step": 1, "default": 1 }
+    {
+      "type": "range",
+      "id": "span",
+      "label": "Width (columns)",
+      "info": "How many of the row's columns this image covers.",
+      "min": 1,
+      "max": 6,
+      "step": 1,
+      "default": 1
+    },
+    {
+      "type": "select",
+      "id": "image_shape",
+      "label": "Shape",
+      "options": [
+        { "value": "row", "label": "Same as row" },
+        { "value": "auto", "label": "Original" },
+        { "value": "1 / 1", "label": "Square" },
+        { "value": "4 / 5", "label": "Portrait 4:5" },
+        { "value": "3 / 4", "label": "Portrait 3:4" },
+        { "value": "3 / 2", "label": "Landscape 3:2" },
+        { "value": "16 / 9", "label": "Wide 16:9" }
+      ],
+      "default": "row"
+    },
+    {
+      "type": "select",
+      "id": "focus",
+      "label": "Crop focus",
+      "info": "Which part stays in frame when the shape crops the image.",
+      "options": [
+        { "value": "top", "label": "Top" },
+        { "value": "30%", "label": "Upper third" },
+        { "value": "center", "label": "Center" },
+        { "value": "bottom", "label": "Bottom" }
+      ],
+      "default": "center"
+    },
+    { "type": "text", "id": "caption", "label": "Caption" },
+    {
+      "type": "text",
+      "id": "alt",
+      "label": "Alt text",
+      "info": "Only used when the image has no alt text of its own in Content → Files."
+    }
   ],
   "presets": [{ "name": "Image" }]
 }

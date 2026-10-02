@@ -1,30 +1,231 @@
-{%- comment -%} Row: a grid of 1–6 columns holding Image and Text blocks. SPIKE. {%- endcomment -%}
-<div class="pf-row scheme color-{{ block.settings.color_scheme.id }}" {{ block.shopify_attributes }}>
-  <div class="page-width pf-row__grid" style="--cols: {{ block.settings.columns }};">
+{%- comment -%}
+  Row (US-1.8): a full-width band in its own color scheme, holding a grid of
+  1–6 columns. Items span columns (capped at the row's count). Rows of 3+
+  become 2 columns on tablets; on phones each row uses its phone columns.
+  "tag": null so the grid's items are the blocks themselves, not Shopify's
+  wrapper divs — otherwise a column span would do nothing.
+{%- endcomment -%}
+{%- liquid
+  case block.settings.padding_top
+    when 'none'
+      assign pad_top = '0px'
+    when 'large'
+      assign pad_top = '120px'
+    else
+      assign pad_top = '60px'
+  endcase
+  case block.settings.padding_bottom
+    when 'none'
+      assign pad_bottom = '0px'
+    when 'large'
+      assign pad_bottom = '120px'
+    else
+      assign pad_bottom = '60px'
+  endcase
+  case block.settings.gap
+    when 'none'
+      assign gap = '0px'
+    when 'small'
+      assign gap = '8px'
+    when 'large'
+      assign gap = '40px'
+    else
+      assign gap = '16px'
+  endcase
+-%}
+<div
+  class="pf-row scheme color-{{ block.settings.color_scheme.id }}"
+  style="--pf-pad-top: {{ pad_top }}; --pf-pad-bottom: {{ pad_bottom }};{% unless block.settings.image_shape == 'page' %} --pf-row-shape: {{ block.settings.image_shape }};{% endunless %}"
+  {{ block.shopify_attributes }}
+>
+  <div
+    class="page-width pf-row__grid"
+    data-cols="{{ block.settings.columns }}"
+    style="--cols: {{ block.settings.columns }}; --phone-cols: {{ block.settings.phone_columns }}; --pf-gap: {{ gap }}; align-items: {{ block.settings.align }};"
+  >
     {% content_for 'blocks' %}
   </div>
 </div>
 
 {% stylesheet %}
-  .pf-row { padding: 60px 0; }
-  .pf-row__grid { display: grid; grid-template-columns: repeat(var(--cols), minmax(0, 1fr)); gap: 16px; align-items: start; }
-  @media (max-width: 600px) { .pf-row__grid { grid-template-columns: 1fr; } }
+  .pf-row {
+    padding-top: var(--pf-pad-top);
+    padding-bottom: var(--pf-pad-bottom);
+  }
+  .pf-row__grid {
+    display: grid;
+    grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
+    gap: var(--pf-gap);
+  }
+  /* Every item spans --span columns, never more than the row has. */
+  .pf-row__grid > * {
+    grid-column: span min(var(--span, 1), var(--cols));
+    min-width: 0;
+  }
+  @media screen and (max-width: 900px) {
+    .pf-row__grid[data-cols="3"],
+    .pf-row__grid[data-cols="4"],
+    .pf-row__grid[data-cols="5"],
+    .pf-row__grid[data-cols="6"] {
+      --cols: 2;
+    }
+  }
+  @media screen and (max-width: 600px) {
+    .pf-row {
+      padding-top: calc(var(--pf-pad-top) / 2);
+      padding-bottom: calc(var(--pf-pad-bottom) / 2);
+    }
+    .pf-row__grid,
+    .pf-row__grid[data-cols] {
+      --cols: var(--phone-cols);
+    }
+  }
 {% endstylesheet %}
 
 {% schema %}
 {
   "name": "Row",
-  "blocks": [{ "type": "_image" }, { "type": "_text" }],
+  "tag": null,
+  "blocks": [
+    { "type": "_image" },
+    { "type": "_text" },
+    { "type": "_video" },
+    { "type": "_specs" },
+    { "type": "_button" }
+  ],
   "settings": [
-    { "type": "range", "id": "columns", "label": "Columns", "min": 1, "max": 6, "step": 1, "default": 2 },
-    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "chalk" }
+    {
+      "type": "range",
+      "id": "columns",
+      "label": "Columns",
+      "min": 1,
+      "max": 6,
+      "step": 1,
+      "default": 2
+    },
+    {
+      "type": "select",
+      "id": "phone_columns",
+      "label": "Columns on phones",
+      "options": [
+        { "value": "1", "label": "1" },
+        { "value": "2", "label": "2" }
+      ],
+      "default": "1"
+    },
+    {
+      "type": "select",
+      "id": "image_shape",
+      "label": "Image shape",
+      "options": [
+        { "value": "page", "label": "Same as page" },
+        { "value": "auto", "label": "Original" },
+        { "value": "1 / 1", "label": "Square" },
+        { "value": "4 / 5", "label": "Portrait 4:5" },
+        { "value": "3 / 4", "label": "Portrait 3:4" },
+        { "value": "3 / 2", "label": "Landscape 3:2" },
+        { "value": "16 / 9", "label": "Wide 16:9" }
+      ],
+      "default": "page"
+    },
+    {
+      "type": "select",
+      "id": "gap",
+      "label": "Space between items",
+      "options": [
+        { "value": "none", "label": "None" },
+        { "value": "small", "label": "Small" },
+        { "value": "medium", "label": "Medium" },
+        { "value": "large", "label": "Large" }
+      ],
+      "default": "medium"
+    },
+    {
+      "type": "select",
+      "id": "align",
+      "label": "Vertical alignment",
+      "options": [
+        { "value": "start", "label": "Top" },
+        { "value": "center", "label": "Center" },
+        { "value": "end", "label": "Bottom" }
+      ],
+      "default": "start"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "chalk"
+    },
+    {
+      "type": "select",
+      "id": "padding_top",
+      "label": "Space above",
+      "options": [
+        { "value": "none", "label": "None" },
+        { "value": "small", "label": "Small" },
+        { "value": "large", "label": "Large" }
+      ],
+      "default": "small"
+    },
+    {
+      "type": "select",
+      "id": "padding_bottom",
+      "label": "Space below",
+      "info": "Two rows in the same color scheme with no space between them read as one band.",
+      "options": [
+        { "value": "none", "label": "None" },
+        { "value": "small", "label": "Small" },
+        { "value": "large", "label": "Large" }
+      ],
+      "default": "small"
+    }
   ],
   "presets": [
-    { "name": "Row" },
+    {
+      "name": "Row",
+      "category": "Rows",
+      "settings": { "columns": 2 }
+    },
     {
       "name": "Two images",
+      "category": "Rows",
       "settings": { "columns": 2 },
       "blocks": [{ "type": "_image" }, { "type": "_image" }]
+    },
+    {
+      "name": "Three images",
+      "category": "Rows",
+      "settings": { "columns": 3 },
+      "blocks": [{ "type": "_image" }, { "type": "_image" }, { "type": "_image" }]
+    },
+    {
+      "name": "Text and image",
+      "category": "Rows",
+      "settings": { "columns": 2, "align": "center" },
+      "blocks": [{ "type": "_text" }, { "type": "_image" }]
+    },
+    {
+      "name": "Statement",
+      "category": "Rows",
+      "settings": { "columns": 1, "color_scheme": "cobalt", "padding_top": "large", "padding_bottom": "large" },
+      "blocks": [
+        {
+          "type": "_text",
+          "settings": {
+            "style": "statement",
+            "alignment": "center",
+            "heading": "",
+            "text": "<p>One line that says what the work is about.</p>"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Two videos",
+      "category": "Rows",
+      "settings": { "columns": 2 },
+      "blocks": [{ "type": "_video" }, { "type": "_video" }]
     }
   ]
 }

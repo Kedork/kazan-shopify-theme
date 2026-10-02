@@ -1,15 +1,168 @@
 {%- comment -%}
-  Kazan Studio — Portfolio (US-1.8). A project page built from Row blocks.
-  SPIKE: minimal version to test nested theme blocks in the editor.
+  Kazan Studio — Portfolio (US-1.8)
+
+  A project page built in the theme editor from Row blocks (1–6 columns of
+  Image, Text, Video, Spec table and Button blocks) and Pieces bands. The
+  starter is templates/page.portfolio-page.json; each project gets its own copy
+  via "Create template".
+
+  Shopify allows 50 blocks per section, counting rows AND the blocks inside
+  them (tested in the US-1.8 spike: a template over 50 is rejected silently by
+  the GitHub sync). For a bigger page, add a second Portfolio section below.
+
+  Image shape cascades: section → row ("Same as page") → image ("Same as
+  row"), as CSS variables, so a row's images always line up.
 {%- endcomment -%}
-<div class="portfolio">
+
+{%- liquid
+  assign has_hero = false
+  if section.settings.hero_image != blank
+    assign has_hero = true
+  endif
+
+  # The header is fixed; the first section on a page with no hero needs room
+  # under it. Rows carry their own color, so the room goes inside the first row.
+  assign clear_header = false
+  if has_hero == false and section.index == 1
+    assign clear_header = true
+  endif
+-%}
+
+<style>
+  #shopify-section-{{ section.id }} .pf-hero {
+    height: {{ section.settings.hero_height }}vh;
+  }
+  #shopify-section-{{ section.id }} .pf-hero img {
+    object-position: center {{ section.settings.hero_focus }};
+  }
+  @media screen and (max-width: 600px) {
+    #shopify-section-{{ section.id }} .pf-hero {
+      height: 55vh;
+    }
+  }
+</style>
+
+<div
+  class="portfolio{% if clear_header %} portfolio--clear-header{% endif %}"
+  style="--pf-shape: {{ section.settings.image_shape }};"
+>
+  {%- if has_hero -%}
+    {%- liquid
+      assign hero_alt = section.settings.hero_image.alt
+      if hero_alt == blank
+        assign hero_alt = page.title
+      endif
+    -%}
+    <div class="pf-hero">
+      {{
+        section.settings.hero_image
+        | image_url: width: 2400
+        | image_tag:
+          loading: 'eager',
+          fetchpriority: 'high',
+          sizes: '100vw',
+          widths: '600, 900, 1200, 1600, 2000, 2400',
+          alt: hero_alt
+      }}
+    </div>
+  {%- endif -%}
+
   {% content_for 'blocks' %}
 </div>
+
+{% stylesheet %}
+  .portfolio {
+    --pf-header-clear: 80px;
+  }
+  .pf-hero {
+    width: 100%;
+    overflow: hidden;
+    background-color: var(--scheme-hairline);
+  }
+  .pf-hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  /* First row (or Pieces band) of a page with no hero starts under the fixed header. */
+  .portfolio--clear-header > :first-child {
+    padding-top: calc(var(--pf-pad-top, 0px) + var(--pf-header-clear));
+  }
+  @media screen and (max-width: 600px) {
+    .portfolio {
+      --pf-header-clear: 68px;
+    }
+  }
+{% endstylesheet %}
 
 {% schema %}
 {
   "name": "Portfolio",
-  "blocks": [{ "type": "_row" }],
-  "presets": [{ "name": "Portfolio" }]
+  "class": "section-portfolio",
+  "blocks": [{ "type": "_row" }, { "type": "_pieces" }],
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Build the page from rows. A section holds up to 50 blocks, counting rows and everything inside them. For a bigger page, add another Portfolio section below this one."
+    },
+    { "type": "header", "content": "Hero" },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero image",
+      "info": "Optional, full width at the top. Its alt text comes from the image in Files."
+    },
+    {
+      "type": "range",
+      "id": "hero_height",
+      "label": "Hero height",
+      "min": 40,
+      "max": 90,
+      "step": 5,
+      "unit": "vh",
+      "default": 70
+    },
+    {
+      "type": "select",
+      "id": "hero_focus",
+      "label": "Hero crop focus",
+      "options": [
+        { "value": "top", "label": "Top" },
+        { "value": "30%", "label": "Upper third" },
+        { "value": "center", "label": "Center" },
+        { "value": "bottom", "label": "Bottom" }
+      ],
+      "default": "center"
+    },
+    { "type": "header", "content": "Images" },
+    {
+      "type": "select",
+      "id": "image_shape",
+      "label": "Image shape",
+      "info": "Every image on the page takes this shape unless its row or the image itself sets another.",
+      "options": [
+        { "value": "auto", "label": "Original" },
+        { "value": "1 / 1", "label": "Square" },
+        { "value": "4 / 5", "label": "Portrait 4:5" },
+        { "value": "3 / 4", "label": "Portrait 3:4" },
+        { "value": "3 / 2", "label": "Landscape 3:2" },
+        { "value": "16 / 9", "label": "Wide 16:9" }
+      ],
+      "default": "4 / 5"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Portfolio",
+      "blocks": [
+        {
+          "type": "_row",
+          "settings": { "columns": 2 },
+          "blocks": [{ "type": "_image" }, { "type": "_image" }]
+        }
+      ]
+    }
+  ]
 }
 {% endschema %}

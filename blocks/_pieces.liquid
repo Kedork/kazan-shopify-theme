@@ -1,0 +1,127 @@
+{%- comment -%}
+  Pieces (US-1.8): a full-width band of products from a collection, between
+  rows. Same markup as Series' pieces band. Renders nothing with no collection.
+{%- endcomment -%}
+{%- liquid
+  assign collection = block.settings.collection
+  case block.settings.padding_top
+    when 'none'
+      assign pad_top = '0px'
+    when 'small'
+      assign pad_top = '60px'
+    else
+      assign pad_top = '120px'
+  endcase
+-%}
+<section
+  class="pf-pieces scheme color-{{ block.settings.color_scheme.id }}"
+  style="--pf-pad-top: {{ pad_top }};"
+  {{ block.shopify_attributes }}
+>
+  {%- if collection != blank -%}
+    <div class="page-width">
+      <div class="pf-pieces__header">
+        {%- if block.settings.eyebrow != blank -%}
+          <p class="eyebrow">{{ block.settings.eyebrow }}</p>
+        {%- endif -%}
+        <h2>{{ block.settings.heading | default: collection.title }}</h2>
+      </div>
+      {%- liquid
+        # Never leave a dangling empty cell: two pieces get a two-track grid.
+        assign shown = collection.products.size
+        if shown > block.settings.products_to_show
+          assign shown = block.settings.products_to_show
+        endif
+        assign cols = block.settings.columns | times: 1
+        if shown > 0 and shown < cols
+          assign cols = shown
+        endif
+      -%}
+      <div class="grid grid--{{ cols }}">
+        {%- for product in collection.products limit: block.settings.products_to_show -%}
+          {% render 'product-card', product: product %}
+        {%- else -%}
+          <p>{{ block.settings.empty_text }}</p>
+        {%- endfor -%}
+      </div>
+      {%- if block.settings.show_view_all -%}
+        <div class="pf-pieces__footer">
+          <a href="{{ collection.url }}" class="btn btn--secondary">{{ block.settings.view_all_label }}</a>
+        </div>
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+</section>
+
+{% stylesheet %}
+  .pf-pieces:has(.page-width) {
+    padding-top: var(--pf-pad-top);
+    padding-bottom: 120px;
+  }
+  .pf-pieces__header {
+    margin-bottom: 3rem;
+  }
+  .pf-pieces__footer {
+    margin-top: 48px;
+  }
+  @media screen and (max-width: 600px) {
+    .pf-pieces:has(.page-width) {
+      padding-top: calc(var(--pf-pad-top) / 2);
+      padding-bottom: 60px;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Pieces",
+  "tag": null,
+  "settings": [
+    { "type": "collection", "id": "collection", "label": "Collection", "info": "Leave empty to hide this band." },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Available" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Pieces in this series" },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "label": "Pieces to show",
+      "min": 2,
+      "max": 12,
+      "step": 1,
+      "default": 6
+    },
+    {
+      "type": "select",
+      "id": "columns",
+      "label": "Columns",
+      "options": [
+        { "value": "2", "label": "2" },
+        { "value": "3", "label": "3" },
+        { "value": "4", "label": "4" }
+      ],
+      "default": "3"
+    },
+    { "type": "checkbox", "id": "show_view_all", "label": "Show \"View all\" button", "default": true },
+    { "type": "text", "id": "view_all_label", "label": "\"View all\" label", "default": "View All" },
+    { "type": "text", "id": "empty_text", "label": "Text when the collection is empty", "default": "No pieces from this series are listed yet." },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "info": "Brand guideline: products sit on a light scheme (Chalk or Bone).",
+      "default": "bone"
+    },
+    {
+      "type": "select",
+      "id": "padding_top",
+      "label": "Space above",
+      "options": [
+        { "value": "none", "label": "None" },
+        { "value": "small", "label": "Small" },
+        { "value": "large", "label": "Large" }
+      ],
+      "default": "large"
+    }
+  ],
+  "presets": [{ "name": "Pieces" }]
+}
+{% endschema %}

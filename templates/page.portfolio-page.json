@@ -10,72 +10,227 @@
 {
   "sections": {
     "main": {
-      "type": "series",
+      "type": "portfolio",
       "blocks": {
-        "spec-year": {
-          "type": "spec",
+        "row-intro": {
+          "type": "_row",
           "settings": {
-            "label": "Year",
-            "value": "2026"
-          }
+            "columns": 2,
+            "phone_columns": "1",
+            "image_shape": "page",
+            "gap": "medium",
+            "align": "start",
+            "color_scheme": "chalk",
+            "padding_top": "large",
+            "padding_bottom": "small"
+          },
+          "blocks": {
+            "intro": {
+              "type": "_text",
+              "settings": {
+                "eyebrow": "",
+                "heading": "Project title",
+                "heading_level": "h1",
+                "text": "<p>Introduce the project in two to four short paragraphs: what it is, how it was made, and what it is about.</p>",
+                "style": "paragraph",
+                "alignment": "left",
+                "span": 1
+              }
+            },
+            "specs": {
+              "type": "_specs",
+              "settings": {
+                "span": 1
+              },
+              "blocks": {
+                "spec-year": {
+                  "type": "_spec",
+                  "settings": {
+                    "label": "Year",
+                    "value": "2026"
+                  }
+                },
+                "spec-material": {
+                  "type": "_spec",
+                  "settings": {
+                    "label": "Material",
+                    "value": "Stoneware"
+                  }
+                }
+              },
+              "block_order": [
+                "spec-year",
+                "spec-material"
+              ]
+            }
+          },
+          "block_order": [
+            "intro",
+            "specs"
+          ]
         },
-        "spec-material": {
-          "type": "spec",
+        "row-images": {
+          "type": "_row",
           "settings": {
-            "label": "Material",
-            "value": "Stoneware"
-          }
+            "columns": 2,
+            "phone_columns": "1",
+            "image_shape": "page",
+            "gap": "medium",
+            "align": "start",
+            "color_scheme": "chalk",
+            "padding_top": "small",
+            "padding_bottom": "small"
+          },
+          "blocks": {
+            "image-1": {
+              "type": "_image",
+              "settings": {
+                "span": 1,
+                "image_shape": "row",
+                "focus": "center",
+                "caption": "",
+                "alt": ""
+              }
+            },
+            "image-2": {
+              "type": "_image",
+              "settings": {
+                "span": 1,
+                "image_shape": "row",
+                "focus": "center",
+                "caption": "",
+                "alt": ""
+              }
+            }
+          },
+          "block_order": [
+            "image-1",
+            "image-2"
+          ]
         },
-        "img-1": {
-          "type": "image",
+        "row-statement": {
+          "type": "_row",
           "settings": {
-            "full_width": false,
-            "caption": ""
-          }
+            "columns": 1,
+            "phone_columns": "1",
+            "image_shape": "page",
+            "gap": "medium",
+            "align": "start",
+            "color_scheme": "cobalt",
+            "padding_top": "large",
+            "padding_bottom": "large"
+          },
+          "blocks": {
+            "statement": {
+              "type": "_text",
+              "settings": {
+                "eyebrow": "The idea",
+                "heading": "",
+                "heading_level": "h2",
+                "text": "<p>One line that says what the work is about.</p>",
+                "style": "statement",
+                "alignment": "center",
+                "span": 1
+              }
+            }
+          },
+          "block_order": [
+            "statement"
+          ]
         },
-        "img-2": {
-          "type": "image",
+        "row-videos": {
+          "type": "_row",
           "settings": {
-            "full_width": false,
-            "caption": ""
+            "columns": 2,
+            "phone_columns": "1",
+            "image_shape": "page",
+            "gap": "medium",
+            "align": "start",
+            "color_scheme": "chalk",
+            "padding_top": "large",
+            "padding_bottom": "small"
+          },
+          "blocks": {
+            "video-1": {
+              "type": "_video",
+              "settings": {
+                "label": "Process",
+                "title": "",
+                "ratio": "9 / 16",
+                "span": 1
+              }
+            },
+            "video-2": {
+              "type": "_video",
+              "settings": {
+                "label": "Process",
+                "title": "",
+                "ratio": "9 / 16",
+                "span": 1
+              }
+            }
+          },
+          "block_order": [
+            "video-1",
+            "video-2"
+          ]
+        },
+        "row-enquire": {
+          "type": "_row",
+          "settings": {
+            "columns": 1,
+            "phone_columns": "1",
+            "image_shape": "page",
+            "gap": "medium",
+            "align": "start",
+            "color_scheme": "chalk",
+            "padding_top": "small",
+            "padding_bottom": "large"
+          },
+          "blocks": {
+            "enquire": {
+              "type": "_button",
+              "settings": {
+                "label": "Enquire",
+                "link": "/pages/contact",
+                "style": "primary",
+                "alignment": "center",
+                "span": 6
+              }
+            }
+          },
+          "block_order": [
+            "enquire"
+          ]
+        },
+        "pieces": {
+          "type": "_pieces",
+          "settings": {
+            "collection": "",
+            "eyebrow": "Available",
+            "heading": "Pieces in this series",
+            "products_to_show": 6,
+            "columns": "3",
+            "show_view_all": true,
+            "view_all_label": "View All",
+            "empty_text": "No pieces from this series are listed yet.",
+            "color_scheme": "bone",
+            "padding_top": "large"
           }
         }
       },
       "block_order": [
-        "spec-year",
-        "spec-material",
-        "img-1",
-        "img-2"
+        "row-intro",
+        "row-images",
+        "row-statement",
+        "row-videos",
+        "row-enquire",
+        "pieces"
       ],
       "settings": {
         "hero_height": 70,
         "hero_focus": "center",
-        "eyebrow": "",
-        "heading": "",
-        "body": "<p>Introduce the project in two to four short paragraphs: what it is, how it was made, and what it is about.</p>",
-        "intro_ground": "chalk",
-        "gallery_ratio": "1 / 1",
-        "gallery_ground": "chalk",
-        "statement_eyebrow": "The idea",
-        "statement": "",
-        "statement_support": "",
-        "statement_ground": "cobalt",
-        "process_eyebrow": "Process",
-        "process_ground": "chalk",
-        "collection": "",
-        "pieces_eyebrow": "Available",
-        "pieces_heading": "Pieces in this series",
-        "products_to_show": 6,
-        "columns": "3",
-        "show_view_all": true,
-        "view_all_label": "View All",
-        "empty_text": "No pieces from this series are listed yet.",
-        "pieces_ground": "bone",
-        "intro_scheme": "chalk",
-        "gallery_scheme": "chalk",
-        "statement_scheme": "cobalt",
-        "process_scheme": "chalk",
-        "pieces_scheme": "bone"
+        "image_shape": "4 / 5"
       }
     }
   },
