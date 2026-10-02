@@ -93,6 +93,9 @@
     .portfolio {
       --pf-header-clear: 68px;
     }
+    .portfolio--clear-header > :first-child {
+      padding-top: calc(var(--pf-pad-top, 0px) / 2 + var(--pf-header-clear));
+    }
   }
 {% endstylesheet %}
 

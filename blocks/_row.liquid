@@ -43,7 +43,7 @@
   <div
     class="page-width pf-row__grid"
     data-cols="{{ block.settings.columns }}"
-    style="--cols: {{ block.settings.columns }}; --phone-cols: {{ block.settings.phone_columns }}; --pf-gap: {{ gap }}; align-items: {{ block.settings.align }};"
+    style="--row-cols: {{ block.settings.columns }}; --phone-cols: {{ block.settings.phone_columns }}; --pf-gap: {{ gap }}; align-items: {{ block.settings.align }};"
   >
     {% content_for 'blocks' %}
   </div>
@@ -54,7 +54,9 @@
     padding-top: var(--pf-pad-top);
     padding-bottom: var(--pf-pad-bottom);
   }
+  /* --cols is set here, not inline, so the tablet and phone rules below can override it. */
   .pf-row__grid {
+    --cols: var(--row-cols);
     display: grid;
     grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
     gap: var(--pf-gap);
