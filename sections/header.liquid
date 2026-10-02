@@ -19,7 +19,7 @@
   {% if section.settings.transparent %}data-transparent{% endif %}
 >
   <div class="site-header__inner">
-    <a href="/" class="site-header__logo" aria-label="{{ shop.name }}">
+    <a href="{{ routes.root_url }}" class="site-header__logo" aria-label="{{ shop.name }}">
       {%- render 'logo-mark', variant: logo_variant -%}
       <span class="site-header__wordmark">KAZAN STUDIO</span>
     </a>
