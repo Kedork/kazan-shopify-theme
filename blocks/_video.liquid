@@ -26,9 +26,16 @@
 >
   <div class="pf-video__media">
     {%- if block.settings.video != blank -%}
+      {%- comment -%}
+        video_tag can't take aria-label (hyphenated names aren't valid Liquid
+        parameters), so the accessible title is added to the rendered tag.
+      {%- endcomment -%}
+      {%- assign title_attr = title | escape -%}
+      {%- assign video_aria = '<video aria-label="' | append: title_attr | append: '" ' -%}
       {{
         block.settings.video
-        | video_tag: controls: true, playsinline: true, preload: 'metadata', aria-label: title
+        | video_tag: controls: true, playsinline: true, preload: 'metadata'
+        | replace_first: '<video ', video_aria
       }}
     {%- elsif link != blank -%}
       <a
