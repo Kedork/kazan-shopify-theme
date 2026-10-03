@@ -21,7 +21,7 @@
 -%}
 <div
   class="pf-video"
-  style="--span: {{ block.settings.span }}; --pf-video-ratio: {{ block.settings.ratio }};"
+  style="--pf-video-ratio: {{ block.settings.ratio }};"
   {{ block.shopify_attributes }}
 >
   <div class="pf-video__media">
@@ -182,15 +182,6 @@
         { "value": "16 / 9", "label": "Wide 16:9" }
       ],
       "default": "9 / 16"
-    },
-    {
-      "type": "range",
-      "id": "span",
-      "label": "Width (columns)",
-      "min": 1,
-      "max": 6,
-      "step": 1,
-      "default": 1
     }
   ],
   "presets": [{ "name": "Video" }]

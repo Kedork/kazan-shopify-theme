@@ -2,7 +2,7 @@
   Spec table in a Row (US-1.8): a list of label/value pairs, each a Spec
   block, so rows can be added and reordered. Same look as Series' spec table.
 {%- endcomment -%}
-<dl class="pf-specs" style="--span: {{ block.settings.span }};" {{ block.shopify_attributes }}>
+<dl class="pf-specs" {{ block.shopify_attributes }}>
   {% content_for 'blocks' %}
 </dl>
 
@@ -19,17 +19,6 @@
   "name": "Spec table",
   "tag": null,
   "blocks": [{ "type": "_spec" }],
-  "settings": [
-    {
-      "type": "range",
-      "id": "span",
-      "label": "Width (columns)",
-      "min": 1,
-      "max": 6,
-      "step": 1,
-      "default": 1
-    }
-  ],
   "presets": [
     {
       "name": "Spec table",

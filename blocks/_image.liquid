@@ -1,7 +1,8 @@
 {%- comment -%}
-  Image in a Row (US-1.8, US-1.6). Shape comes from the image, else its row,
-  else the page (--pf-img-shape → --pf-row-shape → --pf-shape). Alt text is the
-  image's own (Files), else this block's override — never the page title.
+  Image in a Row (US-1.8, US-1.6). Width and shape come from the row (one
+  column each, the row's or page's shape), so a row's photos always match;
+  only the crop focus is per image. Alt text is the image's own (Files), else
+  this block's override — never the page title.
 {%- endcomment -%}
 {%- liquid
   assign img = block.settings.image
@@ -9,11 +10,10 @@
   if alt == blank
     assign alt = block.settings.alt
   endif
-  assign span = block.settings.span | times: 1
 -%}
 <figure
   class="pf-image"
-  style="--span: {{ span }}; --pf-focus: center {{ block.settings.focus }};{% unless block.settings.image_shape == 'row' %} --pf-img-shape: {{ block.settings.image_shape }};{% endunless %}"
+  style="--pf-focus: center {{ block.settings.focus }};"
   {{ block.shopify_attributes }}
 >
   <div class="pf-image__media">
@@ -41,7 +41,7 @@
     margin: 0;
   }
   .pf-image__media {
-    aspect-ratio: var(--pf-img-shape, var(--pf-row-shape, var(--pf-shape, 4 / 5)));
+    aspect-ratio: var(--pf-row-shape, var(--pf-shape, 4 / 5));
     overflow: hidden;
     background-color: var(--scheme-hairline);
   }
@@ -74,35 +74,10 @@
   "settings": [
     { "type": "image_picker", "id": "image", "label": "Image" },
     {
-      "type": "range",
-      "id": "span",
-      "label": "Width (columns)",
-      "info": "How many of the row's columns this image covers.",
-      "min": 1,
-      "max": 6,
-      "step": 1,
-      "default": 1
-    },
-    {
-      "type": "select",
-      "id": "image_shape",
-      "label": "Shape",
-      "options": [
-        { "value": "row", "label": "Same as row" },
-        { "value": "auto", "label": "Original" },
-        { "value": "1 / 1", "label": "Square" },
-        { "value": "4 / 5", "label": "Portrait 4:5" },
-        { "value": "3 / 4", "label": "Portrait 3:4" },
-        { "value": "3 / 2", "label": "Landscape 3:2" },
-        { "value": "16 / 9", "label": "Wide 16:9" }
-      ],
-      "default": "row"
-    },
-    {
       "type": "select",
       "id": "focus",
       "label": "Crop focus",
-      "info": "Which part stays in frame when the shape crops the image.",
+      "info": "Which part stays in frame when the row's shape crops the photo.",
       "options": [
         { "value": "top", "label": "Top" },
         { "value": "30%", "label": "Upper third" },

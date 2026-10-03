@@ -1,7 +1,9 @@
 {%- comment -%}
   Row (US-1.8): a full-width band in its own color scheme, holding a grid of
-  1–6 columns. Items span columns (capped at the row's count). Rows of 3+
-  become 2 columns on tablets; on phones each row uses its phone columns.
+  1–6 equal columns, one item per column, so every photo in a row has the same
+  width and (one shape per row) the same height — editorial, not a collage
+  (Kevork, Oct 2). Rows of 3+ become 2 columns on tablets; on phones each row
+  uses its phone columns.
   "tag": null so the grid's items are the blocks themselves, not Shopify's
   wrapper divs — otherwise a column span would do nothing.
   Shopify validates this file against the block files it already holds, so
@@ -34,10 +36,17 @@
     else
       assign gap = '16px'
   endcase
+
+  # "Original" keeps each photo's own proportions, which only lines up when the
+  # row has one column; on wider rows the page's shape applies instead.
+  assign row_shape = block.settings.image_shape
+  if row_shape == 'auto' and block.settings.columns > 1
+    assign row_shape = 'page'
+  endif
 -%}
 <div
   class="pf-row scheme color-{{ block.settings.color_scheme.id }}"
-  style="--pf-pad-top: {{ pad_top }}; --pf-pad-bottom: {{ pad_bottom }};{% unless block.settings.image_shape == 'page' %} --pf-row-shape: {{ block.settings.image_shape }};{% endunless %}"
+  style="--pf-pad-top: {{ pad_top }}; --pf-pad-bottom: {{ pad_bottom }};{% unless row_shape == 'page' %} --pf-row-shape: {{ row_shape }};{% endunless %}"
   {{ block.shopify_attributes }}
 >
   <div
@@ -61,9 +70,7 @@
     grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
     gap: var(--pf-gap);
   }
-  /* Every item spans --span columns, never more than the row has. */
   .pf-row__grid > * {
-    grid-column: span min(var(--span, 1), var(--cols));
     min-width: 0;
   }
   @media screen and (max-width: 900px) {
@@ -123,7 +130,7 @@
       "label": "Image shape",
       "options": [
         { "value": "page", "label": "Same as page" },
-        { "value": "auto", "label": "Original" },
+        { "value": "auto", "label": "Original (one-column rows only)" },
         { "value": "1 / 1", "label": "Square" },
         { "value": "4 / 5", "label": "Portrait 4:5" },
         { "value": "3 / 4", "label": "Portrait 3:4" },

@@ -24,15 +24,12 @@
                 "heading_level": "h1",
                 "text": "<p>Introduce the project in two to four short paragraphs: what it is, how it was made, and what it is about.</p>",
                 "style": "paragraph",
-                "alignment": "left",
-                "span": 1
+                "alignment": "left"
               }
             },
             "specs": {
               "type": "_specs",
-              "settings": {
-                "span": 1
-              },
+              "settings": {},
               "blocks": {
                 "spec-year": {
                   "type": "_spec",
@@ -76,8 +73,6 @@
             "image-1": {
               "type": "_image",
               "settings": {
-                "span": 1,
-                "image_shape": "row",
                 "focus": "center",
                 "caption": "",
                 "alt": ""
@@ -86,8 +81,6 @@
             "image-2": {
               "type": "_image",
               "settings": {
-                "span": 1,
-                "image_shape": "row",
                 "focus": "center",
                 "caption": "",
                 "alt": ""
@@ -120,8 +113,7 @@
                 "heading_level": "h2",
                 "text": "<p>One line that says what the work is about.</p>",
                 "style": "statement",
-                "alignment": "center",
-                "span": 1
+                "alignment": "center"
               }
             }
           },
@@ -147,7 +139,6 @@
               "settings": {
                 "title": "",
                 "ratio": "9 / 16",
-                "span": 1,
                 "video_label": "Process"
               }
             },
@@ -156,7 +147,6 @@
               "settings": {
                 "title": "",
                 "ratio": "9 / 16",
-                "span": 1,
                 "video_label": "Process"
               }
             }
@@ -185,7 +175,6 @@
                 "link": "/pages/contact",
                 "style": "primary",
                 "alignment": "center",
-                "span": 6,
                 "button_label": "Enquire"
               }
             }
