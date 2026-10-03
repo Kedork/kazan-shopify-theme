@@ -26,6 +26,12 @@
   .pf-text--center {
     text-align: center;
   }
+  /* Centered paragraphs keep a reading width instead of running the full row. */
+  .pf-text--paragraph.pf-text--center .pf-text__body {
+    max-width: 46ch;
+    margin-left: auto;
+    margin-right: auto;
+  }
   .pf-text__heading {
     margin-bottom: 2rem;
   }

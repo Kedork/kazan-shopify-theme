@@ -1,0 +1,264 @@
+{
+  "sections": {
+    "main": {
+      "type": "portfolio",
+      "blocks": {
+        "row-intro": {
+          "type": "_row",
+          "settings": {
+            "columns": 2,
+            "phone_columns": "1",
+            "image_shape": "page",
+            "gap": "medium",
+            "align": "start",
+            "color_scheme": "chalk",
+            "padding_top": "large",
+            "padding_bottom": "small"
+          },
+          "blocks": {
+            "intro": {
+              "type": "_text",
+              "settings": {
+                "eyebrow": "2025 — Stoneware",
+                "heading": "Desert Totem",
+                "heading_level": "h1",
+                "text": "<p>Fired stoneware holds time differently than almost any other material. Civilizations disappear. Languages go silent. But the pottery stays — dug out of desert floors thousands of years later, still legible, still whole.</p><p>Desert Totem was built with that in mind. The forms are stacked, modular, deliberately incomplete-feeling — as if they were found rather than made. The surfaces are carved and glazed to read like something uncovered, not finished. Like it had already survived.</p><p>The work asks a simple question: if this piece were buried today and pulled from the ground in three thousand years, what would it say about what was made here?</p>",
+                "style": "paragraph",
+                "alignment": "left"
+              }
+            },
+            "specs": {
+              "type": "_specs",
+              "settings": {},
+              "blocks": {
+                "year": {
+                  "type": "_spec",
+                  "settings": {
+                    "spec_label": "Year",
+                    "value": "2025"
+                  }
+                },
+                "material": {
+                  "type": "_spec",
+                  "settings": {
+                    "spec_label": "Material",
+                    "value": "Stoneware"
+                  }
+                },
+                "technique": {
+                  "type": "_spec",
+                  "settings": {
+                    "spec_label": "Technique",
+                    "value": "Hand-built, carved"
+                  }
+                },
+                "status": {
+                  "type": "_spec",
+                  "settings": {
+                    "spec_label": "Status",
+                    "value": "Not for sale"
+                  }
+                }
+              },
+              "block_order": [
+                "year",
+                "material",
+                "technique",
+                "status"
+              ]
+            }
+          },
+          "block_order": [
+            "intro",
+            "specs"
+          ]
+        },
+        "row-gallery": {
+          "type": "_row",
+          "settings": {
+            "columns": 2,
+            "phone_columns": "1",
+            "image_shape": "page",
+            "gap": "medium",
+            "align": "start",
+            "color_scheme": "chalk",
+            "padding_top": "small",
+            "padding_bottom": "large"
+          },
+          "blocks": {
+            "image-1": {
+              "type": "_image",
+              "settings": {
+                "image": "shopify://shop_images/IMG_1314.jpg",
+                "focus": "center",
+                "caption": "",
+                "alt": "Desert Totem — glaze detail"
+              }
+            },
+            "image-2": {
+              "type": "_image",
+              "settings": {
+                "image": "shopify://shop_images/IMG_1329.jpg",
+                "focus": "center",
+                "caption": "",
+                "alt": "Desert Totem"
+              }
+            },
+            "image-3": {
+              "type": "_image",
+              "settings": {
+                "image": "shopify://shop_images/IMG_1311.jpg",
+                "focus": "center",
+                "caption": "",
+                "alt": "Desert Totem — installation"
+              }
+            },
+            "image-4": {
+              "type": "_image",
+              "settings": {
+                "image": "shopify://shop_images/IMG_1292.jpg",
+                "focus": "center",
+                "caption": "",
+                "alt": "Desert Totem"
+              }
+            }
+          },
+          "block_order": [
+            "image-1",
+            "image-2",
+            "image-3",
+            "image-4"
+          ]
+        },
+        "row-process-label": {
+          "type": "_row",
+          "settings": {
+            "columns": 1,
+            "phone_columns": "1",
+            "image_shape": "page",
+            "gap": "medium",
+            "align": "start",
+            "color_scheme": "chalk",
+            "padding_top": "large",
+            "padding_bottom": "none"
+          },
+          "blocks": {
+            "process-label": {
+              "type": "_text",
+              "settings": {
+                "eyebrow": "Process",
+                "heading": "",
+                "heading_level": "h2",
+                "text": "",
+                "style": "paragraph",
+                "alignment": "left"
+              }
+            }
+          },
+          "block_order": [
+            "process-label"
+          ]
+        },
+        "row-videos": {
+          "type": "_row",
+          "settings": {
+            "columns": 3,
+            "phone_columns": "1",
+            "image_shape": "page",
+            "gap": "medium",
+            "align": "start",
+            "color_scheme": "chalk",
+            "padding_top": "small",
+            "padding_bottom": "large"
+          },
+          "blocks": {
+            "video-process": {
+              "type": "_video",
+              "settings": {
+                "video_label": "Hand-Building",
+                "title": "Hand-building process",
+                "ratio": "9 / 16"
+              }
+            },
+            "video-glaze": {
+              "type": "_video",
+              "settings": {
+                "video_label": "Glazing",
+                "title": "Glazing in spray booth",
+                "ratio": "9 / 16"
+              }
+            },
+            "video-installation": {
+              "type": "_video",
+              "settings": {
+                "video_label": "Installation",
+                "title": "Desert installation",
+                "ratio": "9 / 16"
+              }
+            }
+          },
+          "block_order": [
+            "video-process",
+            "video-glaze",
+            "video-installation"
+          ]
+        },
+        "row-commission": {
+          "type": "_row",
+          "settings": {
+            "columns": 1,
+            "phone_columns": "1",
+            "image_shape": "page",
+            "gap": "medium",
+            "align": "start",
+            "color_scheme": "ink",
+            "padding_top": "large",
+            "padding_bottom": "large"
+          },
+          "blocks": {
+            "commission-text": {
+              "type": "_text",
+              "settings": {
+                "eyebrow": "Commission",
+                "heading": "Interested in a commission?",
+                "heading_level": "h2",
+                "text": "<p>This piece is not for sale, but the form is open to commission. Each piece is built and glazed by hand — the same process, a different result. Get in touch to discuss what you have in mind.</p>",
+                "style": "paragraph",
+                "alignment": "center"
+              }
+            },
+            "commission-button": {
+              "type": "_button",
+              "settings": {
+                "button_label": "Get in Touch",
+                "link": "mailto:info@kazan.studio?subject=Desert%20Totem%20Commission%20Inquiry",
+                "style": "primary",
+                "alignment": "center"
+              }
+            }
+          },
+          "block_order": [
+            "commission-text",
+            "commission-button"
+          ]
+        }
+      },
+      "block_order": [
+        "row-intro",
+        "row-gallery",
+        "row-process-label",
+        "row-videos",
+        "row-commission"
+      ],
+      "settings": {
+        "hero_image": "shopify://shop_images/IMG_1319.jpg",
+        "hero_height": 85,
+        "hero_focus": "30%",
+        "image_shape": "4 / 5"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}
