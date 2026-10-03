@@ -27,16 +27,21 @@
   <div class="pf-video__media">
     {%- if block.settings.video != blank -%}
       {%- comment -%}
-        video_tag can't take aria-label (hyphenated names aren't valid Liquid
-        parameters), so the accessible title is added to the rendered tag.
+        As with photos, the video's own alt text (Files) comes first; video_tag
+        writes it as aria-label. Otherwise this block's title is added to the
+        tag, since video_tag can't take aria-label as a parameter (hyphenated
+        names aren't valid Liquid). The poster is requested at 1080px, not the
+        blurry default "small".
       {%- endcomment -%}
-      {%- assign title_attr = title | escape -%}
-      {%- assign video_aria = '<video aria-label="' | append: title_attr | append: '" ' -%}
-      {{
-        block.settings.video
-        | video_tag: controls: true, playsinline: true, preload: 'metadata'
-        | replace_first: '<video ', video_aria
-      }}
+      {%- capture video_html -%}
+        {{ block.settings.video | video_tag: controls: true, playsinline: true, preload: 'metadata', image_size: '1080x' }}
+      {%- endcapture -%}
+      {%- unless video_html contains 'aria-label=' -%}
+        {%- assign title_attr = title | escape -%}
+        {%- assign video_aria = '<video aria-label="' | append: title_attr | append: '" ' -%}
+        {%- assign video_html = video_html | replace_first: '<video ', video_aria -%}
+      {%- endunless -%}
+      {{ video_html }}
     {%- elsif link != blank -%}
       <a
         class="pf-video__poster"
