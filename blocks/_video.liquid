@@ -1,0 +1,189 @@
+{%- comment -%}
+  Video in a Row (US-1.8, US-1.4). An uploaded video plays in place. A
+  YouTube/Vimeo link shows a poster (this block's, else YouTube's thumbnail)
+  and loads the privacy-friendly player only when clicked (Kevork, Oct 2). The
+  poster is a real link to the video, so it works without JavaScript too.
+{%- endcomment -%}
+{%- liquid
+  assign title = block.settings.title | default: block.settings.video_label | default: 'Video'
+  assign link = block.settings.video_url
+  if link != blank
+    if link.type == 'youtube'
+      assign embed = 'https://www.youtube-nocookie.com/embed/' | append: link.id | append: '?autoplay=1&rel=0&playsinline=1'
+      assign watch = 'https://www.youtube.com/watch?v=' | append: link.id
+      assign thumb = 'https://i.ytimg.com/vi/' | append: link.id | append: '/hqdefault.jpg'
+    else
+      assign embed = 'https://player.vimeo.com/video/' | append: link.id | append: '?autoplay=1&dnt=1'
+      assign watch = 'https://vimeo.com/' | append: link.id
+      assign thumb = blank
+    endif
+  endif
+-%}
+<div
+  class="pf-video"
+  style="--pf-video-ratio: {{ block.settings.ratio }};"
+  {{ block.shopify_attributes }}
+>
+  <div class="pf-video__media">
+    {%- if block.settings.video != blank -%}
+      {{
+        block.settings.video
+        | video_tag: controls: true, playsinline: true, preload: 'metadata', aria-label: title
+      }}
+    {%- elsif link != blank -%}
+      <a
+        class="pf-video__poster"
+        href="{{ watch }}"
+        data-pf-embed="{{ embed }}"
+        data-pf-title="{{ title | escape }}"
+        aria-label="Play video: {{ title | escape }}"
+      >
+        {%- if block.settings.poster != blank -%}
+          {{
+            block.settings.poster
+            | image_url: width: 1600
+            | image_tag: loading: 'lazy', sizes: '(max-width: 600px) 100vw, 50vw', widths: '400, 800, 1200, 1600', alt: ''
+          }}
+        {%- elsif thumb != blank -%}
+          {% # theme-check-disable RemoteAsset %}
+          <img src="{{ thumb }}" alt="" loading="lazy" width="480" height="360">
+          {% # theme-check-enable RemoteAsset %}
+        {%- endif -%}
+        <span class="pf-video__play" aria-hidden="true"></span>
+      </a>
+    {%- else -%}
+      <div class="pf-video__placeholder" aria-hidden="true"></div>
+    {%- endif -%}
+  </div>
+  {%- if block.settings.video_label != blank -%}
+    <span class="pf-video__label">{{ block.settings.video_label }}</span>
+  {%- endif -%}
+</div>
+
+{% stylesheet %}
+  .pf-video {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .pf-video__media {
+    position: relative;
+    aspect-ratio: var(--pf-video-ratio, 9 / 16);
+    overflow: hidden;
+    background-color: var(--scheme-hairline);
+  }
+  .pf-video__media video,
+  .pf-video__media iframe,
+  .pf-video__poster,
+  .pf-video__poster img,
+  .pf-video__placeholder {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+  }
+  .pf-video__media video,
+  .pf-video__poster img {
+    object-fit: cover;
+  }
+  .pf-video__poster:hover {
+    opacity: 1;
+  }
+  .pf-video__play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 64px;
+    height: 64px;
+    transform: translate(-50%, -50%);
+    background-color: var(--scheme-button);
+    transition: background-color 0.3s ease;
+  }
+  .pf-video__play::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 54%;
+    transform: translate(-50%, -50%);
+    border-style: solid;
+    border-width: 11px 0 11px 18px;
+    border-color: transparent transparent transparent var(--scheme-button-label);
+  }
+  .pf-video__poster:hover .pf-video__play {
+    background-color: var(--scheme-button-hover);
+  }
+  .pf-video__label {
+    font-family: var(--font-heading);
+    font-size: 0.625rem;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+  }
+{% endstylesheet %}
+
+{% javascript %}
+  document.addEventListener('click', function (event) {
+    var poster = event.target.closest('[data-pf-embed]');
+    if (!poster) return;
+    event.preventDefault();
+    var frame = document.createElement('iframe');
+    frame.src = poster.getAttribute('data-pf-embed');
+    frame.title = poster.getAttribute('data-pf-title');
+    frame.allow = 'autoplay; fullscreen; picture-in-picture';
+    frame.allowFullscreen = true;
+    poster.replaceWith(frame);
+    frame.focus();
+  });
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "Video",
+  "tag": null,
+  "settings": [
+    {
+      "type": "video",
+      "id": "video",
+      "label": "Uploaded video",
+      "info": "Plays on the page. Leave empty to use a YouTube or Vimeo link instead."
+    },
+    {
+      "type": "video_url",
+      "id": "video_url",
+      "label": "YouTube or Vimeo link",
+      "accept": ["youtube", "vimeo"]
+    },
+    {
+      "type": "image_picker",
+      "id": "poster",
+      "label": "Poster image",
+      "info": "Shown until the visitor presses play (YouTube or Vimeo only). Without one, YouTube's own thumbnail is used."
+    },
+    {
+      "type": "text",
+      "id": "video_label",
+      "label": "Label",
+      "info": "Shown under the video, e.g. \"Pressing the modules\"."
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title for screen readers",
+      "info": "Describe the video. Falls back to the label."
+    },
+    {
+      "type": "select",
+      "id": "ratio",
+      "label": "Shape",
+      "options": [
+        { "value": "9 / 16", "label": "Vertical 9:16" },
+        { "value": "1 / 1", "label": "Square" },
+        { "value": "16 / 9", "label": "Wide 16:9" }
+      ],
+      "default": "9 / 16"
+    }
+  ],
+  "presets": [{ "name": "Video" }]
+}
+{% endschema %}

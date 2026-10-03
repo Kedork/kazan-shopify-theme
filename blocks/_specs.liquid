@@ -1,0 +1,32 @@
+{%- comment -%}
+  Spec table in a Row (US-1.8): a list of label/value pairs, each a Spec
+  block, so rows can be added and reordered. Same look as Series' spec table.
+{%- endcomment -%}
+<dl class="pf-specs" {{ block.shopify_attributes }}>
+  {% content_for 'blocks' %}
+</dl>
+
+{% stylesheet %}
+  /* No padding under the top rule: each row brings its own 0.875rem. */
+  .pf-specs {
+    border-top: 1px solid currentColor;
+    margin: 0;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Spec table",
+  "tag": null,
+  "blocks": [{ "type": "_spec" }],
+  "presets": [
+    {
+      "name": "Spec table",
+      "blocks": [
+        { "type": "_spec", "settings": { "spec_label": "Year", "value": "2026" } },
+        { "type": "_spec", "settings": { "spec_label": "Material", "value": "Stoneware" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

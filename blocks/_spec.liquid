@@ -1,0 +1,41 @@
+{%- comment -%} One label/value row of a Spec table (US-1.8). {%- endcomment -%}
+<div class="pf-spec" {{ block.shopify_attributes }}>
+  <dt class="pf-spec__label">{{ block.settings.spec_label }}</dt>
+  <dd class="pf-spec__value">{{ block.settings.value }}</dd>
+</div>
+
+{% stylesheet %}
+  .pf-spec {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1.5rem;
+    padding: 0.875rem 0;
+    border-bottom: 1px solid currentColor;
+  }
+  .pf-spec__label {
+    font-family: var(--font-heading);
+    font-size: 0.625rem;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    white-space: nowrap;
+  }
+  .pf-spec__value {
+    font-weight: 400;
+    font-size: 0.9375rem;
+    text-align: right;
+    margin: 0;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Spec",
+  "tag": null,
+  "settings": [
+    { "type": "text", "id": "spec_label", "label": "Label", "default": "Label" },
+    { "type": "text", "id": "value", "label": "Value", "default": "Value" }
+  ],
+  "presets": [{ "name": "Spec" }]
+}
+{% endschema %}
